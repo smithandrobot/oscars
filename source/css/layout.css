@@ -1,0 +1,41 @@
+/* PAGE LAYOUT */
+
+.clear {
+	clear:both;
+}
+
+#page-container {
+	width: 995px;
+	margin-left: auto;
+	margin-right: auto;
+	background: url("../img/body-bg-top.jpg") no-repeat;
+	background-position: center top;
+}
+
+#sponsor {
+	width: 100%;
+	height: 150px;
+	text-align: center;
+	clear:both;
+}
+
+#column-left {
+	float: left;
+	width: 510px;
+	height: 1430px;
+	margin-left: 30px;
+}
+
+#column-divider {
+	float: left;
+	width: 60px;
+	height: 1430px;
+	background: url("../img/divider-vert.png") no-repeat;
+	background-position: 30px 20px;
+}
+
+#column-right {
+	float: left;
+	width: 370px;
+	height: 1430px;
+}

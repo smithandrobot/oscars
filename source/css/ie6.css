@@ -1,0 +1,52 @@
+#logo {
+    margin-bottom:21px;
+}
+
+.col-33-padded {
+    width:27%;
+}
+
+#home .bounded-box {
+    margin-left:5px;
+}
+
+#home .footer .bounded-box .inner {
+    padding:20px 8px 10px 8px;
+}
+
+#subnav a{
+    display:block;
+}
+
+.call-panel h5 {
+    font-size:14px;
+}
+
+.full-nav h4 {
+    width:20px;
+}
+
+#service .tabbed .tab1 {
+    width:160px;
+}
+
+#service .tabbed .tab2 {
+    width:134px;
+}
+
+#service .tabbed .tab3 {
+    width:190px;
+}
+
+#answers .tabbed li,
+#contact .tabbed li {
+    width:48%;
+}
+
+.tabbed a, .tabbed span, .tabbed a span {
+    margin-bottom:0px;
+}
+
+#account .tabbed li {
+    width:170px;
+}
