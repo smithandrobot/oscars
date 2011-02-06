@@ -1,7 +1,12 @@
 /* PAGE LAYOUT */
 
 .clear {
-	clear:both;
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
 }
 
 #page-container {
@@ -19,23 +24,43 @@
 	clear:both;
 }
 
-#column-left {
+#column-left, #column-divider, #column-right {
+	display:inline;
 	float: left;
-	width: 510px;
-	height: 1430px;
+	position: relative;
+}
+
+#column-left {
 	margin-left: 30px;
+	width: 510px;
 }
 
 #column-divider {
-	float: left;
+	margin-left: 0px;
 	width: 60px;
-	height: 1430px;
+	height: 800px;
 	background: url("../img/divider-vert.png") no-repeat;
 	background-position: 30px 20px;
 }
 
 #column-right {
-	float: left;
+	margin-left: 0px;
 	width: 370px;
-	height: 1430px;
+}
+
+#spotlight {
+	min-height: 190px;
+}
+
+#timeline-head {
+	padding-top: 30px;
+	background: url("../img/divider-hor-top.png") no-repeat;
+	background-position: center top;
+	min-height: 60px;
+}
+
+#timeline {
+	height: 400px;
+	overflow: auto;
+	position: relative;
 }
