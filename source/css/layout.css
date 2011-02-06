@@ -27,7 +27,6 @@
 #column-left, #column-divider, #column-right {
 	display:inline;
 	float: left;
-	position: relative;
 }
 
 #column-left {
@@ -45,7 +44,7 @@
 
 #column-right {
 	margin-left: 0px;
-	width: 370px;
+	width: 380px;
 }
 
 #spotlight {

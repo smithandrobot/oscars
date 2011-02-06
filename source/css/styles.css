@@ -15,6 +15,25 @@ a {
 	text-decoration: none;
 }
 
+a:hover {
+	color: #FEF9C5;
+}
+
+ol {
+	display: inline;
+	margin-left: 20px;
+	margin-top: 15px;
+	font-size: 11px;
+	line-height: 1.6em;
+	min-height: 200px;
+	float:left;
+}
+
+li {
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
 h1 {
 	text-indent: -99999px;
 	width: 510px;
@@ -28,6 +47,11 @@ h4 {
 	font-size: 13px;
 	color: #666;
 	margin-left: 3px;
+}
+
+.tweet-profile-image img {
+	width: 48px;
+	height: 48px;
 }
 
 .fake-h2 {
@@ -46,6 +70,7 @@ h3 {
 	background: url("../img/sprite-headlines.png");
 	height: 19px;
 	margin-top: 10px;
+	margin-bottom: 10px;
 	width: 100%;
 	display: inline-block;
 }
@@ -132,7 +157,7 @@ h3 {
 	width: 478px;
 	height: 52px;
 	background: url("../img/sprite-headlines.png") no-repeat;
-	background-position: -11px -561px;
+	background-position: -11px -571px;
 }
 
 #loadmore a {
@@ -146,14 +171,14 @@ h3 {
 	font-weight: bold;
 	text-align: center;
 	background: url("../img/sprite-headlines.png") no-repeat;
-	background-position: -11px -661px;
+	background-position: -11px -671px;
 }
 
 #loadmore-glow {
 	width: 478px;
 	height: 52px;
 	background: url("../img/sprite-headlines.png") no-repeat;
-	background-position: -11px -611px;
+	background-position: -11px -621px;
 }
 
 /* CUSTOM DRAG HANDLE on TIMELINE */
@@ -366,26 +391,32 @@ h3 {
 /* VISUALISERS */
 
 #counters {
-	border: 1px solid red;
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.counter-bak {
 	position: relative;
 }
 
 /* COUNTER TOTAL */
 
 #counter-total {
-	position: relative;
+	display: inline-block;
+	float: left;
+	width: 230px;
+	height: 92px;
 }
 
 #counter-total * {
 	display: inline-block;
-	position: absolute;
 	background: url("../img/sprite-headlines.png") no-repeat;
 }
 
 #counter-total .counter-bak {
 	width: 230px;
 	height: 92px;
-	background-position: -16px -254px;
+	background-position: -16px -254px; /*-254px;*/
 }
 
 #counter-total .counter-label, #counter-total .counter-text {
@@ -403,34 +434,43 @@ h3 {
 }
 
 #counter-total .counter-label {
+	position: absolute;
 	top: 54px;
+	left: 0px;
 	font-size: 13px;
 	font-weight: bold;
 	margin: 6px;
 }
 
 #counter-total .pixalation {
+	position: absolute;
+	top: 0px;
+	left: 0px;
 	width: 230px;
 	height: 92px;
-	background-position: -16px -344px;
+	background-position: -16px -349px;
 }
 
 #counter-total .gloss {
+	position: absolute;
+	top: 0px;
+	left: 0px;
 	width: 230px;
 	height: 43px;
-	background-position: -16px -434px;
+	background-position: -16px -444px;
 }
 
 /* COUNTER SECOND */
 
 #counter-seconds {
-	position: relative;
-	margin-left: 230px;
+	display: inline-block;
+	float: right;
+	width: 142px;
+	height: 92px;
 }
 
 #counter-seconds * {
 	display: inline-block;
-	position: absolute;
 	background: url("../img/sprite-headlines.png") no-repeat;
 }
 
@@ -451,24 +491,82 @@ h3 {
 
 #counter-seconds .counter-text {
 	line-height: 70px;
-	font-size: 40px;
+	font-size: 32px;
 }
 
 #counter-seconds .counter-label {
+	position: absolute;
 	top: 54px;
+	left: 0px;
 	font-size: 13px;
 	font-weight: bold;
 	margin: 6px;
 }
 
 #counter-seconds .pixalation {
+	position: absolute;
+	top: 0px;
+	left: 0px;
 	width: 142px;
 	height: 92px;
-	background-position: -256px -344px;
+	background-position: -256px -349px;
 }
 
 #counter-seconds .gloss {
+	position: absolute;
+	top: 0px;
+	left: 0px;
 	width: 142px;
 	height: 43px;
-	background-position: -256px -434px;
+	background-position: -256px -439px;
+}
+
+
+/* NOMINEES */
+
+.top5 * {
+	font-size: 18px;
+	line-height: 34px;
+}
+
+#nominees b, .flipper {
+	display: inline-block;
+	font-weight: normal;
+	float:left;
+}
+
+.flipper {
+	float:left;
+	position: relative;
+	margin-left: 8px;
+	width: 349px;
+	height: 38px;
+	background-image: url("../img/sprite-headlines.png");
+	background-position: -20px -490px;
+}
+
+.flipper .name {
+	margin-left: 10px;
+}
+
+.flipper .count {
+	position: absolute;
+	top: 0px;
+	width: 334px;
+	height: 38px;
+	text-align: right;
+}
+
+.flipper .flip-fx {
+	position: absolute;
+	top: 0px;
+	width: 349px;
+	height: 38px;
+	background-image: url("../img/sprite-headlines.png");
+	background-position: -20px -530px;
+}
+
+.nominee-sub span {
+	font-size: 11px;
+	color: #666666;
 }
