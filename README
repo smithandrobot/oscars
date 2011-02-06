@@ -1,1 +1,5 @@
 Twitter + oscars.com
+
+/source = raw in-progress files
+todo: /source/bin = google minifier binaries will go here
+todo: /deploy = minified combined file will go here
