@@ -1,5 +1,5 @@
-$('.loadmore-back').click(function() {
-  $('.loadmore-back').animate({
+$('#loadmore').click(function() {
+  $('#loadmore').animate({
     opacity: 0.25,
     left: '+=50',
     height: 'toggle'

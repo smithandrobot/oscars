@@ -224,8 +224,14 @@ h3 {
 	background-position: center bottom;
 }
 
-.tweet-bg {
+#timeline .tweet-bg {
 	width: 480px;
+	padding: 20px 0px 20px 0px;
+	background: url("../img/tweet-divider-hr.png") no-repeat;
+	background-position: bottom;
+}
+
+#viewer-timeline .tweet-bg {
 	padding: 20px 0px 20px 0px;
 	background: url("../img/tweet-divider-hr.png") no-repeat;
 	background-position: bottom;
@@ -234,9 +240,18 @@ h3 {
 .tweet-profile-image {
 	padding: 10px;
 	float: left;
+	width: 48px;
+	height: 48px;
 	background: url("../img/sprite-ui.png") no-repeat;
 	background-position: -56px -148px;
 	overflow: hidden;
+}
+
+#viewer-timeline .tweet-profile-image {
+	padding: 0px;
+	background: none;
+	width: 32px;
+	height: 32px;
 }
 
 .tweet-copy-block {
@@ -255,6 +270,14 @@ h3 {
 .tweet-name-full {
 	color: #666666;
 	font-size: 13px;
+}
+
+#viewer-timeline .tweet-copy-block {
+	margin-left: 40px;
+}
+
+#viewer-timeline * {
+	font-size: 11px;
 }
 
 /* TWEET UTILITY */
@@ -569,4 +592,115 @@ h3 {
 .nominee-sub span {
 	font-size: 11px;
 	color: #666666;
+}
+
+/* PHOTO BROWSER */
+
+#photos {
+	min-height: 220px;
+}
+
+#photo-browser {
+	width: 380px;
+	height: 120px;
+	overflow: hidden;
+	white-space: nowrap;
+	position: relative;
+}
+
+#photo-scroller {
+	width: 99999px;
+}
+
+.photo-assembly {
+	display: inline-block;
+	float: left;
+	margin-left: 35px;
+	font-size: 11px;
+	text-align: center;
+}
+
+#photo-browser .photo {
+	border: 4px solid white;
+	-moz-box-shadow: 0px 0px 4px #000;
+	-webkit-box-shadow: 0px 0px 4px #000;
+	box-shadow: 0px 0px 4px #000;
+	width: 75px;
+	height: 75px;
+	overflow: hidden;
+	background: #000;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.photo img {
+	width: 75px;
+	height: 46px;
+}
+
+#photo-scroll-shadows {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+}
+
+#photo-scroll-shadows * {
+	background: url("../img/sprite-ui.png") no-repeat;
+	width: 20px;
+	height: 120px;
+}
+
+#left-shadow {
+	float: left;
+	background-position: -260px 0px;
+}
+
+#right-shadow {
+	float: right;
+	background-position: -280px 0px;
+}
+
+#photo-paging {
+	font-size: 16px;
+	color: #666;
+	text-align: center;
+	font-weight: bold;
+	line-height: 20px;
+}
+
+#photo-paging * {
+	vertical-align: bottom;
+}
+
+#photo-paging .previous i {
+	margin-right: 8px;
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	background: url("../img/sprite-ui.png") no-repeat;
+	background-position: -5px -138px;
+}
+
+#photo-paging .next i {
+	margin-left: 8px;
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	background: url("../img/sprite-ui.png") no-repeat;
+	background-position: -5px -168px;
+}
+
+#photo-paging .previous i:hover {
+	background-position: -35px -138px;
+}
+
+#photo-paging .next i:hover {
+	background-position: -35px -168px;
+}
+
+#share {
+	margin-left: 20px;
+	background: url("../img/tweet-box-background.jpg") no-repeat;
+	background-position: center bottom;
+	min-height: 230px;
 }
