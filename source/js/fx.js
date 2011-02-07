@@ -73,7 +73,7 @@ $(document).ready(function() {
 			   content: $('.modal-follow').html(),
    				position: { 
 					corner: { target: 'topLeft', tooltip: 'bottomLeft'},
-					adjust: { x: -40, y: 20 }
+					adjust: { x: -40, y: 10 }
 				},
 			    style: {
 			    	tip: false,
@@ -93,7 +93,7 @@ $(document).ready(function() {
 			   content: $('.modal-retweet').html(),
    				position: { 
 					corner: { target: 'topLeft', tooltip: 'bottomLeft'},
-					adjust: { x: -40, y: 20 }
+					adjust: { x: -40, y: 10 }
 				},
 			    style: {
 			    	tip: false,
@@ -113,7 +113,7 @@ $(document).ready(function() {
 			   content: $('.modal-reply').html(),
    				position: { 
 					corner: { target: 'topLeft', tooltip: 'bottomLeft'},
-					adjust: { x: -40, y: 20 }
+					adjust: { x: -40, y: 10 }
 				},
 			    style: {
 			    	tip: false,
