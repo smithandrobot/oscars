@@ -58,10 +58,14 @@
 	min-height: 60px;
 }
 
+#time-line container {
+	margin:0px;
+	padding: 0px;
+}
+
 #timeline {
-	height: 1150px;
+	height: 1160px;
 	overflow: auto;
-	position: relative;
 }
 
 #viewer-timeline-container {

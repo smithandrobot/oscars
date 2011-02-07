@@ -7,6 +7,14 @@ html *:focus {
 	outline: 0;
 }
 
+
+body div.qtip div.content { /*dTip hack*/
+   padding: 0;
+   margin: 0;
+   height: auto; min-height: auto;
+   width: auto; min-width: auto;
+}
+
 body, div {
 	font-family: "Helvetica Neue", "Helvetica", Arial, sans;
 	font-size: 13px;
@@ -751,4 +759,30 @@ h3 {
 	background: url("../img/tweet-box-background.jpg") no-repeat;
 	background-position: center bottom;
 	min-height: 230px;
+}
+
+/* MODALS */
+
+#modal-storage {
+	display: none;
+}
+
+.modal-bottom {
+	width: 294px;
+	height: 40px;
+	background: url("../img/popup-background.png") no-repeat;
+	background-position: center bottom;
+}
+
+.modal-top {
+	width: 294px;
+	background: url("../img/popup-background.png") no-repeat;
+	background-position: center top;
+	padding-top: 35px;
+}
+
+.modal-content {
+	margin: 0px 35px 0px 35px;
+	color: #333;
+	text-shadow: #fff 0px 1px 0px;
 }
