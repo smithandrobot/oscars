@@ -9,4 +9,13 @@ $(function()
 			verticalGutter: 10
 		}
 	);
+
+		$('#viewer-timeline').jScrollPane(
+			{
+				verticalDragMinHeight: 60,
+				verticalDragMaxHeight: 60,
+				verticalGutter: 6
+			}
+		);
+	
 });
