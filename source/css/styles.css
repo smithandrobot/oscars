@@ -2,6 +2,10 @@ html {
 	color: #ccc;
 	background: #242424;
 	}
+	
+html *:focus {
+	outline: 0;
+}
 
 body, div {
 	font-family: "Helvetica Neue", "Helvetica", Arial, sans;

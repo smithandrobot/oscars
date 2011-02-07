@@ -1,9 +1,12 @@
-$('#loadmore').click(function() {
-  $('#loadmore').animate({
-    opacity: 0.25,
-    left: '+=50',
-    height: 'toggle'
-  }, 5000, function() {
-    // Animation complete.
-  });
+// scroll bar styling
+
+$(function()
+{
+	$('#timeline').jScrollPane(
+		{
+			verticalDragMinHeight: 66,
+			verticalDragMaxHeight: 66,
+			verticalGutter: 10
+		}
+	);
 });
