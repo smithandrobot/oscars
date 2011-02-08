@@ -1,5 +1,9 @@
 // scroll bar styling
 
+$(document).ready(function() {
+			init();
+		});
+
 $(function()
 {
 	$('#timeline').jScrollPane(
@@ -41,10 +45,6 @@ counter.css('font-size', 16);
 
 
 // modal managers -- action-follow
-
-$(document).ready(function() {
-			init();
-		});
 		
 		function init()
 		{
@@ -127,4 +127,37 @@ $(document).ready(function() {
          	},
 			show:{delay: 0, when:'click'}
 			});
+			
+			$('.tweet').fadeIn('fast', function() {
+		        // Animation complete
+		      });
+			
+			$('.tweet .tweet-utility').fadeTo('fast', .2, function() {
+		        // Animation complete
+		      });
+			
+			$('.tweet').hover(
+				function() {
+			      $('.tweet-utility', this).fadeTo('slow', 1, function() {
+			        // Animation complete
+			      });
+			    },
+				function() {
+			      $('.tweet-utility', this).fadeTo('slow', .2, function() {
+			        // Animation complete
+			      });
+			    });
+			
 		}
+		
+// photo browser
+
+$('#photo-paging .next').click(function() {
+  $('#photo-assembly').animate({
+    opacity: 0.25,
+    left: '+=50',
+    height: 'toggle'
+  }, 5000, function() {
+    // Animation complete.
+  });
+});
