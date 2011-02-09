@@ -662,10 +662,13 @@ h3 {
 	overflow: hidden;
 	white-space: nowrap;
 	position: relative;
+/*	background-color:#FF0000;*/
+	/*height:75px;*/
 }
 
 #photo-scroller {
 	width: 99999px;
+	position:absolute;
 }
 
 .photo-assembly {
@@ -674,6 +677,7 @@ h3 {
 	margin-left: 35px;
 	font-size: 11px;
 	text-align: center;
+
 }
 
 #photo-browser .photo {

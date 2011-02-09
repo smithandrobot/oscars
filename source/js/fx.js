@@ -21,6 +21,24 @@ $(function()
 				verticalGutter: 6
 			}
 		);
+		
+// photo browser
+	
+	$('#photo-paging .next').click(function() {
+	  $('#photo-scroller').animate({
+	    left: '-=355'
+	  }, 250, function() {
+	    // Animation complete.
+	  });
+	});
+	
+	$('#photo-paging .previous').click(function() {
+	  $('#photo-scroller').animate({
+	    left: '+=355'
+	  }, 250, function() {
+	    // Animation complete.
+	  });
+	});
 	
 });
 
@@ -138,26 +156,16 @@ counter.css('font-size', 16);
 			
 			$('.tweet').hover(
 				function() {
-			      $('.tweet-utility', this).fadeTo('slow', 1, function() {
+			      $('.tweet-utility', this).stop().fadeTo('slow', 1, function() {
 			        // Animation complete
 			      });
 			    },
 				function() {
-			      $('.tweet-utility', this).fadeTo('slow', .2, function() {
+			      $('.tweet-utility', this).stop().fadeTo('slow', .2, function() {
 			        // Animation complete
 			      });
 			    });
 			
 		}
 		
-// photo browser
 
-$('#photo-paging .next').click(function() {
-  $('#photo-assembly').animate({
-    opacity: 0.25,
-    left: '+=50',
-    height: 'toggle'
-  }, 5000, function() {
-    // Animation complete.
-  });
-});

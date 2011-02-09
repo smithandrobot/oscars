@@ -1,0 +1,51 @@
+<project name="TwitterApp" basedir="./">
+	<description>
+	    Build file for Twitter App
+	</description>
+	<property name="src" location="./src/js"/>
+	<property name="build" location="./build"/>
+	<property name="dist"  location="./deploy/js"/>
+	<property name="deploy"  location="./deploy"/>
+	<property name="stagingServer"  location="smithandrobot.com:/var/www/smithandrobot.com/davids_playground/tapp/" />
+	<property name="live"  location="smithandrobot.com:/var/www/smithandrobot.com/davids_playground/tapp/" />
+	<property name="lib.dir" location="./bin/closure-compiler" />
+	<property name="user.name" location="david" />
+	<property name="jscompjar" location="${lib.dir}/compiler.jar" />
+	
+	<taskdef name="jscomp" 
+		classname="com.google.javascript.jscomp.ant.CompileTask"
+		classpath="${jscompjar}"/>
+		
+	<concat destfile="${build}/js/project.js">
+	  <filelist dir="${src}">
+	    <file name="controller.js" />
+	    <file name="delegate.js" />
+	    <file name="event.js" />
+	    <file name="eventmanager.js" />
+	    <file name="trmodel.js" />
+	    <file name="tweetparser.js" />
+	  </filelist>
+	</concat>
+
+	<echo message="Init..." />
+	<tstamp/>
+	<mkdir dir="${build}"/>
+	
+	<echo message="Compiling..." />
+	<jscomp compilationLevel="simple" warning="quiet"
+	  debug="true" output="${dist}/project.min.js">
+	  <sources dir="${build}/js">
+	    <file name="project.js" />
+	  </sources>
+	</jscomp>
+	
+	<delete dir="${build}"/>
+	
+	<target name="staging">
+		<echo message="Starting file transfer...hode up a sec..." />
+		<exec dir="." executable="rsync" searchpath="true" resolveexecutable="true" os="Mac OS X" failonerror="false">
+			<arg line="rsync -e ssh -vru ${deploy}/. smithandrobot.com:/var/www/smithandrobot.com/davids_playground/tapp/" />
+		</exec>
+	</target>
+	
+</project>

@@ -6,16 +6,31 @@
 		<title>
 			Twitter at the 83rd Academy Awards
 		</title>
+		
 		<link rel="stylesheet" href="http://yui.yahooapis.com/2.8.1/build/reset/reset-min.css" type="text/css" />
 		<link rel="stylesheet" href="css/jquery.jscrollpane.css" type="text/css" media="all" />
 		<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen, print" />
 		<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen, print" />
-		<script type="text/javascript" src="js/jquery-1.5.min.js" charset="utf-8"></script>	
-		<script type="text/javascript" src="js/jquery.mousewheel.js" charset="utf-8"></script>
-		<script type="text/javascript" src="js/jquery.jscrollpane.min.js" charset="utf-8"></script>
+		
+		<!-- Third Party -->
+		<script type="text/javascript" src="js/thirdparty/jquery-1.5.min.js" charset="utf-8"></script>	
+		<script type="text/javascript" src="js/thirdparty/jquery.mousewheel.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/thirdparty/jquery.jscrollpane.min.js" charset="utf-8"></script>
 		<!-- script src="http://platform.twitter.com/anywhere.js?id=YOUR_API_KEY&v=1" type="text/javascript"></script-->
-		<script src="js/jquery.qtip-1.0.0-rc3.min.js" type="text/javascript" charset="utf-8"></script> 
+		<script src="js/thirdparty/jquery.qtip-1.0.0-rc3.min.js" type="text/javascript" charset="utf-8"></script> 
 		<script type="text/javascript" src="js/fx.js" charset="utf-8"></script>
+		
+		<!-- Utilities -->
+		<script type="text/javascript" src="js/utils/event.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/utils/eventmanager.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/utils/tweetparser.js" charset="utf-8"></script>
+		
+		<!-- Application -->
+		<script type="text/javascript" src="js/trmodel.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/tweet.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/tweetlist.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/tweetlistcontroller.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/application.js" charset="utf-8"></script>
 	</head>
 	<body>
 		<div id="page-container">
@@ -66,7 +81,7 @@
 						<div id="loadmore">
 							<div id="loadmore-glow"></div><a href="#null">3 New Tweets</a>
 						</div>
-						<div class="timeline-all">
+						<div id="main-timeline" class="timeline-all">
 							<div class="tweet celeb">
 								<div class="tweet-bg">
 									<!-- Tom Hanks -->
@@ -143,8 +158,6 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="timeline-all">
 							<div class="tweet celeb">
 								<div class="tweet-bg">
 									<!-- Tom Hanks -->
