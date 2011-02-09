@@ -1,9 +1,10 @@
-function TweetParser()
+// static singleton
+
+TweetParser = (function TweetParser()
  {
     var httpReg = /(http|https|ftp)([^ ]+)/gi;
     var userNameReg = /(^|)@(\w+)/g;
     var hashReg = /(^|)#(\w+)/g;
-
 
     this.parse = function(str)
     {
@@ -58,10 +59,12 @@ function TweetParser()
 
         for (var i = 0; i<= total; i++)
         {
-            replaceString = "<a href='" + linkArray[i] + "'>" + linkArray[i] + "</a>";
+            replaceString = "<a href='" + linkArray[i] + "' target='_blank' rel='nofollow' class='twitter-timeline-link'>" + linkArray[i] + "</a>";
             str = str.replace(linkArray[i], replaceString);
         }
 
         return str;
     }
-};
+	
+	return this;
+})();

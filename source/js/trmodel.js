@@ -1,20 +1,25 @@
+TRModel.prototype = new EventDispatcher();
+TRModel.constructor = TRModel;
+TRModel.constructor.id = 0;
+
 function TRModel(s)
 {
+	
 	var self = this;
 	var pollInterval = 200;
 	var stream = s;
 	var data;
 	var loaded = false;
-	var e = new EventManager();
+
 	var type;
 	
-	this.id = (s) ? s : "TR_MODEL";
+	this.id = "TR_MODEL - "+(++TRModel.constructor.id);
 
 	this.getStream = function() { return stream; };
 	this.getData = function() { return data; };
 	this.setType = function(t) { type = t; };
 	this.getType = function() { return type; };
-	this.addEventListener = function(eventName, func) { e.addEvent(eventName, arguments.callee.caller, func); };	
+	
 	this.load = function () { $.ajax({ url: s, dataType: 'jsonp', success: onStreamLoaded, error: onStreamError }); };	
 	this.toString = function() { return "TRModel: "+this.id};
 	
@@ -26,6 +31,7 @@ function TRModel(s)
 	var onStreamLoaded = function(d)
 	{
 		data = d;
-		e.dispatchEvent("onDataChange", self);
-	}	
+		dispatchEvent("onDataChange", self);
+	}
+
 };

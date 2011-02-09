@@ -5,6 +5,8 @@ function TweetListController(server)
 	
 	var expertList 	    = new TweetList(server + 'oscars-experts.json');
 	expertList.id		= "expertList";
+	expertList.addEventListener('tweetListLoaded', onExpertListLoaded);
+	expertList.load();
 	
 	var celebExpertList = new TweetList(server + 'oscars-celebs-and-experts.json');
 	celebExpertList.id	= "celebExpertList";
@@ -35,10 +37,14 @@ function TweetListController(server)
 		lists.push({obj:celebExpertList, id:"celebExpertList"});
 		
 		$('#main-timeline').detach();
-		
-		select( 'celebList' );
 	}
 
+	
+	function onExpertListLoaded( e )
+	{
+		select( 'expertList' );	
+	}
+	
 	
 	function select( id )
 	{

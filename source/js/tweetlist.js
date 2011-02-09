@@ -1,56 +1,76 @@
+TweetList.prototype = new EventDispatcher();
+TweetList.constructor = TweetList;
+
 function TweetList(URL)
 {
 	var self				= this;
 	var model 				= new TRModel(URL);
-	var e 					= new EventManager();
 	var tweets				= new Array();
+	var render				= false;
 	this.element			= null;
 	this.show 				= show;
 	this.hide 				= hide;
 	this.id					= URL;
-	this.addEventListener	= addEventListener;
 	this.show				= show;
+	this.toString			= toString;
+	this.load				= load;
+
 	
-	model.addEventListener("onDataChange", dataChanged);
-	model.load();
+	function load()
+	{
+		model.addEventListener("onDataChange", dataChanged);
+		model.load();
+	}
+	
 	
 	function dataChanged(e)
 	{
-		var data = e.target.getData();
-		var i = 0;
+		var data  = e.target.getData();
+		var i 	  = 0;
 		var total = data.length-1;
 		var t;
 		
-		for(i;i<=total;i++)
+		console.log(self.id+' loaded,  total: '+total);
+		
+		for(i;i<=total;i++)	
 		{
 			t = new Tweet();
-			t.setData();
+			t.setData(data[i]);
 			tweets.push({tweet:t, id:i})
 		}
+		
+		dispatchEvent('tweetListLoaded', self);
 	}
 	
 	
 	function show()
 	{
-		self.element.html('<p>'+self.id+'</p>');
+		var html ='';
+		var tweet;
+		var total = tweets.length - 1;
+		
+		for(i;i<=total;i++)	
+		{
+			tweet = tweets[i].tweet;
+			html+= tweet.html;
+		}
+		alert('showing: '+self.id+' with '+total+' tweets');
+		self.element.html('<p>'+self.id+'</p>'+html);
 		self.element.insertAfter('#loadmore');
 	}
+	
 	
 	function hide()
 	{
 		//alert(self.id+' hide()');
-		e.dispatchEvent("onHidden", self);
+		this.dispatchEvent("onHidden", self);
 	}
+	
 	
 	function toString()
 	{
 		return "Tweetlist";
 	}
-	
-	function addEventListener(eventName, func) 
-	{ 
-		e.addEvent(eventName, arguments.callee.caller, func);
-	};
 	
 	return this;
 }
