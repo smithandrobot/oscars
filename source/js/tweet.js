@@ -8,6 +8,7 @@ function Tweet()
 	var screenName;
 	var userName;
 	var celebBadge = '<span class="badge-celebrity">Celeb</span>';
+	
 	//  Public
 	
 	this.tweetID;
@@ -32,20 +33,19 @@ function Tweet()
 		celebBadge	 = (self.celeb) ? celebBadge : '';
 		
 		self.html = render();
-		// console.log();
 	};
 	
 	
 	function render()
 	{
-		return'<div class="tweet celeb">'+
+		return'<div class="tweet">'+
 			  '   <div class="tweet-bg">'+
 			  '       <div class="tweet-profile-image">'+
-			  '		      <a href="http://www.twitter.com/#!/'+userName+'"><img src="'+profileImg+'" alt="'+userName+'" /></a>'+
+			  '		      <a href="http://www.twitter.com/#!/'+screenName+'"><img src="'+profileImg+'" alt="'+userName+'" /></a>'+
 			  ' 	  </div>'+
 			  '       <div class="tweet-copy-block">'+
 			  ' 	      <div class="tweet-name">'+
-			  '	              <a class="tweet-name-screen" href="http://www.twitter.com/#!/'+userName+'" title="'+userName+'">@'+screenName+'</a> <span class="tweet-name-full">'+userName+'</span>'+celebBadge+'<a href="#null" class="expert-bio">Bio</a>'+
+			  '	              <a class="tweet-name-screen" href="http://www.twitter.com/#!/'+screenName+'" title="'+userName+'">@'+screenName+'</a> <span class="tweet-name-full">'+userName+'</span>'+celebBadge+'<a href="#null" class="expert-bio">Bio</a>'+
 			  '           </div>'+
 			  ' 	      <div class="tweet-text">'+
 			  '	              '+htmlText+''+

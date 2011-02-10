@@ -1,5 +1,4 @@
 // static singleton
-
 EventManager = (function ()
 {
     this.events = new Array();

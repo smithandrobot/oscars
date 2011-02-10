@@ -3,17 +3,17 @@ TweetList.constructor = TweetList;
 
 function TweetList(URL)
 {
-	var self				= this;
-	var model 				= new TRModel(URL);
-	var tweets				= new Array();
-	var render				= false;
-	this.element			= null;
-	this.show 				= show;
-	this.hide 				= hide;
-	this.id					= URL;
-	this.show				= show;
-	this.toString			= toString;
-	this.load				= load;
+	var self	  = this;
+	var model 	  = new TRModel(URL);
+	var tweets	  = new Array();
+	var render	  = false;
+	this.element  = null;
+	this.show 	  = show;
+	this.hide 	  = hide;
+	this.id		  = URL;
+	this.show	  = show;
+	this.toString = toString;
+	this.load	  = load;
 
 	
 	function load()
@@ -30,7 +30,7 @@ function TweetList(URL)
 		var total = data.length-1;
 		var t;
 		
-		console.log(self.id+' loaded,  total: '+total);
+		Log(self.id+' loaded,  total: '+total);
 		
 		for(i;i<=total;i++)	
 		{
@@ -54,16 +54,16 @@ function TweetList(URL)
 			tweet = tweets[i].tweet;
 			html+= tweet.html;
 		}
-		alert('showing: '+self.id+' with '+total+' tweets');
-		self.element.html('<p>'+self.id+'</p>'+html);
+		
+		self.element.html(html);
 		self.element.insertAfter('#loadmore');
+		if(self.element) self.element.fadeIn(250, null, function(){dispatchEvent("onShowing", self);});
 	}
 	
 	
 	function hide()
 	{
-		//alert(self.id+' hide()');
-		this.dispatchEvent("onHidden", self);
+		if(self.element) self.element.fadeOut(250, null, function(){self.element.detach();dispatchEvent("onHidden", self);});
 	}
 	
 	
@@ -71,6 +71,6 @@ function TweetList(URL)
 	{
 		return "Tweetlist";
 	}
-	
+
 	return this;
 }

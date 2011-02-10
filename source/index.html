@@ -21,6 +21,7 @@
 		<script type="text/javascript" src="js/fx.js" charset="utf-8"></script>
 		
 		<!-- Utilities -->
+		<script type="text/javascript" src="js/utils/log.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/utils/event.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/utils/eventmanager.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/utils/eventdispatcher.js" charset="utf-8"></script>
@@ -29,8 +30,11 @@
 		<!-- Application -->
 		<script type="text/javascript" src="js/trmodel.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/tweet.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/tweetstats.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/tweetcount.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/tweetlist.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/tweetlistcontroller.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/filternav.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/application.js" charset="utf-8"></script>
 	</head>
 	<body>
@@ -73,14 +77,14 @@
 					</h4>
 					<h2 class="fake-h2">
 						Red Carpet Tweets
-					</h2><span id="filter-nav"><span class="down"><a href="#null">All</a><i><!--icon--></i></span> <span class="filter-celeb"><a href="#null">Celebs</a><i><!--icon--></i></span> <span><a href="#null">Experts</a><i><!--icon--></i></span></span>
+					</h2><span id="filter-nav"><span class="down"><a id="filter-all" href="#null">All</a><i><!--icon--></i></span> <span><a id="filter-celebList" href="#null">Celebs</a><i><!--icon--></i></span> <span><a id="filter-expertList" href="#null">Experts</a><i><!--icon--></i></span></span>
 					<div class="clear"></div>
 				</div>
 				<div id="timeline-container">
 					<!-- START TIMELINE -->
 					<div id="timeline">
 						<div id="loadmore">
-							<div id="loadmore-glow"></div><a href="#null">3 New Tweets</a>
+							<div id="loadmore-glow"></div><a id="loadmore-count" href="#null">3 New Tweets</a>
 						</div>
 						<div id="main-timeline" class="timeline-all">
 							<div class="tweet celeb">
@@ -333,7 +337,7 @@
 					</h3>
 					<div id="counter-total">
 						<div class="counter-bak">
-							<div class="counter-text">
+							<div id="total-tweets" class="counter-text">
 								23,456,234
 							</div>
 							<p class="counter-label">
@@ -345,7 +349,7 @@
 					</div>
 					<div id="counter-seconds">
 						<div class="counter-bak">
-							<div class="counter-text">
+							<div id="total-tweets-second" class="counter-text">
 								234
 							</div>
 							<p class="counter-label">

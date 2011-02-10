@@ -1,23 +1,36 @@
 function TweetListController(server)
 {
-	var celebList 	    = new TweetList(server + 'oscars-celebs.json');
+	// var celebList 	    = new TweetList(server + 'oscars-celebs.json');
+	var celebList 	    = new TweetList(server + 'javascript.json');
 	celebList.id		= "celebList";
 	
-	var expertList 	    = new TweetList(server + 'oscars-experts.json');
+	// var expertList 	    = new TweetList(server + 'oscars-experts.json');
+	var expertList 	    = new TweetList(server + 'actionscript.json');
 	expertList.id		= "expertList";
-	expertList.addEventListener('tweetListLoaded', onExpertListLoaded);
-	expertList.load();
 	
-	var celebExpertList = new TweetList(server + 'oscars-celebs-and-experts.json');
-	celebExpertList.id	= "celebExpertList";
+	var celebExpertList = new TweetList(server + 'goldenglobestest.json');
+	celebExpertList.id	= "all";
 	
-	var pixTweets 		= new TweetList(server + 'oscars-pix.json');
+	var pixTweets 		= new TweetList('http://tr-cache-2.appspot.com/massrelevance/oscars-pix.json');
+	pixTweets.id		= "photoTweets";
 	
+	var tweetCount		= new TweetCount();
 	var selected		= null;
 	var last			= null;
 	var lists			= new Array();
 	
-
+	// Public Methods
+	this.select			= select;
+	
+	celebList.load();
+	expertList.load();
+	
+	celebExpertList.addEventListener('tweetListLoaded', celebExpertListLoaded);
+	celebExpertList.load();
+	
+	pixTweets.addEventListener('tweetListLoaded', onPhotosLoaded);
+	pixTweets.load();
+	
 	celebList.addEventListener("onHidden", onHidden);
 	expertList.addEventListener("onHidden", onHidden);
 	celebExpertList.addEventListener("onHidden", onHidden);
@@ -34,28 +47,39 @@ function TweetListController(server)
 		lists.push({obj:expertList, id:"expertList"});
 		
  		celebExpertList.element = $('#main-timeline').clone();
-		lists.push({obj:celebExpertList, id:"celebExpertList"});
+		lists.push({obj:celebExpertList, id:"all"});
 		
 		$('#main-timeline').detach();
 	}
 
 	
-	function onExpertListLoaded( e )
+	function celebExpertListLoaded( e )
 	{
-		select( 'expertList' );	
+		select( 'all' );	
+	}
+	
+	
+	function onPhotosLoaded( e )
+	{
+		Log('** photos loaded ***');
 	}
 	
 	
 	function select( id )
 	{
-		if(last) last.hide();
+		Log('selecting: '+id)
+		if(last != null) last.hide();
 		
 		for(i in lists)
 		{
 			if(lists[i].id == id )
 			{
 				var list = lists[i].obj;
-				list.show()
+				if(last == null) 
+				{
+					list.show();
+					tweetCount.setCount(0);
+				}
 				last = list;
 				return;
 			}
@@ -63,16 +87,13 @@ function TweetListController(server)
 	}
 	
 	
-	function setList( id )
-	{
-		
-	}
-	
 	
 	//  Event handlers
 	function onHidden(e)
 	{
-		//alert(e.target.id+" is hidden");
+		last.show();
+		tweetCount.setCount(0);
+		Log('showing '+last);
 	}
 	
 	return this;

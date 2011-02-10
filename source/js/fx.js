@@ -1,4 +1,5 @@
 // scroll bar styling
+// do stuff .js y'all!
 
 $(document).ready(function() {
 			init();

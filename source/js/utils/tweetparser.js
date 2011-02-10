@@ -6,7 +6,18 @@ TweetParser = (function TweetParser()
     var userNameReg = /(^|)@(\w+)/g;
     var hashReg = /(^|)#(\w+)/g;
 
-    this.parse = function(str)
+	this.parse = parse;
+	this.swapHash = swapHash;
+	
+	
+	function swapHash(s)
+	{
+		s.replace("#", "%23");
+		return s;
+	}
+	
+	
+	function parse(str)
     {
         var tweet = str;
         tweet = parseLinks(tweet);
