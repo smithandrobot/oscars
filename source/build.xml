@@ -2,10 +2,10 @@
 	<description>
 	    Build file for Twitter App
 	</description>
-	<property name="src" location="./src/js"/>
+	<property name="src" location="./js"/>
 	<property name="build" location="./build"/>
-	<property name="dist"  location="./deploy/js"/>
-	<property name="deploy"  location="./deploy"/>
+	<property name="dist"  location="../deploy/js"/>
+	<property name="deploy"  location="../deploy"/>
 	<property name="stagingServer"  location="smithandrobot.com:/var/www/smithandrobot.com/davids_playground/tapp/" />
 	<property name="live"  location="smithandrobot.com:/var/www/smithandrobot.com/davids_playground/tapp/" />
 	<property name="lib.dir" location="./bin/closure-compiler" />
@@ -18,12 +18,23 @@
 		
 	<concat destfile="${build}/js/project.js">
 	  <filelist dir="${src}">
-	    <file name="controller.js" />
-	    <file name="delegate.js" />
-	    <file name="event.js" />
-	    <file name="eventmanager.js" />
-	    <file name="trmodel.js" />
-	    <file name="tweetparser.js" />
+		<!-- Utils -->
+		<file name="utils/utils.js" />
+		<file name="utils/log.js" />
+		<file name="utils/event.js" />
+		<file name="utils/eventmanager.js" />
+		<file name="utils/eventdispatcher.js" />
+		<file name="utils/tweetparser.js" />
+		
+		<!-- Application -->
+		<file name="trmodel.js" />
+		<file name="tweet.js" />
+		<file name="tweetstats.js" />
+		<file name="tweetcount.js" />
+		<file name="tweetlist.js" />
+		<file name="tweetlistcontroller.js" />
+		<file name="filternav.js" />
+		<file name="application.js" />
 	  </filelist>
 	</concat>
 
@@ -33,7 +44,7 @@
 	
 	<echo message="Compiling..." />
 	<jscomp compilationLevel="simple" warning="quiet"
-	  debug="true" output="${dist}/project.min.js">
+	  debug="true" output="${dist}/application.min.js">
 	  <sources dir="${build}/js">
 	    <file name="project.js" />
 	  </sources>

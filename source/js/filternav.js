@@ -1,5 +1,5 @@
-FilterNav.prototype = new EventDispatcher();
-FilterNav.constructor = FilterNav;
+FilterNav.prototype 	= new EventDispatcher();
+FilterNav.constructor 	= FilterNav;
 
 function FilterNav()
 {
@@ -36,7 +36,6 @@ function FilterNav()
 		if(id != 'filter-expertList')  $('#filter-expertList').parent().toggleClass('down', false);
 		
 		dispatchEvent('onFilterChange', self);
-		
 	};
 
 };

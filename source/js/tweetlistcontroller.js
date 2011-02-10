@@ -50,24 +50,23 @@ function TweetListController(server)
 		lists.push({obj:celebExpertList, id:"all"});
 		
 		$('#main-timeline').detach();
-	}
+	};
 
 	
 	function celebExpertListLoaded( e )
 	{
 		select( 'all' );	
-	}
+	};
 	
 	
 	function onPhotosLoaded( e )
 	{
 		Log('** photos loaded ***');
-	}
+	};
 	
 	
 	function select( id )
 	{
-		Log('selecting: '+id)
 		if(last != null) last.hide();
 		
 		for(i in lists)
@@ -79,12 +78,12 @@ function TweetListController(server)
 				{
 					list.show();
 					tweetCount.setCount(0);
-				}
+				};
 				last = list;
 				return;
-			}
-		} 
-	}
+			};
+		} ;
+	};
 	
 	
 	
@@ -93,8 +92,7 @@ function TweetListController(server)
 	{
 		last.show();
 		tweetCount.setCount(0);
-		Log('showing '+last);
-	}
+	};
 	
 	return this;
-}
+};

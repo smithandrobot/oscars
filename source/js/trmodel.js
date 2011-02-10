@@ -26,12 +26,12 @@ function TRModel(s)
 	var onStreamError = function(xmlhttp, txtstatus, errorThrown)
 	{
 		//alert('stream error xmlhttp: '+xmlhttp+", txtstatus: "+txtstatus+' errorThrown: '+errorThrown);
-	}
+	};
 
 	var onStreamLoaded = function(d)
 	{
 		data = d;
 		dispatchEvent("onDataChange", self);
-	}
+	};
 
 };

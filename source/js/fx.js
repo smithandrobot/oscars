@@ -7,21 +7,6 @@ $(document).ready(function() {
 
 $(function()
 {
-	$('#timeline').jScrollPane(
-		{
-			verticalDragMinHeight: 66,
-			verticalDragMaxHeight: 66,
-			verticalGutter: 10
-		}
-	);
-
-		$('#viewer-timeline').jScrollPane(
-			{
-				verticalDragMinHeight: 60,
-				verticalDragMaxHeight: 60,
-				verticalGutter: 6
-			}
-		);
 		
 // photo browser
 	
@@ -165,7 +150,7 @@ counter.css('font-size', 16);
 			      $('.tweet-utility', this).stop().fadeTo('slow', .2, function() {
 			        // Animation complete
 			      });
-			    });
+			});
 			
 		}
 		

@@ -49,7 +49,7 @@ function MediaParser()
 				return true;
 			}
 		}
-	}
+	};
 	
 	function plixi(url, id)
 	{
@@ -79,7 +79,7 @@ function MediaParser()
 		
 		image.src = source;
 
-	}
+	};
 	
 	function yFrog(url, id)
 	{
@@ -95,7 +95,7 @@ function MediaParser()
 		};
 		
 		image.src = source;
-	}
+	};
 	
 	function twitpic(url, id)
 	{
@@ -111,7 +111,7 @@ function MediaParser()
 		};
 		
 		image.src = source;
-	}
+	};
 	
 	function photozou(url, id)
 	{
@@ -126,7 +126,7 @@ function MediaParser()
 			$('#img-list').append(img);
 		};
 		image.src = source;
-	}
+	};
 	
 	
 	function flickr( url, id )
@@ -157,7 +157,7 @@ function MediaParser()
 			$('#img-list').append(img);
 		};
 		image.src = source;
-	}
+	};
 	
 	
 	function onFlickrImgURL(d)
@@ -165,7 +165,7 @@ function MediaParser()
 		var url = "http://farm"+d.photo.farm+".static.flickr.com/"+d.photo.server+"/"+d.photo.id+"_"+d.photo.secret+"_z.jpg";
 		var img = '<li>Flickr:<br /><img src="'+url+'" /></li>';
 		//$('#img-list').append(img);
-	}
+	};
 	
 	
 	function base58_decode( id )
@@ -180,7 +180,7 @@ function MediaParser()
 	        multi = multi * alphabet.length ;
 	    }
 	    return decoded;
-	}
+	};
 	
 	
 	function scaleImage(img)
@@ -194,5 +194,5 @@ function MediaParser()
 		var offsetY = centerY-img.height/2;
 		
 		return {x:offsetX , y: offsetY};
-	}
-}
+	};
+};

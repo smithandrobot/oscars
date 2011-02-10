@@ -16,5 +16,5 @@ function Application()
 	{
 		var filter = e.target.filter.split('filter-')[1];
 		mainTweetLists.select(filter);
-	}
-}
+	};
+};

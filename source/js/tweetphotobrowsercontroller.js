@@ -1,4 +1,4 @@
 function TweetPhotobrowserController()
 {
-	
-}
+	return this;
+};

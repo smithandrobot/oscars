@@ -20,7 +20,7 @@ function TweetList(URL)
 	{
 		model.addEventListener("onDataChange", dataChanged);
 		model.load();
-	}
+	};
 	
 	
 	function dataChanged(e)
@@ -30,17 +30,15 @@ function TweetList(URL)
 		var total = data.length-1;
 		var t;
 		
-		Log(self.id+' loaded,  total: '+total);
-		
 		for(i;i<=total;i++)	
 		{
 			t = new Tweet();
 			t.setData(data[i]);
 			tweets.push({tweet:t, id:i})
-		}
+		};
 		
 		dispatchEvent('tweetListLoaded', self);
-	}
+	};
 	
 	
 	function show()
@@ -53,24 +51,37 @@ function TweetList(URL)
 		{
 			tweet = tweets[i].tweet;
 			html+= tweet.html;
-		}
+		};
 		
 		self.element.html(html);
+		decorate();
 		self.element.insertAfter('#loadmore');
+
 		if(self.element) self.element.fadeIn(250, null, function(){dispatchEvent("onShowing", self);});
-	}
+	};
 	
 	
 	function hide()
 	{
 		if(self.element) self.element.fadeOut(250, null, function(){self.element.detach();dispatchEvent("onHidden", self);});
+	};
+
+	
+	function decorate()
+	{
+		self.element.find('.tweet .tweet-utility').fadeTo('fast', .2, null);
+		
+		self.element.find('.tweet').hover(
+			function() { $('.tweet-utility', this).stop().fadeTo('slow', 1);},
+			function() { $('.tweet-utility', this).stop().fadeTo('slow', .2);
+		});
 	}
 	
 	
 	function toString()
 	{
 		return "Tweetlist";
-	}
-
+	};
+	
 	return this;
-}
+};

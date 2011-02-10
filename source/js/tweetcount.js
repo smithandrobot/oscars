@@ -11,7 +11,7 @@ function TweetCount()
 		count = n;
 		var countText = (count == 1) ? "Tweet" : "Tweets";
 		element.text(String(count)+' new '+countText);
-	}
+	};
 	
 	
 	return this;

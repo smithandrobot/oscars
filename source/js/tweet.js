@@ -56,7 +56,7 @@ function Tweet()
 			  '	      </div>'+
 			  '   </div>'+
 			  '</div>';
-	}
+	};
 	
 	return this;
-}
+};
