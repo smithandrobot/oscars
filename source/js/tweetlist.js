@@ -63,7 +63,7 @@ function TweetList(URL)
 		self.element.insertAfter('#loadmore');
 		if(self.element) self.element.fadeIn(250, null, function(){dispatchEvent("onShowing", self);});
 	};
-	
+	// touch
 	
 	function hide()
 	{

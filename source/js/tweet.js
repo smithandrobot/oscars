@@ -89,7 +89,7 @@ function Tweet()
 		e.find('.action-retweet').click(onClickRetweet);
 		e.find('.action-reply').click(onClickReply);
 		e.find('.action-follow').click(onClickFollow);
-		
+		// touch
 		// Log('element: '+e.find('.tweet .tweet-utility').fadeTo);
 		e.find('.tweet-utility').fadeTo('fast', .2);
 		// e.find('.tweet-utility').css({backgroundColor:'#FFFFFF'});
