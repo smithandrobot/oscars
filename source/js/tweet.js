@@ -3,11 +3,14 @@ function Tweet()
 	// Private
 	
 	var htmlText;
-	var self 	 = this;
+	var self = this;
 	var verified;
 	var screenName;
 	var userName;
 	var celebBadge = '<span class="badge-celebrity">Celeb</span>';
+	var element;
+	var rendered = false;
+	var profileImg;
 	
 	//  Public
 	
@@ -15,12 +18,8 @@ function Tweet()
 	this.setData = setData;
 	this.html;
 	this.celeb = false;
+	this.getHTML = getHTML;
 	
-	// /Event Handlers
-	
-	// Public Methods
-	
-	// Private Methods
 	
 	function setData(d)
 	{
@@ -31,10 +30,36 @@ function Tweet()
 		userName 	 = d.user.name;
 		profileImg	 = d.user.profile_image_url;
 		celebBadge	 = (self.celeb) ? celebBadge : '';
-		
-		self.html = render();
 	};
 	
+	function getHTML()
+	{
+		if(element != undefined) element.empty();
+		element = $(render());
+		element.css({position:"relative"});
+		element.css({opacity:0, top:-10});
+		decorate(element);
+		return element;
+	}
+	
+	
+	function onClickRetweet()
+	{
+		Log('over retweet - '+self.tweetID);
+	}
+	
+	function onClickReply()
+	{
+		Log('reply - '+self.tweetID);
+	}
+	
+	function onClickFollow()
+	{
+		Log('follow - '+self.tweetID);
+	}	
+	
+	function onTweetOver() {e.find('.tweet-utility').fadeTo('fast', 1); };
+	function onTweetOut() { e.find('.tweet-utility').fadeTo('fast', .2); };
 	
 	function render()
 	{
@@ -57,6 +82,23 @@ function Tweet()
 			  '   </div>'+
 			  '</div>';
 	};
+	
+	
+	function decorate(e)
+	{
+		e.find('.action-retweet').click(onClickRetweet);
+		e.find('.action-reply').click(onClickReply);
+		e.find('.action-follow').click(onClickFollow);
+		
+		// Log('element: '+e.find('.tweet .tweet-utility').fadeTo);
+		//e.find('.tweet-utility').fadeTo('fast', .2, function(){$(this).removeAttr("filter")});
+		// e.find('.tweet-utility').css({backgroundColor:'#FFFFFF'});
+		
+		e.hover(
+			function(){$(this).find('.tweet-utility').stop().fadeTo('fast', 1, function(){$(this).css("filter", "")})} , 
+			function(){$(this).find('.tweet-utility').stop().fadeTo('fast', .2) }
+			);
+	}
 	
 	return this;
 };

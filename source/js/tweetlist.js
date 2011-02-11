@@ -6,7 +6,8 @@ function TweetList(URL)
 	var self	  = this;
 	var model 	  = new TRModel(URL);
 	var tweets	  = new Array();
-	var render	  = false;
+	var rendered  = false;
+	
 	this.element  = null;
 	this.show 	  = show;
 	this.hide 	  = hide;
@@ -14,7 +15,6 @@ function TweetList(URL)
 	this.show	  = show;
 	this.toString = toString;
 	this.load	  = load;
-
 	
 	function load()
 	{
@@ -46,17 +46,22 @@ function TweetList(URL)
 		var html ='';
 		var tweet;
 		var total = tweets.length - 1;
+		var delay = 200;
+		var tweetObj;
+
+		self.element.html('');
 		
 		for(i;i<=total;i++)	
 		{
-			tweet = tweets[i].tweet;
-			html+= tweet.html;
+			tweet 	 = tweets[i].tweet;
+			tweetObj = tweet.getHTML();
+			tweetObj.stop().delay(delay*i).animate({opacity:1, top:0}, { duration:500, complete: function(){ $(this).css('filter', '');} });
+			tweetObj.delay(i*delay).fadeIn(250);
+			self.element.append(tweetObj);
 		};
-		
-		self.element.html(html);
-		decorate();
-		self.element.insertAfter('#loadmore');
 
+		self.element.insertAfter('#loadmore');
+		//self.element.show(200);
 		if(self.element) self.element.fadeIn(250, null, function(){dispatchEvent("onShowing", self);});
 	};
 	
@@ -67,15 +72,6 @@ function TweetList(URL)
 	};
 
 	
-	function decorate()
-	{
-		self.element.find('.tweet .tweet-utility').fadeTo('fast', .2, null);
-		
-		self.element.find('.tweet').hover(
-			function() { $('.tweet-utility', this).stop().fadeTo('slow', 1);},
-			function() { $('.tweet-utility', this).stop().fadeTo('slow', .2);
-		});
-	}
 	
 	
 	function toString()

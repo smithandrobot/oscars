@@ -141,26 +141,6 @@ h3 {
 	position: relative;
 }
 
-#timeline-top-shadow {
-	position: absolute;
-	top: 0px;
-	display: block;
-	width: 510px;
-	height: 16px;
-	background: url("../img/divider-hor-bottom.png") no-repeat;
-	background-position: center top;
-}
-
-#timeline-bottom-shadow {
-	position: relative;
-	top: -16px;
-	display: block;
-	width: 510px;
-	height: 16px;
-	background: url("../img/divider-hor-top.png") no-repeat;
-	background-position: center top;
-}
-
 #viewer-timeline-bottom-shadow {
 	position: relative;
 	top: -47px;
@@ -280,7 +260,9 @@ h3 {
 	width: 470px;
 	padding: 20px 0px 20px 0px;
 	background: url("../img/tweet-divider-hr.png") no-repeat;
+/*	background-color:#666;*/
 	background-position: bottom;
+
 }
 
 #viewer-timeline .tweet-bg {

@@ -11,7 +11,7 @@ function TweetListController(server)
 	var celebExpertList = new TweetList(server + 'goldenglobestest.json');
 	celebExpertList.id	= "all";
 	
-	var pixTweets 		= new TweetList('http://tr-cache-2.appspot.com/massrelevance/oscars-pix.json');
+	var pixTweets 		= new TweetPhotoList('http://tr-cache-2.appspot.com/massrelevance/oscars-pix.json');
 	pixTweets.id		= "photoTweets";
 	
 	var tweetCount		= new TweetCount();
@@ -28,12 +28,16 @@ function TweetListController(server)
 	celebExpertList.addEventListener('tweetListLoaded', celebExpertListLoaded);
 	celebExpertList.load();
 	
-	pixTweets.addEventListener('tweetListLoaded', onPhotosLoaded);
+	pixTweets.addEventListener('tweetListPhotoLoaded', onPhotosLoaded);
 	pixTweets.load();
 	
 	celebList.addEventListener("onHidden", onHidden);
 	expertList.addEventListener("onHidden", onHidden);
 	celebExpertList.addEventListener("onHidden", onHidden);
+	
+	celebList.addEventListener("onShowing", onListShowing);
+	expertList.addEventListener("onShowing", onListShowing);
+	celebExpertList.addEventListener("onShowing", onListShowing);
 	
 	celebList.hide();
 	init();
@@ -42,11 +46,14 @@ function TweetListController(server)
 	{
  		celebList.element 		= $('#main-timeline').clone();
 		lists.push({obj:celebList, id:"celebList"});
+		celebList.element.attr('id', 'celebList-timeline');
 		
  		expertList.element 		= $('#main-timeline').clone();
+		expertList.element.attr('id', 'expertList-timeline')
 		lists.push({obj:expertList, id:"expertList"});
 		
  		celebExpertList.element = $('#main-timeline').clone();
+		celebExpertList.element.attr('id', 'all-timeline');
 		lists.push({obj:celebExpertList, id:"all"});
 		
 		$('#main-timeline').detach();
@@ -66,9 +73,9 @@ function TweetListController(server)
 	
 	
 	function select( id )
-	{
+	{		
 		if(last != null) last.hide();
-		
+
 		for(i in lists)
 		{
 			if(lists[i].id == id )
@@ -77,7 +84,7 @@ function TweetListController(server)
 				if(last == null) 
 				{
 					list.show();
-					tweetCount.setCount(0);
+					tweetCount.setCount(50);
 				};
 				last = list;
 				return;
@@ -91,8 +98,15 @@ function TweetListController(server)
 	function onHidden(e)
 	{
 		last.show();
-		tweetCount.setCount(0);
+		tweetCount.setCount(90);
 	};
+	
+	
+	function onListShowing( e )
+	{
+		//alert(e.target.id+'list showing');
+	}
+	
 	
 	return this;
 };

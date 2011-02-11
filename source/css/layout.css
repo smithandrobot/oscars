@@ -64,8 +64,8 @@
 }
 
 #timeline {
-	height: 1160px;
-	overflow: auto;
+/*	height: 1160px;
+	overflow: auto;*/
 }
 
 #viewer-timeline-container {
