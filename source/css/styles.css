@@ -260,7 +260,6 @@ h3 {
 	width: 470px;
 	padding: 20px 0px 20px 0px;
 	background: url("../img/tweet-divider-hr.png") no-repeat;
-/*	background-color:#666;*/
 	background-position: bottom;
 
 }
@@ -315,6 +314,12 @@ h3 {
 }
 
 /* TWEET UTILITY */
+
+/* adding bg so IE behaves on fade*/
+
+#timeline .tweet-utility, #timeline .tweet {
+background: #242424;
+}
 
 .tweet-utility {
 	margin-top: 10px;

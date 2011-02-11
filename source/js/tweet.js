@@ -91,11 +91,11 @@ function Tweet()
 		e.find('.action-follow').click(onClickFollow);
 		
 		// Log('element: '+e.find('.tweet .tweet-utility').fadeTo);
-		//e.find('.tweet-utility').fadeTo('fast', .2, function(){$(this).removeAttr("filter")});
+		e.find('.tweet-utility').fadeTo('fast', .2);
 		// e.find('.tweet-utility').css({backgroundColor:'#FFFFFF'});
 		
 		e.hover(
-			function(){$(this).find('.tweet-utility').stop().fadeTo('fast', 1, function(){$(this).css("filter", "")})} , 
+			function(){$(this).find('.tweet-utility').stop().fadeTo('fast', 1) } , 
 			function(){$(this).find('.tweet-utility').stop().fadeTo('fast', .2) }
 			);
 	}

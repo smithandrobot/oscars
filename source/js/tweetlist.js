@@ -61,7 +61,6 @@ function TweetList(URL)
 		};
 
 		self.element.insertAfter('#loadmore');
-		//self.element.show(200);
 		if(self.element) self.element.fadeIn(250, null, function(){dispatchEvent("onShowing", self);});
 	};
 	
