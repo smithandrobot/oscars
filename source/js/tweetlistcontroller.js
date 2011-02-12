@@ -11,9 +11,6 @@ function TweetListController(server)
 	var celebExpertList = new TweetList(server + 'goldenglobestest.json');
 	celebExpertList.id	= "all";
 	
-	var pixTweets 		= new TweetPhotoList('http://tr-cache-2.appspot.com/massrelevance/oscars-pix.json');
-	pixTweets.id		= "photoTweets";
-	
 	var tweetCount		= new TweetCount();
 	var selected		= null;
 	var last			= null;
@@ -27,9 +24,6 @@ function TweetListController(server)
 	
 	celebExpertList.addEventListener('tweetListLoaded', celebExpertListLoaded);
 	celebExpertList.load();
-	
-	pixTweets.addEventListener('tweetListPhotoLoaded', onPhotosLoaded);
-	pixTweets.load();
 	
 	celebList.addEventListener("onHidden", onHidden);
 	expertList.addEventListener("onHidden", onHidden);
@@ -63,12 +57,6 @@ function TweetListController(server)
 	function celebExpertListLoaded( e )
 	{
 		select( 'all' );	
-	};
-	
-	
-	function onPhotosLoaded( e )
-	{
-		Log('** photos loaded ***');
 	};
 	
 	

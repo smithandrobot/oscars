@@ -6,13 +6,12 @@ function EventDispatcher()
 	
 	function addEventListener(eventName, func)
 	{
-		// alert('scope: '+this)
  		e.addEvent(eventName, addEventListener.caller, this, func); 
 	}
 	
 	function dispatchEvent(type, target)
 	{
-		// alert('dispatchEvent '+type);
+		// Log('dispatchEvent '+type);
 		e.dispatchEvent(type, target) 
 	}
 }

@@ -11,7 +11,6 @@ EventManager = (function ()
 
 	this.dispatchEvent = function(eventType, target)
 	{
-
     	for(var i in this.events)
 		{
     	    var eType = this.events[i].eventType;

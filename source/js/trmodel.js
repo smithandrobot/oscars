@@ -22,6 +22,7 @@ function TRModel(s)
 	
 	this.load = function () { $.ajax({ url: s, dataType: 'jsonp', success: onStreamLoaded, error: onStreamError }); };	
 	this.toString = function() { return "TRModel: "+this.id};
+	this.poll = poll;
 	
 	var onStreamError = function(xmlhttp, txtstatus, errorThrown)
 	{
@@ -33,5 +34,10 @@ function TRModel(s)
 		data = d;
 		dispatchEvent("onDataChange", self);
 	};
-
+	
+	
+	function poll(url)
+	{
+		$.ajax({ url: url, dataType: 'jsonp', success: onStreamLoaded, error: onStreamError });
+	}
 };

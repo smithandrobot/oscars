@@ -10,21 +10,21 @@ $(function()
 		
 // photo browser
 	
-	$('#photo-paging .next').click(function() {
-	  $('#photo-scroller').animate({
-	    left: '-=355'
-	  }, 250, function() {
-	    // Animation complete.
-	  });
-	});
-	
-	$('#photo-paging .previous').click(function() {
-	  $('#photo-scroller').animate({
-	    left: '+=355'
-	  }, 250, function() {
-	    // Animation complete.
-	  });
-	});
+	// $('#photo-paging .next').click(function() {
+	//   $('#photo-scroller').animate({
+	//     left: '-=355'
+	//   }, 250, function() {
+	//     // Animation complete.
+	//   });
+	// });
+	// 
+	// $('#photo-paging .previous').click(function() {
+	//   $('#photo-scroller').animate({
+	//     left: '+=355'
+	//   }, 250, function() {
+	//     // Animation complete.
+	//   });
+	// });
 	
 });
 
