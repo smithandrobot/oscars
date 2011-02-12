@@ -5,7 +5,7 @@ TweetPhotoList.constructor = TweetPhotoList;
 function TweetPhotoList( URL )
 {
 	var PAGE_SIZE 	= 355;
-	var INTERVAL	= 1000*2;
+	var INTERVAL	= 1000*60;
 	
 	var url			= URL;
 	var poller		= null;
