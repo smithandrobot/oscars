@@ -51,9 +51,9 @@ function TweetPhotoList( URL )
 	function dataChanged( e )
 	{
 		var data  = e.target.getData();
+		
 		if(data.length-1 < 0) 
 		{
-			Log('** NO DATA **');
 			setTimeout(poll, INTERVAL);
 			return false;
 		}
@@ -61,8 +61,7 @@ function TweetPhotoList( URL )
 		var i 	  = 0;
 		var total = data.length-1;
 		var t;
-		
-		Log('new data: '+total);
+
 		for(i;i<=total;i++)	
 		{
 			t = new TweetPhoto();
@@ -71,7 +70,9 @@ function TweetPhotoList( URL )
 			tweets.unshift( {tweet:t, id:i} );
 			t.setData( data[i] );
 		};
+		
 		lastID = data[0].order_id;
+		
 		show();
 		dispatchEvent( 'tweetPhotoListLoaded', self );
 		setTimeout(poll, INTERVAL);
@@ -84,7 +85,6 @@ function TweetPhotoList( URL )
 		var totalTweets = tweets.length - 1;
 		var id;
 		var ready = 0;
-		Log('photo ready');
 		
 		for(i;i<=totalTweets;i++)	
 		{

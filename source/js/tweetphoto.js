@@ -17,10 +17,12 @@ function TweetPhoto()
 	this.toString 	= toString;
 	this.tweet		= null;
 	this.getHTML    = getHTML;
+	this.tweetID	= null;
 	
 	function setData( d )
 	{
 		self.tweet 	 = d.text;
+		self.tweetID = d.id;
 		var m 		 = new MediaParser();
 		m.addEventListener('onImageData', onImageData);
 		var imgData  = m.getImage( self.tweet );
@@ -33,12 +35,10 @@ function TweetPhoto()
 		// <div class="photo" style="background:url('http://yfrog.com/gy39692910j:small');">
 		if(thumb == undefined) return false;
 		
-		if(element != undefined) element.empty();
-		element = $(render());
+		if(element == undefined) element = $(render());
 		element.find('a').text(source);
-
-		if(thumb != undefined) element.find('.photo').css('background-image', 'url('+thumb.src+')');
-
+		element.find('.photo').css('background-image', 'url('+thumb.src+')');
+		decorate(element);
 		return element;
 	}
 	
@@ -62,7 +62,7 @@ function TweetPhoto()
 			   '    <div class="photo">'+
 			   '        <img src="img/photo-glare.png" />'+
 			   ' 	</div>'+
-			   '    <a href=""></a>'+
+			   '    <a href="#null"></a>'+
 			   '</div>';
 	}
 	
@@ -80,6 +80,11 @@ function TweetPhoto()
 		return {x:offsetX , y: offsetY};
 	};
 	
+	function onPhotoClick()
+	{
+		Log('clicked photo');
+	}
+	
 	function timeOut()
 	{
 		if(!thumbURL) 
@@ -87,6 +92,13 @@ function TweetPhoto()
 			Log('----> image timeout! <-----');
 			dispatchEvent('onImageLoadError', self);
 		}
+	}
+	
+	function decorate(e)
+	{
+		var photo = e.find('.photo');
+		photo.click(function(){Log('hi - '+	self.tweetID)});
+		photo.hover(function() {$(this).css('cursor','pointer')}, function() {$(this).css('cursor','auto')} );
 	}
 	
 	

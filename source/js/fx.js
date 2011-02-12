@@ -52,6 +52,9 @@ counter.css('font-size', 16);
 		
 		function init()
 		{
+		var photo = $('.photo');
+		photo.click(function(){Log('hi - ')});
+		photo.hover(function() {$(this).css('cursor','pointer')}, function() {$(this).css('cursor','auto')} );
 			// follow
 			$('.expert-bio').qtip({
 			   content: $('.modal-bio').html(),

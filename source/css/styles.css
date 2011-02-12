@@ -640,7 +640,7 @@ background: #242424;
 /* PHOTO BROWSER */
 
 #photos {
-	min-height: 220px;
+/*	min-height: 220px;*/
 }
 
 #photo-browser {
@@ -664,7 +664,6 @@ background: #242424;
 	margin-left: 35px;
 	font-size: 11px;
 	text-align: center;
-
 }
 
 #photo-browser .photo {
