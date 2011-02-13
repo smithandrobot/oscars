@@ -11,6 +11,9 @@ function TweetListController(server)
 	var celebExpertList = new TweetList(server + 'goldenglobestest.json');
 	celebExpertList.id	= "all";
 	
+	var viewerList 		= new TweetList(server + 'promoted.json');
+	viewerList.id		= "viewerList";
+	
 	var tweetCount		= new TweetCount();
 	var selected		= null;
 	var last			= null;
@@ -25,16 +28,23 @@ function TweetListController(server)
 	celebExpertList.addEventListener('tweetListLoaded', celebExpertListLoaded);
 	celebExpertList.load();
 	
+	viewerList.addEventListener('tweetListLoaded', viewerListLoaded);
+	viewerList.load();
+	
 	celebList.addEventListener("onHidden", onHidden);
 	expertList.addEventListener("onHidden", onHidden);
 	celebExpertList.addEventListener("onHidden", onHidden);
+	viewerList.addEventListener("onHidden", onHidden);
 	
 	celebList.addEventListener("onShowing", onListShowing);
 	expertList.addEventListener("onShowing", onListShowing);
 	celebExpertList.addEventListener("onShowing", onListShowing);
+	viewerList.addEventListener("onShowing", onListShowing);
 	
+
 	celebList.hide();
 	init();
+	
 	
 	function init()
 	{
@@ -50,7 +60,11 @@ function TweetListController(server)
 		celebExpertList.element.attr('id', 'all-timeline');
 		lists.push({obj:celebExpertList, id:"all"});
 		
+ 		viewerList.element = $('#viewer-timeline .timeline-all').clone();
+		viewerList.element.attr('id', 'viewer-timeline');
+		
 		$('#main-timeline').detach();
+		$('#viewer-timeline .timeline-all').detach();
 	};
 
 	
@@ -58,6 +72,12 @@ function TweetListController(server)
 	{
 		select( 'all' );	
 	};
+	
+	
+	function viewerListLoaded( e )
+	{
+		e.target.show();
+	}
 	
 	
 	function select( id )

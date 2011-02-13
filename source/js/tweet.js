@@ -11,14 +11,15 @@ function Tweet()
 	var element;
 	var rendered = false;
 	var profileImg;
-	
+
 	//  Public
 	
 	this.tweetID;
-	this.setData = setData;
+	this.type 		= null;
+	this.setData 	= setData;
 	this.html;
-	this.celeb = false;
-	this.getHTML = getHTML;
+	this.celeb 		= false;
+	this.getHTML 	= getHTML;
 	
 	
 	function setData(d)
@@ -32,10 +33,17 @@ function Tweet()
 		celebBadge	 = (self.celeb) ? celebBadge : '';
 	};
 	
+	
 	function getHTML()
 	{
 		if(element != undefined) element.empty();
 		element = $(render());
+		if(self.type == 'viewer') 
+		{
+			var bioButton = element.find('.expert-bio');
+			Log('type: '+bioButton.text());
+			bioButton.remove();
+		}
 		element.css({position:"relative"});
 		element.css({opacity:0, top:-10});
 		decorate(element);
@@ -47,6 +55,7 @@ function Tweet()
 	{
 		Log('over retweet - '+self.tweetID);
 	}
+	
 	
 	function onClickReply()
 	{
@@ -95,8 +104,8 @@ function Tweet()
 		// e.find('.tweet-utility').css({backgroundColor:'#FFFFFF'});
 		
 		e.hover(
-			function(){$(this).find('.tweet-utility').stop().fadeTo('fast', 1) } , 
-			function(){$(this).find('.tweet-utility').stop().fadeTo('fast', .2) }
+			function(){$(this).find('.tweet-utility').stop().fadeTo('slow', 1) } , 
+			function(){$(this).find('.tweet-utility').stop().fadeTo('slow', .2) }
 			);
 	}
 	

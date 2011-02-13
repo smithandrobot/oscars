@@ -33,6 +33,7 @@ function TweetList(URL)
 		for(i;i<=total;i++)	
 		{
 			t = new Tweet();
+			if(self.id == "viewerList") t.type = "viewer";
 			t.setData(data[i]);
 			tweets.push({tweet:t, id:i})
 		};
@@ -48,7 +49,8 @@ function TweetList(URL)
 		var total = tweets.length - 1;
 		var delay = 200;
 		var tweetObj;
-
+		var i = 0;
+		
 		self.element.html('');
 		
 		for(i;i<=total;i++)	
@@ -60,7 +62,9 @@ function TweetList(URL)
 			self.element.append(tweetObj);
 		};
 
-		self.element.insertAfter('#loadmore');
+		if(self.id != "viewerList") self.element.insertAfter('#loadmore');
+		if(self.id == "viewerList") $('#viewer-timeline').append(self.element);
+		
 		if(self.element) self.element.fadeIn(250, null, function(){dispatchEvent("onShowing", self);});
 	};
 	
