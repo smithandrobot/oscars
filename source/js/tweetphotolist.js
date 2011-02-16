@@ -2,16 +2,15 @@
 TweetPhotoList.prototype = new EventDispatcher();
 TweetPhotoList.constructor = TweetPhotoList;
 
-function TweetPhotoList( URL )
+function TweetPhotoList( server )
 {
 	var PAGE_SIZE 	= 355;
 	var INTERVAL	= 1000*60;
 	
-	var url			= URL;
 	var poller		= null;
 	var lastID		= null;
 	var self	  	= this;
-	var model 	  	= new TRModel(URL);
+	var model 	  	= new TRModel( server + 'photos.json' );
 	var tweets	  	= new Array();
 	var rendered  	= false;
 	var paging	  	= $('#photo-paging');

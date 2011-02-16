@@ -37,6 +37,8 @@
 		<script type="text/javascript" src="js/tweetcount.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/tweetphotolist.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/tweetlist.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/spotlighttweetlist.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/spotlightcontrols.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/tweetlistcontroller.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/filternav.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/application.js" charset="utf-8"></script>
@@ -51,28 +53,50 @@
 					Twitter @ The 83rd Academy Awards
 				</h1>
 				<div id="spotlight">
-					<div class="tweet academy">
-						<div class="tweet-bg">
-							<!-- Tom Hanks -->
-							<div class="tweet-profile-image">
-								<a href="http://www.twitter.com/#!/TheAcademy"><img src="http://a2.twimg.com/profile_images/1222006412/oscar_twitter_normal.jpg" alt="Tom Hanks" /></a>
-							</div>
-							<div class="tweet-copy-block">
-								<div class="tweet-name">
-									<a class="tweet-name-screen" href="http://www.twitter.com/#!/tomhanks" title="Tom Hanks">@TheAcademy</a> <span class="tweet-name-full">The Academy</span><span class="badge-celebrity">Celeb</span>
+					<div id="spotlight-tweet-container">
+						<div class="tweet academy">
+							<div class="tweet-bg">
+								<!-- Tom Hanks -->
+								<div class="tweet-profile-image">
+									<a href="http://www.twitter.com/#!/TheAcademy"><img src="http://a2.twimg.com/profile_images/1222006412/oscar_twitter_normal.jpg" alt="Tom Hanks" /></a>
 								</div>
-								<div class="tweet-text">
-									Throwing an <a href="/#!/search?q=%23Oscars" title="#Oscars" rel="nofollow">#Oscars</a> party? @<a href="http://twitter.com/KatieLeeKitchen" rel="nofollow">KatieLeeKitchen</a> has some great tips - video/recipes/games here <a href="http://bit.ly/dLjRLW" target="_blank" rel="nofollow" title="http://www.oscars.org/awards/academyawards/partykit/index.html/">http://bit.ly/dLjRLW</a>
+								<div class="tweet-copy-block">
+									<div class="tweet-name">
+										<a class="tweet-name-screen" href="http://www.twitter.com/#!/tomhanks" title="Tom Hanks">@!!TheAcademy</a> <span class="tweet-name-full">The Academy</span><span class="badge-celebrity">Celeb</span>
+									</div>
+									<div class="tweet-text">
+										Throwing an <a href="/#!/search?q=%23Oscars" title="#Oscars" rel="nofollow">#Oscars</a> party? @<a href="http://twitter.com/KatieLeeKitchen" rel="nofollow">KatieLeeKitchen</a> has some great tips - video/recipes/games here <a href="http://bit.ly/dLjRLW" target="_blank" rel="nofollow" title="http://www.oscars.org/awards/academyawards/partykit/index.html/">http://bit.ly/dLjRLW</a>
+									</div>
+									<div class="tweet-utility">
+										<span><a href="http://www.twitter.com/#!/tomhanks/status/33231000398073856" class="tweet-timestamp" title="12:31 PM Feb 3rd">5 hours ago</a></span><span class="tweet-actions"><a href="#null" class="action-retweet" title="Retweet"><span><i><!--icon--></i><b>Retweet</b></span></a><a href="#null" class="action-reply" title="Reply"><span><i><!--icon--></i><b>Reply</b></span></a><a href="#null" class="action-follow" title="Follow"><span><i><!--icon--></i><b>Follow</b></span></a></span>
+									</div>
+									<div class="clear"></div>
 								</div>
-								<div class="spotlight-pagination">
-									<span class="previous"><a href="#null">Previous</a></span><span class="next">Next</span>
-								</div>
-								<div class="tweet-utility">
-									<span><a href="http://www.twitter.com/#!/tomhanks/status/33231000398073856" class="tweet-timestamp" title="12:31 PM Feb 3rd">5 hours ago</a></span><span class="tweet-actions"><a href="#null" class="action-retweet" title="Retweet"><span><i><!--icon--></i><b>Retweet</b></span></a><a href="#null" class="action-reply" title="Reply"><span><i><!--icon--></i><b>Reply</b></span></a><a href="#null" class="action-follow" title="Follow"><span><i><!--icon--></i><b>Follow</b></span></a></span>
-								</div>
-								<div class="clear"></div>
 							</div>
 						</div>
+						<div class="tweet academy">
+							<div class="tweet-bg">
+								<!-- Tom Hanks -->
+								<div class="tweet-profile-image">
+									<a href="http://www.twitter.com/#!/TheAcademy"><img src="http://a2.twimg.com/profile_images/1222006412/oscar_twitter_normal.jpg" alt="Tom Hanks" /></a>
+								</div>
+								<div class="tweet-copy-block">
+									<div class="tweet-name">
+										<a class="tweet-name-screen" href="http://www.twitter.com/#!/tomhanks" title="Tom Hanks">@MaDong</a> <span class="tweet-name-full">The Academy</span><span class="badge-celebrity">Celeb</span>
+									</div>
+									<div class="tweet-text">
+										Throwing an <a href="/#!/search?q=%23Oscars" title="#Oscars" rel="nofollow">#Oscars</a> partyzzzzz? @<a href="http://twitter.com/KatieLeeKitchen" rel="nofollow">KatieLeeKitchen</a> has some great tips - video/recipes/games here <a href="http://bit.ly/dLjRLW" target="_blank" rel="nofollow" title="http://www.oscars.org/awards/academyawards/partykit/index.html/">http://bit.ly/dLjRLW</a>
+									</div>
+									<div class="tweet-utility">
+										<span><a href="http://www.twitter.com/#!/tomhanks/status/33231000398073856" class="tweet-timestamp" title="12:31 PM Feb 3rd">5 hours ago</a></span><span class="tweet-actions"><a href="#null" class="action-retweet" title="Retweet"><span><i><!--icon--></i><b>Retweet</b></span></a><a href="#null" class="action-reply" title="Reply"><span><i><!--icon--></i><b>Reply</b></span></a><a href="#null" class="action-follow" title="Follow"><span><i><!--icon--></i><b>Follow</b></span></a></span>
+									</div>
+									<div class="clear"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="spotlight-pagination">
+						<span class="previous">Previous</span><span class="next">Next</span>
 					</div>
 				</div>
 				<div id="timeline-head">

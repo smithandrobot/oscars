@@ -327,10 +327,6 @@ background: #242424;
 	display: inline-block;
 }
 
-/*#spotlight .tweet-utility {
-	float: left;
-}*/
-
 .tweet-utility * {
 	display: inline-block;
 	vertical-align: bottom;
@@ -446,6 +442,18 @@ background: #242424;
 
 #spotlight .tweet, #spotlight .tweet-bg {
 	background: none;
+}
+
+#spotlight-tweet-container {
+	min-height: 145px;
+	height: 145px;
+}
+
+
+#spotlight-tweet-container .tweet {
+	position : absolute;
+	top : 0px;
+/*	background-color : #FF0000;*/
 }
 
 #spotlight .tweet-name-screen, #spotlight .tweet-text {
