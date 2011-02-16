@@ -4,6 +4,7 @@ $(document).ready(function() {
 
 function Application()
 {
+	twttr.anywhere.config({ callbackURL: "http://www.smithandrobot.com/tapp/" });
 	// var server 		   = 'http://tr-cache-2.appspot.com/massrelevance/';
 	var server 		   = 'http://tr-cache-2.appspot.com/smithandrobot/';
 	var mainTweetLists = new TweetListController( server );
@@ -16,7 +17,7 @@ function Application()
 	
 	tweetPhotos.addEventListener('tweetPhotoListLoaded', onPhotosLoaded);
 	tweetPhotos.load();
-	twttr.anywhere.config({ callbackURL: "http://www.smithandrobot.com/tapp/" });
+
 	
 	function onFilterChange( e )
 	{

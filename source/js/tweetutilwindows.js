@@ -1,5 +1,3 @@
-TweetUtilsWindows.constructor.replyID = 1;
-
 function TweetUtilsWindows()
 {
 
@@ -9,8 +7,7 @@ function TweetUtilsWindows()
 	var replyID;
 	var loadingStatus;
 	var isIE = $.browser.msie;
-	//if(TweetUtilsWindows.constructor.replyID == 1) alert('isIE: '+isIE);
-	++TweetUtilsWindows.constructor.replyID;
+
 	this.bioModal 	  = setBioModal;
 	this.replyModal   = setReplyModal;
 	this.reTweetModal = setReTweetModal;
@@ -208,7 +205,7 @@ function TweetUtilsWindows()
 				    		width: 230,
 				    		defaultContent: '@'+tweet.screenName,
 							complete: onTweetBoxLoaded,
-				    		label: "What's your favorite Oscar moment?",
+				    		label: "",
 							data:{ in_reply_to_status_id:tweet.tweetID } 
 				  		}
 					);
@@ -223,8 +220,6 @@ function TweetUtilsWindows()
 		{
 			var api = modal.qtip("api");
 			setTimeout(writeBox, 1500);
-			//setTimeout(api.updatePosition, 1500);
-			// writeBox();
 		}else{
 			writeBox();
 		}
@@ -235,6 +230,23 @@ function TweetUtilsWindows()
 	{
 		var api = modal.qtip("api");
 			api.updatePosition();
+		styleTweetBox();
+	}
+	
+	
+	function styleTweetBox()
+	{
+		var tweetBox	= $('#tweetbox-'+tweet.tweetID+'-reply');
+		var label 		= tweetBox.find('iframe').contents().find("label");
+		counter 		= tweetBox.find('iframe').contents().find("#counter");
+
+		label.css('font-size', 16);
+		label.css('color', "#ccc");
+
+		counter.css('color', "#666");
+		counter.css('text-align', 'right');
+		counter.css('width', 80);
+		counter.css('font-size', 16);
 	}
 	
 	
