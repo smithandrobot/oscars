@@ -63,8 +63,8 @@ function TweetListController(server)
  		viewerList.element = $('#viewer-timeline .timeline-all').clone();
 		viewerList.element.attr('id', 'viewer-timeline');
 		
-		$('#main-timeline').detach();
-		$('#viewer-timeline .timeline-all').detach();
+		$('#main-timeline').remove();
+		$('#viewer-timeline .timeline-all').remove();
 	};
 
 	

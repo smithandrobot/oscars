@@ -15,8 +15,8 @@
 		<!-- Third Party -->
 		<script type="text/javascript" src="js/thirdparty/Tween.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/thirdparty/jquery-1.5.min.js" charset="utf-8"></script>	
-		<script src="http://platform.twitter.com/anywhere.js?id=YOUR_API_KEY&amp;v=1" type="text/javascript"></script>
-		<script src="js/thirdparty/jquery.qtip-1.0.0-rc3.min.js" type="text/javascript" charset="utf-8"></script> 
+		<script type="text/javascript" src="http://platform.twitter.com/anywhere.js?id=YOUR_API_KEY&amp;v=1"></script>
+		<script type="text/javascript" src="js/thirdparty/jquery.qtip-1.0.0-rc3.min.js" charset="utf-8"></script> 
 		<script type="text/javascript" src="js/fx.js" charset="utf-8"></script>
 		
 		<!-- Utilities -->
@@ -29,6 +29,7 @@
 		<script type="text/javascript" src="js/utils/mediaparser.js" charset="utf-8"></script>
 		
 		<!-- Application -->
+		<script type="text/javascript" src="js/tweetutilwindows.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/trmodel.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/tweetphoto.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/tweet.js" charset="utf-8"></script>
@@ -670,7 +671,7 @@
 							<h5 class="ribon-title">Tom Hanks</h5>
 						</div>
 						<div class="clear"></div>
-						<p>@tomhanks</p>
+						<p id="modal-bio-screen-name">@tomhanks</p>
 						<p class="mini">I'm that actor in some of the movies you liked and some you didn't. Sometimes I'm in pretty good shape, other times I'm not. Hey, you gotta live, you know?</p>
 						<div class="bio-divider"></div>
 						<div class="bio-stats">
@@ -723,14 +724,14 @@
 						</div>
 						<div class="clear"></div>
 						<p class="mini">Reweet this from Tom Hanks?</p>
-						<p>3 directors boss "Woody" around for Toy Story shorts. Come on, guys! Hanx - <a href="http://say.ly/BgT7Pe" target="_blank" rel="nofollow" class="twitter-timeline-link">http://say.ly/BgT7Pe</a></p>
+						<p id="modal-retweet-content">3 directors boss "Woody" around for Toy Story shorts. Come on, guys! Hanx - <a href="http://say.ly/BgT7Pe" target="_blank" rel="nofollow" class="twitter-timeline-link">http://say.ly/BgT7Pe</a></p>
 						<div class="bio-divider"></div>
 						<span class="button-retweet"><a href="#retweet">Retweet</a></span>
 						<span class="button-cancel"><a href="#cancel">Cancel</a></span>
 					</div>
 				</div>
 				<div class="modal-bottom">
-					<!-- -->
+					<!--  -->
 				</div>
 			</div>
 			
@@ -742,24 +743,8 @@
 							<h5 class="ribon-title">Reply</h5>
 						</div>
 						<div class="clear"></div>
-						<p>Tweet box will go here on live version.</p>
-						<!--div id="tbox-reply"></div>
-
-						<script type="text/javascript">
-
-						  twttr.anywhere(function (T) {
-
-						    T("#tbox-reply").tweetBox({
-						      height: 140,
-						      width: 230,
-						      defaultContent: "@tomhanks",
-							  label: "",
-							  complete:styleTweetBox
-						    });
-
-						  });
-
-						</script-->
+						<p id="modal-reply-loading-status">Tweet box will go here on live version.</p>
+						<div id="tbox-reply"></div>
 					</div>
 				</div>
 				<div class="modal-bottom">
@@ -767,6 +752,6 @@
 				</div>
 			</div>
 		</div>
-
+		<div id="modal-canvas"></div>
 	</body>
 </html>

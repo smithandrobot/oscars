@@ -793,13 +793,14 @@ background: #242424;
 	height: 13px;
 	width: 13px;
 	background-position: -8px -114px;
+	
 }
 
 .modal-title-bar {
 	position: relative;
 	left: -15px;
 	margin-bottom: 10px;
-	width:240px
+	width:240px;
 }
 
 .ribon-title {
@@ -869,7 +870,7 @@ background: #242424;
 	background-position: -157px -77px;
 }
 
-.button-cancel a {
+.button-cancel a{
 	line-height: 29px;
 	margin-left: 15px;
 	vertical-align:bottom;

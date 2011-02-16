@@ -45,13 +45,18 @@ function TweetPhoto()
 	
 	function onImageData( e )
 	{
- 	 	thumb		 = new Image();
-		thumb.src 	 = e.target.thumb;
-		source   	 = e.target.source;
-		thumbURL 	 = e.target.thumb;
-		imgURL   	 = e.target.largeImage;
+		// alert('got image data');
+ 	 	thumb		 	= new Image();
+		// thumb.onload 	= function(){alert('loaded')};//getImageOffsets;
+		//thumb.onerror	= onImageError
+		thumb.src 	 	= e.target.thumb;
+                     	
+		             	
+		source   	 	= e.target.source;
+		thumbURL 	 	= e.target.thumb;
+		imgURL   	 	= e.target.largeImage;
 
-		thumb.onLoad = function(){alert('loaded');};//getImageOffsets;
+		//function(){alert('loaded');};//getImageOffsets;
 		dispatchEvent('onPhotoReady', self);
 	}
 	
@@ -66,9 +71,9 @@ function TweetPhoto()
 			   '</div>';
 	}
 	
-	function getImageOffsets(img)
+	function getImageOffsets( e )
 	{
-		Log('offest x: '+offsetX+' offsetY: '+offsetY);
+		var img 	= e.target;
 		var max 	= 75;
 		var orgW 	= img.width;
 		var orgH 	= img.height;
@@ -76,7 +81,7 @@ function TweetPhoto()
 		var centerY = max/2;
 		var offsetX = centerX-img.width/2;
 		var offsetY = centerY-img.height/2;
-
+		Log('offest x: '+offsetX+' offsetY: '+offsetY);
 		return {x:offsetX , y: offsetY};
 	};
 	

@@ -16,6 +16,7 @@ function Application()
 	
 	tweetPhotos.addEventListener('tweetPhotoListLoaded', onPhotosLoaded);
 	tweetPhotos.load();
+	twttr.anywhere.config({ callbackURL: "http://www.smithandrobot.com/tapp/" });
 	
 	function onFilterChange( e )
 	{

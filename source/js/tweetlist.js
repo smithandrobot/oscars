@@ -70,7 +70,13 @@ function TweetList(URL)
 	
 	function hide()
 	{
-		if(self.element) self.element.fadeOut(250, null, function(){self.element.detach();dispatchEvent("onHidden", self);});
+		if(self.element) self.element.fadeOut(250, null, 
+			function()
+			{ 
+				$(".qtip").remove();
+				self.element.detach();
+				dispatchEvent("onHidden", self);
+			});
 	};
 
 	
