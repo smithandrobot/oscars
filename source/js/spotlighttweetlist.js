@@ -36,7 +36,7 @@ function SpotlightTweetList( server )
 		
 		if(lastTweet) 
 		{
-			lastTweet.stop().animate({opacity:0, left:offsetEnd}, { duration:200 , complete: function(){ $(this).detach(); } });
+			lastTweet.stop().animate({opacity:0, left:offsetEnd}, { duration:500 , complete: function(){ $(this).detach(); } });
 		}
 		
 		tweet = tweets[tweetIndex].html;
@@ -45,7 +45,7 @@ function SpotlightTweetList( server )
 		tweet.css('position', 'absolute');
 		tweet.css('left', offsetBegin);
 		element.append(tweet);
-		tweet.stop().animate({opacity:1, left:0}, { duration:200, complete: function(){ /*$(this).css('filter', '');}*/ } });
+		tweet.stop().animate({opacity:1, left:0}, { duration:500, complete: function(){ /*$(this).css('filter', '');}*/ } });
 
 		
 		lastTweet = tweet;
@@ -118,7 +118,8 @@ function SpotlightTweetList( server )
 			t.setData(data[i]);
 			tweets.push({tweet:t, id:id, html: t.getHTML()});
 		};
-		
+		if(tweetIndex < 1 ) self.controls.enablePrev(false);
+
 		show(tweetIndex);
 		dispatchEvent('onSpotlightTweetsLoaded', self);
 	}
