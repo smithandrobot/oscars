@@ -24,6 +24,7 @@ function Application()
 	tweetPhotos.addEventListener('tweetPhotoListLoaded', onPhotosLoaded);
 	
 	spotlightTweets.addEventListener('onSpotlightTweetsLoaded', onSpotlightTweetsLoaded);
+	spotlightTweets.controls = spotlightNav;
 	spotlightTweets.load();
 
 
@@ -48,12 +49,14 @@ function Application()
 	function onNextSpotlightTweet( e )
 	{
 		Log('next spotlight tweet');
+		spotlightTweets.next();
 	}
 	
 	
 	function onPreviousSpotlightTweet( e )
 	{
 		Log('previous spotlight tweet');
+		spotlightTweets.previous();
 	}
 	
 	

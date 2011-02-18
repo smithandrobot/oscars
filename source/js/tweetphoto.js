@@ -48,7 +48,7 @@ function TweetPhoto()
 		// alert('got image data');
  	 	thumb		 	= new Image();
 		// thumb.onload 	= function(){alert('loaded')};//getImageOffsets;
-		//thumb.onerror	= onImageError
+		thumb.onerror	= function(){Log('*** ---|> error loading imge')}; //onImageError
 		thumb.src 	 	= e.target.thumb;
                      	
 		             	

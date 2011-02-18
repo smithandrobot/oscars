@@ -48,11 +48,10 @@
 }
 
 #spotlight {
-	min-height: 190px;
-	width:510px;
-	height:190px;
+/*	width:510px;*/
+	height:220px;
 	position:relative;
-	overflow:hidden;
+/*	overflow:hidden;*/
 }
 
 #timeline-head {

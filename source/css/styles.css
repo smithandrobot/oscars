@@ -390,6 +390,10 @@ background: #242424;
 	margin-right: 7px;
 }
 
+.disabled{
+	color: #3F3C32;
+}
+
 /* BADGES */
 
 .tweet-name * {
@@ -445,14 +449,15 @@ background: #242424;
 }
 
 #spotlight-tweet-container {
-	min-height: 145px;
-	height: 145px;
+	height: 190px;
+	width : 510px;
 }
 
 
 #spotlight-tweet-container .tweet {
 	position : absolute;
 	top : 0px;
+	width: 450px;
 /*	background-color : #FF0000;*/
 }
 
@@ -460,6 +465,7 @@ background: #242424;
 	font-size: 24px;
 	letter-spacing: 0em;
 	line-height: 1.1;
+	width: 450px;
 }
 
 /* VISUALISERS */

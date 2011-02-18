@@ -32,7 +32,7 @@ function Tweet()
 	
 	function setData(d)
 	{
-		self.htmlText 	 	= TweetParser.parse(d.text);
+		self.htmlText 	= TweetParser.parse(d.text);
 		self.tweetID 	= d.id;
 		verified 	 	= d.user.verified;
 		self.screenName	= d.user.screen_name;

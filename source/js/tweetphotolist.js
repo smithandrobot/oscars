@@ -7,10 +7,11 @@ function TweetPhotoList( server )
 	var PAGE_SIZE 	= 355;
 	var INTERVAL	= 1000*60;
 	
+	var url			= server + 'photos.json';
 	var poller		= null;
 	var lastID		= null;
 	var self	  	= this;
-	var model 	  	= new TRModel( server + 'photos.json' );
+	var model 	  	= new TRModel( url );
 	var tweets	  	= new Array();
 	var rendered  	= false;
 	var paging	  	= $('#photo-paging');
@@ -19,6 +20,7 @@ function TweetPhotoList( server )
 	var element   	= $('#photo-scroller');
 	var totalPages	= 0;
 	var currPage	= 1;
+	var timeout 	= 0;
 	this.toString 	= toString;
 	this.load	  	= load;
 	
@@ -53,7 +55,8 @@ function TweetPhotoList( server )
 		
 		if(data.length-1 < 0) 
 		{
-			setTimeout(poll, INTERVAL);
+			clearTimeout(timeout);
+			timeout = setTimeout(poll, INTERVAL);
 			return false;
 		}
 		
@@ -74,7 +77,8 @@ function TweetPhotoList( server )
 		
 		show();
 		dispatchEvent( 'tweetPhotoListLoaded', self );
-		setTimeout(poll, INTERVAL);
+		clearTimeout(timeout);
+		timeout = setTimeout(poll, INTERVAL);
 	};
 	
 	
