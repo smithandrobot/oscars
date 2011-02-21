@@ -44,7 +44,6 @@ function TweetPhotoList( server )
 	
 	function poll()
 	{
-		Log('polling to: '+url+'?since_id='+lastID)
 		model.poll(url+'?since_id='+lastID);
 	};
 
@@ -80,6 +79,13 @@ function TweetPhotoList( server )
 		clearTimeout(timeout);
 		timeout = setTimeout(poll, INTERVAL);
 	};
+	
+	
+	function onPhotoClicked( e )
+	{
+		Log('photo clicked: '+ e.target);
+		modal.open(e.target);
+	}
 	
 	
 	function onPhotoReady( e )

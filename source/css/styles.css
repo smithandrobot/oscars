@@ -693,6 +693,16 @@ background: #242424;
 	margin-bottom: 5px;
 }
 
+.shadow 
+{
+	-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000;
+	box-shadow: 3px 3px 4px #000;	
+	/* For IE 8 */	
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";	
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
 .photo img {
 	width: 75px;
 	height: 46px;
@@ -768,7 +778,7 @@ background: #242424;
 /* MODALS */
 
 #modal-storage {
-	display: none;
+/*	display: none;*/
 }
 
 .modal-bottom {
@@ -817,8 +827,62 @@ background: #242424;
 	width:240px;
 }
 
-.ribon-title {
-	display: inline-block;
+/* Photo modal */
+.modal-photo
+{
+	width : 640px;
+/*	height : 570px;*/
+	background-color : #FFF;
+	padding:15px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.photo-tweet
+{
+	padding-bottom:15px;
+}
+
+.photo-tweet a
+{
+	color:#C30505;
+}
+
+.photo-tweet-image
+{
+	text-align:center;
+}
+
+.photo-tweet-time
+{
+	color:#CCCCCC;
+	font-size: 11px;
+}
+
+
+.photo-screen-name
+{
+	color:#C30505;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.photo-user-name, .photo-tweet-body
+{
+	color:#666666;
+	font-size: 13px;
+}
+
+.photo-tweet-body
+{
+	font-weight : normal;
+}
+.photo-screen-name, .photo-user-name, .photo-tweet-body, .photo-tweet-time
+{
+	text-shadow: none;	
+}
+
+.ribon-title {	display: inline-block;
 	font-size: 16px;
 	line-height: 30px;
 	color: #fff;

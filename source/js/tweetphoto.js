@@ -9,30 +9,39 @@ function TweetPhoto()
 	var element		= null;
 	var source		= null;
 	var thumbURL	= null;
-	var imgURL		= null;
 	var thumb		= undefined;
+	var modal		= new TweetPhotoModal();
 	
 	this.id			= null;
 	this.setData 	= setData;
 	this.toString 	= toString;
 	this.tweet		= null;
+	this.tweetText;
+	this.userName;
+	this.screenName;
+	this.time;
+	this.img
 	this.getHTML    = getHTML;
 	this.tweetID	= null;
 	
 	function setData( d )
 	{
-		self.tweet 	 = d.text;
-		self.tweetID = d.id;
-		var m 		 = new MediaParser();
-		m.addEventListener('onImageData', onImageData);
-		var imgData  = m.getImage( self.tweet );
+		self.tweet 	 	= d.text;
+		self.tweetText	= TweetParser.parse( self.tweet );
+		self.tweetID 	= d.id;
+		self.userName 	= d.user.user_name;
+		self.screenName	= d.user.screen_name;
+		self.time		= d.created_at;
 		
+		var m 		 	= new MediaParser();
+		m.addEventListener('onImageData', onImageData);
+		var imgData  	= m.getImage( self.tweet );
+		modal.tweet		= self;
 		setTimeout(timeOut, MAX_TIME);
 	}
 	
 	function getHTML()
 	{
-		// <div class="photo" style="background:url('http://yfrog.com/gy39692910j:small');">
 		if(thumb == undefined) return false;
 		
 		if(element == undefined) element = $(render());
@@ -45,17 +54,16 @@ function TweetPhoto()
 	
 	function onImageData( e )
 	{
-		// alert('got image data');
  	 	thumb		 	= new Image();
 		// thumb.onload 	= function(){alert('loaded')};//getImageOffsets;
-		thumb.onerror	= function(){Log('*** ---|> error loading imge')}; //onImageError
+		thumb.onerror	= function(){Log('*** ---|> error loading imge: src = '+this.src)}; //onImageError
 		thumb.src 	 	= e.target.thumb;
                      	
 		             	
 		source   	 	= e.target.source;
 		thumbURL 	 	= e.target.thumb;
-		imgURL   	 	= e.target.largeImage;
-
+		self.img   	 	= e.target.largeImage;
+		// Log('large img: '+imgURL);
 		//function(){alert('loaded');};//getImageOffsets;
 		dispatchEvent('onPhotoReady', self);
 	}
@@ -81,13 +89,12 @@ function TweetPhoto()
 		var centerY = max/2;
 		var offsetX = centerX-img.width/2;
 		var offsetY = centerY-img.height/2;
-		Log('offest x: '+offsetX+' offsetY: '+offsetY);
 		return {x:offsetX , y: offsetY};
 	};
 	
 	function onPhotoClick()
 	{
-		Log('clicked photo');
+		modal.open();
 	}
 	
 	function timeOut()
@@ -101,8 +108,10 @@ function TweetPhoto()
 	
 	function decorate(e)
 	{
+
 		var photo = e.find('.photo');
-		photo.click(function(){Log('hi - '+	self.tweetID)});
+		
+		photo.click(onPhotoClick);
 		photo.hover(function() {$(this).css('cursor','pointer')}, function() {$(this).css('cursor','auto')} );
 	}
 	

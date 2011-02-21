@@ -30,6 +30,7 @@
 		
 		<!-- Application -->
 		<script type="text/javascript" src="js/tweetutilwindows.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/tweetphotomodal.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/trmodel.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/tweetphoto.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/tweet.js" charset="utf-8"></script>
@@ -41,7 +42,7 @@
 		<script type="text/javascript" src="js/spotlightcontrols.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/tweetlistcontroller.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/filternav.js" charset="utf-8"></script>
-		<!-- <script type="text/javascript" src="js/application.js" charset="utf-8"></script> -->
+		<script type="text/javascript" src="js/application.js" charset="utf-8"></script>
 	</head>
 	<body>
 		<div id="page-container">
@@ -554,10 +555,10 @@
 							<div class="clear"></div>
 						</div>
 						<div class="clear"></div>
-						<div id="photo-scroll-shadows">
+						<!-- <div id="photo-scroll-shadows">
 							<div id="left-shadow"></div>
 							<div id="right-shadow"></div>
-						</div>
+						</div> -->
 					</div>
 					<div id="photo-paging">
 						<a href="#prev" class="previous"><i><!-- icon --></i></a><span><span id="current-photo-page">1</span> of <span id="total-photo-pages">20</span></span><a href="#next" class="next"><i><!-- icon --></i></a>
@@ -774,6 +775,17 @@
 				<div class="modal-bottom">
 					<!-- -->
 				</div>
+			</div>
+			
+			<div class="modal-photo shadow">
+				<div class="photo-tweet">
+					<div class="close-botton">close</div>
+					<span class="photo-screen-name">@JimCarrey</span>
+					<span class="photo-user-name">Jim Carrey</span><br/>
+					<span class="photo-tweet-body">Look what i got for Xmas! And he shall be named <a href="#">#BOING!</a> <a href="#">http://yfrog.com/h3c4vkj</a></span>
+					<p class="photo-tweet-time">1 hour ago</p>
+				</div>
+				<div class="photo-tweet-image"><img src="http://api.plixi.com/api/tpapi.svc/json/imagefromurl?size=large&url=http://tweetphoto.com/78918832" /></div>
 			</div>
 		</div>
 		<div id="modal-canvas"></div>

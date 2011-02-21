@@ -161,14 +161,6 @@ function TweetUtilsWindows()
 	}
 	
 	
-	function getScript(elementID)
-	{
-		var script = '<script type="text/javascript" charset="utf-8">'+
-					  '</script>';
-		return	script;
-	}
-	
-	
 	function decorateCloseBtn( e )
 	{
 		var cBtn = $(e).find('.close-botton');
