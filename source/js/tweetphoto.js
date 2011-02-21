@@ -29,7 +29,7 @@ function TweetPhoto()
 		self.tweet 	 	= d.text;
 		self.tweetText	= TweetParser.parse( self.tweet );
 		self.tweetID 	= d.id;
-		self.userName 	= d.user.user_name;
+		self.userName 	= d.user.name;
 		self.screenName	= d.user.screen_name;
 		self.time		= d.created_at;
 		
@@ -63,8 +63,6 @@ function TweetPhoto()
 		source   	 	= e.target.source;
 		thumbURL 	 	= e.target.thumb;
 		self.img   	 	= e.target.largeImage;
-		// Log('large img: '+imgURL);
-		//function(){alert('loaded');};//getImageOffsets;
 		dispatchEvent('onPhotoReady', self);
 	}
 	
