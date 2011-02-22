@@ -7,9 +7,22 @@ function FilterNav()
 	var all 	= $('#filter-all');
 	var celebs 	= $('#filter-celebList');
 	var experts = $('#filter-expertList');
+	
+	this.show 	= show;
 	this.filter = null;
 	
+	$('#timeline-head h2').hide();
+	$('#timeline-head h4').hide();
+	$('#filter-nav').hide();
+	
 	initBtns();
+	
+	function show()
+	{
+		$('#timeline-head h2').fadeIn(200);
+		$('#timeline-head h4').delay(200).fadeIn(200);
+		$('#filter-nav').delay(200).fadeIn(200);
+	}
 	
 	function initBtns()
 	{

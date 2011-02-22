@@ -1,3 +1,6 @@
+TweetListController.prototype = new EventDispatcher();
+TweetListController.constructor = TweetListController;
+
 function TweetListController(server)
 {
 	// var celebList 	    = new TweetList(server + 'oscars-celebs.json');
@@ -18,33 +21,48 @@ function TweetListController(server)
 	var selected		= null;
 	var last			= null;
 	var lists			= new Array();
+	var rendered		= false;
+	var self			= this;
 	
 	// Public Methods
 	this.select			= select;
+	this.load			= load;
+	this.loadViewerList	= viewerList.load;
 	
-	celebList.load();
-	expertList.load();
-	
-	celebExpertList.addEventListener('tweetListLoaded', celebExpertListLoaded);
-	celebExpertList.load();
-	
-	viewerList.addEventListener('tweetListLoaded', viewerListLoaded);
-	viewerList.load();
-	
-	celebList.addEventListener("onHidden", onHidden);
-	expertList.addEventListener("onHidden", onHidden);
-	celebExpertList.addEventListener("onHidden", onHidden);
-	viewerList.addEventListener("onHidden", onHidden);
-	
-	celebList.addEventListener("onShowing", onListShowing);
-	expertList.addEventListener("onShowing", onListShowing);
-	celebExpertList.addEventListener("onShowing", onListShowing);
-	viewerList.addEventListener("onShowing", onListShowing);
-	
+	$('#main-timeline').hide();
+	$('#main-timeline').hide();
+	$('#viewer-timeline .timeline-all').hide();
+		
+	function load()
+	{
+		celebList.load();
+		expertList.load();
+		
+		celebExpertList.addEventListener('tweetListLoaded', celebExpertListLoaded);
+		celebExpertList.load();
+		
+		viewerList.addEventListener('tweetListLoaded', viewerListLoaded);
 
-	celebList.hide();
-	init();
+		
+		celebList.addEventListener("onHidden", onHidden);
+		expertList.addEventListener("onHidden", onHidden);
+		celebExpertList.addEventListener("onHidden", onHidden);
+		viewerList.addEventListener("onHidden", onHidden);
+		
+		celebList.addEventListener("onShowing", onListShowing);
+		expertList.addEventListener("onShowing", onListShowing);
+		celebExpertList.addEventListener("onShowing", onListShowing);
+		viewerList.addEventListener("onShowing", onListShowing);
+		
+    	
+		celebList.hide();
+		init();
+	}
 	
+	function loadViewerList()
+	{
+		viewerList.load();
+	}
 	
 	function init()
 	{
@@ -70,7 +88,14 @@ function TweetListController(server)
 	
 	function celebExpertListLoaded( e )
 	{
-		select( 'all' );	
+		select( 'all' );
+		
+		if(!rendered)
+		{
+			Log('tweets rendered');
+			dispatchEvent('tweetListRendered', self);
+			rendered = true;
+		}
 	};
 	
 	

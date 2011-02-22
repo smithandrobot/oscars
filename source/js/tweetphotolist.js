@@ -75,7 +75,12 @@ function TweetPhotoList( server )
 		lastID = data[0].order_id;
 		
 		show();
-		dispatchEvent( 'tweetPhotoListLoaded', self );
+		if(!rendered)
+		{
+			dispatchEvent( 'tweetPhotoListLoaded', self );
+			rendered = true;
+		}
+
 		clearTimeout(timeout);
 		timeout = setTimeout(poll, INTERVAL);
 	};

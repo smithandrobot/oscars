@@ -13,18 +13,23 @@ function Application()
 	var spotlightTweets	= new SpotlightTweetList( server );
 	var spotlightNav   	= new SpotlightControls();
 	var tweetStats     	= new TweetStats();
+	var mostMentioned	= new MostMentionedNominees( server );
+	var tweetBox		= $('#tbox');
 	
 	this.toString	   	= toString;
 	
-	filterNav.addEventListener('onFilterChange', onFilterChange);
+	//tweetBox.fadeOut(50);
 	
+	filterNav.addEventListener('onFilterChange', onFilterChange);	
+	tweetStats.addEventListener('onStatsLoaded', onStatsLoaded);	
+	mainTweetLists.addEventListener('tweetListRendered', onTweetListRendered);	
+	mostMentioned.addEventListener('onMostMentionedLoaded', onMostMentionedRendered);	
 	spotlightNav.addEventListener('onNextSpotlightTweet', onNextSpotlightTweet);
-	spotlightNav.addEventListener('onPreviousSpotlightTweet', onPreviousSpotlightTweet);
-	
-	tweetPhotos.addEventListener('tweetPhotoListLoaded', onPhotosLoaded);
-	
+	spotlightNav.addEventListener('onPreviousSpotlightTweet', onPreviousSpotlightTweet);	
+	tweetPhotos.addEventListener('tweetPhotoListLoaded', onPhotosLoaded);	
 	spotlightTweets.addEventListener('onSpotlightTweetsLoaded', onSpotlightTweetsLoaded);
 	spotlightTweets.controls = spotlightNav;
+	
 	spotlightTweets.load();
 
 
@@ -35,14 +40,36 @@ function Application()
 		mainTweetLists.select(filter);
 	};
 	
+	
 	function onPhotosLoaded( e )
 	{
 		Log('photos loaded - '+toString());
+		tweetBox.show();
+		mainTweetLists.loadViewerList();
 	}
 	
 	function onSpotlightTweetsLoaded( e )
 	{
+		//tweetPhotos.load();
+		tweetStats.init()
+	}
+	
+	function onStatsLoaded( e )
+	{
+		Log('stats loaded');
+		mainTweetLists.load();
+	}
+	
+	function onTweetListRendered( e )
+	{
+		filterNav.show();
+		mostMentioned.load();
+	}
+	
+	function onMostMentionedRendered( e )
+	{
 		tweetPhotos.load();
+		// 
 	}
 	
 	

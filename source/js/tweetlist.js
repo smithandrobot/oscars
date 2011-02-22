@@ -47,7 +47,7 @@ function TweetList(URL)
 		var html ='';
 		var tweet;
 		var total = tweets.length - 1;
-		var delay = 200;
+		var delay = 300;
 		var tweetObj;
 		var i = 0;
 		
