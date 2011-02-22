@@ -128,6 +128,7 @@ function SpotlightTweetList( server )
 		var tweetObj;
 		var id;
 		
+		
 		if(data.length-1 < 0) 
 		{
 			clearTimeout(timeout);
@@ -135,6 +136,25 @@ function SpotlightTweetList( server )
 			return false;
 		}
 		
+		lastID = data[0].order_id;
+		data.reverse();
+		
+		for(i;i<=total;i++)	
+		{
+			t = new Tweet();
+			id = 'spotlight-'+t.tweetID;
+			t.setData(data[i]);
+			tweets.unshift({tweet:t, id:id, html: t.getHTML()});
+		};
+		
+		tweetIndex = 0;
+		
+		self.controls.enablePrev(false);
+
+		show(tweetIndex);
+		
+		clearTimeout(timeout);
+		setTimeout(poll, INTERVAL);
 	}
 	
 	
