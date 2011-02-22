@@ -13,18 +13,20 @@ function TRModel( URL )
 
 	var type;
 	
-	this.id = "TR_MODEL - "+(++TRModel.constructor.id);
+	this.name  = 'model'
+	this.id = "TR_MODEL_"+(++TRModel.constructor.id);
 
 	this.getStream = function() { return stream; };
 	this.getData = function() { return data; };
 	this.setType = function(t) { type = t; };
 	this.getType = function() { return type; };
 	
-	this.load = function () { $.ajax({ url: URL, dataType: 'jsonp', success: onStreamLoaded, error: onStreamError }); };	
+	this.load = loadCustomCallBack//function () { $.ajax({ url: URL, dataType: 'jsonp', success: onStreamLoaded, error: onStreamError }); };	
 	this.toString = function() { return "TRModel: "+this.id};
 	this.poll = poll;
+	this.trCallback = trCallback;
 	
-	loadCustomCallBack( URL )
+	// loadCustomCallBack( URL )
 	var onStreamError = function(xmlhttp, txtstatus, errorThrown)
 	{
 		//alert('stream error xmlhttp: '+xmlhttp+", txtstatus: "+txtstatus+' errorThrown: '+errorThrown);
@@ -33,31 +35,50 @@ function TRModel( URL )
 	var onStreamLoaded = function(d)
 	{
 		data = d;
+		Log('stream loaded data: '+data)
 		dispatchEvent("onDataChange", self);
 	};
 	
 	
-	function trCallback( e)
-	{
-		alert('trCallback');
-	}
-	
-	function loadCustomCallBack( u )
+	function loadCustomCallBack( sinceID )
 	{
 		var aObj = {};
-		aObj.url = u;
+		var callbackName = 'trCallback_'+String(self.id)+'_x';
+		var since = ( sinceID ) ? '?since_id='+sinceID : '';
+	//	Log('callback name: '+callbackName);
+		window[callbackName] = self.trCallback;
+		
+		aObj.url = stream+since;
+
+		aObj.cache = false;
 		aObj.dataType = 'jsonp';
 		aObj.success = onStreamLoaded;
 		aObj.error = onStreamError;
-		aObj.jsonpCallback  = 'trCallback';
+		aObj.jsonpCallback  = callbackName;
+		
  		$.ajax(aObj); 
 	}
 	
 	
-	function poll(url)
+
+	
+	function customCallBackSuccess( e )
 	{
-		$.ajax({ url: url, dataType: 'jsonp', success: onStreamLoaded, error: onStreamError });
+		//alert('customCallBackSuccess');
 	}
 	
-
+	function poll( sinceID )
+	{
+		loadCustomCallBack( sinceID )
+		//$.ajax({ url: url, dataType: 'jsonp', success: onStreamLoaded, error: onStreamError });
+	}
+	
+	
+	function trCallback( d )
+	{
+		Log('trcallback data: '+d);
+	}
+		
+	return this;
 };
+

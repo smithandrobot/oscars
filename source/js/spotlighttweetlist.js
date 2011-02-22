@@ -4,6 +4,8 @@ SpotlightTweetList.constructor = SpotlightTweetList;
 
 function SpotlightTweetList( server )
 {
+	var INTERVAL	= 1000*5;
+	
 	var self	  		= this;
 	var model 	  		= new TRModel(server + 'promoted.json');
 	var tweets	  		= new Array();
@@ -11,11 +13,13 @@ function SpotlightTweetList( server )
 	var tweetIndex 		= 0;
 	var lastTweet 		= null;
 	var element  		= $('#spotlight-tweet-container');
-
-	this.next 	  	= next;
-	this.previous 	= previous;
-	this.toString 	= toString;
-	this.load	  	= load;
+	var timeout 		= null;
+	var lastID			= null;
+	
+	this.next 	  		= next;
+	this.previous 		= previous;
+	this.toString 		= toString;
+	this.load	  		= load;
 	this.controls;
 	
 	element.empty();
@@ -25,6 +29,12 @@ function SpotlightTweetList( server )
 	{
 		model.addEventListener("onDataChange", onDataChanged);
 		model.load();
+	};
+	
+	
+	function poll()
+	{
+		model.poll(lastID);
 	};
 	
 	
@@ -55,6 +65,7 @@ function SpotlightTweetList( server )
 	function next()
 	{
 		++tweetIndex;
+		
 		if(tweetIndex > tweets.length-1) 
 		{
 			tweetIndex = tweets.length-1;
@@ -74,6 +85,7 @@ function SpotlightTweetList( server )
 		
 		show( "next");
 	}
+	
 	
 	function previous()
 	{
@@ -101,6 +113,13 @@ function SpotlightTweetList( server )
 	
 	function onDataChanged( e )
 	{
+		if(!rendered) writeList( e );
+		if( rendered ) updateList( e );
+	}
+	
+	
+	function updateList( e )
+	{
 		var data  = e.target.getData();
 		var i 	  = 0;
 		var total = data.length-1;
@@ -109,7 +128,46 @@ function SpotlightTweetList( server )
 		var tweetObj;
 		var id;
 		
-		Log('onDataChanged: '+self+' total: '+total);
+		
+		if(data.length-1 < 0) 
+		{
+			clearTimeout(timeout);
+			timeout = setTimeout(poll, INTERVAL);
+			return false;
+		}
+		
+		lastID = data[0].order_id;
+		data.reverse();
+		
+		for(i;i<=total;i++)	
+		{
+			t = new Tweet();
+			id = 'spotlight-'+t.tweetID;
+			t.setData(data[i]);
+			tweets.unshift({tweet:t, id:id, html: t.getHTML()});
+		};
+		
+		tweetIndex = 0;
+		
+		self.controls.enablePrev(false);
+
+		show(tweetIndex);
+		
+		clearTimeout(timeout);
+		setTimeout(poll, INTERVAL);
+	}
+	
+	
+	function writeList( e )
+	{
+		var data  = e.target.getData();
+		var i 	  = 0;
+		var total = data.length-1;
+		var t;
+		var html  = '';
+		var tweetObj;
+		var id;
+		
 		
 		for(i;i<=total;i++)	
 		{
@@ -118,10 +176,17 @@ function SpotlightTweetList( server )
 			t.setData(data[i]);
 			tweets.push({tweet:t, id:id, html: t.getHTML()});
 		};
+		
 		if(tweetIndex < 1 ) self.controls.enablePrev(false);
 
 		show(tweetIndex);
 		dispatchEvent('onSpotlightTweetsLoaded', self);
+		
+		lastID = data[0].order_id;
+		clearTimeout(timeout);
+		setTimeout(poll, INTERVAL);
+		
+		rendered = true;
 	}
 	
 	

@@ -44,7 +44,7 @@ function TweetPhotoList( server )
 	
 	function poll()
 	{
-		model.poll(url+'?since_id='+lastID);
+		model.poll(lastID);
 	};
 
 
@@ -88,7 +88,6 @@ function TweetPhotoList( server )
 	
 	function onPhotoClicked( e )
 	{
-		Log('photo clicked: '+ e.target);
 		modal.open(e.target);
 	}
 	

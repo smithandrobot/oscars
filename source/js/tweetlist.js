@@ -3,10 +3,15 @@ TweetList.constructor = TweetList;
 
 function TweetList(URL)
 {
+	var INTERVAL	= 1000*5;
+	
 	var self	  = this;
 	var model 	  = new TRModel(URL);
 	var tweets	  = new Array();
 	var rendered  = false;
+	var timeout   = null;
+	var lastID	  = null;
+	var active	  = false;
 	
 	this.element  = null;
 	this.show 	  = show;
@@ -23,12 +28,25 @@ function TweetList(URL)
 	};
 	
 	
+	function poll()
+	{
+		model.poll(lastID);
+	}
+	
+	
 	function dataChanged(e)
 	{
 		var data  = e.target.getData();
 		var i 	  = 0;
 		var total = data.length-1;
 		var t;
+		
+		if(data.length-1 < 0) 
+		{
+			clearTimeout(timeout);
+			//if(active) timeout = setTimeout(poll, INTERVAL);
+			return false;
+		}
 		
 		for(i;i<=total;i++)	
 		{
@@ -39,6 +57,11 @@ function TweetList(URL)
 		};
 		
 		dispatchEvent('tweetListLoaded', self);
+		
+		lastID = data[0].order_id;
+		clearTimeout(timeout);
+		//if(active) timeout = setTimeout(poll, INTERVAL);
+		
 	};
 	
 	
@@ -66,10 +89,13 @@ function TweetList(URL)
 		if(self.id == "viewerList") $('#viewer-timeline').append(self.element);
 		
 		if(self.element) self.element.fadeIn(250, null, function(){dispatchEvent("onShowing", self);});
+		active = true;
 	};
+	
 	
 	function hide()
 	{
+		active = false;
 		if(self.element) self.element.fadeOut(250, null, 
 			function()
 			{ 
