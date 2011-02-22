@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="css/jquery.jscrollpane.css" type="text/css" media="all" />
 		<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen, print" />
 		<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen, print" />
+		<link rel="stylesheet" href="css/scroller.css" type="text/css" media="screen, print" />
 		
 		<!-- Third Party -->
 		<script type="text/javascript" src="js/thirdparty/Tween.js" charset="utf-8"></script>
@@ -18,6 +19,7 @@
 		<script type="text/javascript" src="http://platform.twitter.com/anywhere.js?id=SVg5HG7dwVkaJJFANYbmAg&amp;v=1"></script>
 		<script type="text/javascript" src="js/thirdparty/jquery.qtip-1.0.0-rc3.min.js" charset="utf-8"></script> 
 		<script type="text/javascript" src="js/fx.js" charset="utf-8"></script>
+		<script type='text/javascript' src="js/thirdparty/flexcroll.js"></script>
 		
 		<!-- Utilities -->
 		<script type="text/javascript" src="js/utils/utils.js" charset="utf-8"></script>
@@ -43,7 +45,7 @@
 		<script type="text/javascript" src="js/tweetlistcontroller.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/filternav.js" charset="utf-8"></script>
 		<script type="text/javascript" src="js/mostmentionednominees.js" charset="utf-8"></script>
-		<script type="text/javascript" src="js/application.js" charset="utf-8"></script>
+		<!--script type="text/javascript" src="js/application.js" charset="utf-8"></script-->
 	</head>
 	<body>
 		<div id="page-container">
@@ -106,7 +108,7 @@
 				</div>
 				<div id="timeline-container">
 					<!-- START TIMELINE -->
-					<div id="timeline">
+					<div id="timeline" class="flexcroll">
 						<div id="loadmore">
 							<div id="loadmore-glow"></div><a id="loadmore-count" href="#null">3 New Tweets</a>
 						</div>
@@ -588,7 +590,7 @@
 					<!-- START VIEWER TIMELINE -->
 					<div id="viewer-timeline-container">
 						<!-- START TIMELINE -->
-						<div id="viewer-timeline">
+						<div id="viewer-timeline" class="flexcroll">
 							<div class="timeline-all">
 								<div class="tweet">
 									<div class="tweet-bg">

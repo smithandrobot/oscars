@@ -33,16 +33,15 @@
 
 #column-left {
 	margin-left: 10px;
-	width: 510px;
-	overflow:hidden;
+	width: 530px;
 }
 
 #column-divider {
 	margin-left: 0px;
-	width: 50px;
+	width: 30px;
 	height: 800px;
 	background: url("../img/divider-vert.png") no-repeat;
-	background-position: 20px 0px;
+	background-position: 0px 0px;
 }
 
 #column-right {
@@ -51,15 +50,16 @@
 }
 
 #spotlight {
+	margin-top: 15px;
 	height:220px;
+	width: 545px;
+	overflow:hidden;
 	position:relative;
 }
 
 #timeline-head {
-	padding-top: 40px;
-	background: url("../img/divider-hor-top.png") no-repeat;
-	background-position: center top;
-	min-height: 50px;
+	padding-top: 30px;
+	min-height: 40px;
 }
 
 #time-line container {
@@ -68,7 +68,7 @@
 }
 
 #timeline {
-	height: 1200px;
+	height: 1300px;
 	overflow: auto;
 }
 

@@ -191,8 +191,8 @@ h3 {
 	top: 0px;
 	left: 0px;
 	display: block;
-	width: 500px;
-	height: 47px;
+	width: 530px;
+	height: 24px;
 	background: url("../img/divider-hor-bottom.png") no-repeat;
 	background-position: center top;
 }
@@ -229,34 +229,7 @@ h3 {
 	background: transparent;
 }
 
-/* CUSTOM DRAG HANDLE on USER TIMELINE */
 
-#viewer-timeline .jspDrag {
-	background: url("../img/sprite-ui.png") no-repeat;
-	background-position: -243px -152px;
-	width: 8px;
-	height: 8px;	
-}
-
-#viewer-timeline .jspDrag:hover {
-	background-position: -243px -153px;
-}
-
-
-#viewer-timeline .jspVerticalBar {
-	width: 14px;
-	background: transparent;
-}
-
-.jspCap {
-	display: block;
-	background: #eeeef4;
-}
-
-#viewer-timeline .jspVerticalBar .jspCap {
-	height: 5px;
-	background: transparent;
-}
 
 /* TWEET STYLES */
 
@@ -396,6 +369,7 @@ h3 {
 	background-position: -143px -0px;
 	text-align: center;
 	margin-top: 8px;
+	margin-right: 30px;
 }
 
 .spotlight-pagination span {
