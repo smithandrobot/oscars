@@ -27,7 +27,7 @@ function TweetListController(server)
 	// Public Methods
 	this.select			= select;
 	this.load			= load;
-	this.loadViewerList	= viewerList.load;
+	this.loadViewerList	= loadViewerList//viewerList.load;
 	
 	$('#main-timeline').hide();
 	$('#main-timeline').hide();
@@ -79,7 +79,7 @@ function TweetListController(server)
 		lists.push({obj:celebExpertList, id:"all"});
 		
  		viewerList.element = $('#viewer-timeline .timeline-all').clone();
-		viewerList.element.attr('id', 'viewer-timeline');
+		//viewerList.element.attr('id', 'viewer-timeline');
 		
 		$('#main-timeline').remove();
 		$('#viewer-timeline .timeline-all').remove();
