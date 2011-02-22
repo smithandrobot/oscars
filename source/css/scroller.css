@@ -1,0 +1,53 @@
+.scrollgeneric {
+	line-height: 1px;font-size: 1px;position: absolute;top: 0; left: 0;
+	}
+
+/* force fleXcroll to always display the vertical scrollbase */
+.vscrollerbase {
+	visibility: visible !important;
+}
+
+
+.vscrollerbase {
+	width: 30px;
+}
+
+#viewer-timeline .vscrollerbase {
+	width: 16px;
+}
+
+.vscrollerbar {
+	width: 24px;
+	background: url("../img/sprite-ui.png") -268px -9px no-repeat;
+	height: 167px !important;
+}
+
+#viewer-timeline .vscrollerbar {
+	width: 8px;
+	background: url("../img/sprite-ui.png") -243px -153px no-repeat;
+	height: 60px !important;
+}
+
+.vscrollerbar {
+	padding: 10px;
+	z-index: 2;
+}
+.vscrollerbarbeg {
+	width: 15px;
+	height: 15px !important;
+}
+
+.vscrollerbarend {
+	width: 15px;
+	height: 15px;
+}
+
+.vscrollerbasebeg {
+	width: 15px;
+	height: 15px !important;
+}
+
+.vscrollerbaseend {
+	height: 15px;
+	width: 15px;
+}
