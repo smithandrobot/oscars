@@ -1,6 +1,6 @@
 html {
 	color: #ccc;
-	background: #242424;
+	background: #74000e;
 	}
 	
 html *:focus {
@@ -23,21 +23,23 @@ body, div {
 	}
 
 a {
-	color: #E7D38D;
+	color: #CAA642;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #FEF9C5;
+	color: #F3E898;
 }
 
 ol {
 	display: inline;
-	margin-left: 20px;
+	margin-left: 0px;
 	margin-top: 15px;
+	margin-right: 15px;
 	font-size: 11px;
 	line-height: 1.6em;
 	min-height: 200px;
+	min-width: 165px;
 	float:left;
 }
 
@@ -46,13 +48,22 @@ li {
 	padding-left: 0px;
 }
 
+.top5, li {
+	color: #666;
+	font-weight: bold;
+}
+
+.top5 a, li a {
+	color :#fff;
+	font-weight: normal;
+}
+
 h1 {
 	text-indent: -99999px;
-	width: 510px;
-	height: 37px;
-	margin-bottom: 15px;
+	height: 59px;
+	margin-bottom: 20px;
 	background: url("../img/sprite-headlines.png") no-repeat;
-	background-position: 0px 0px;
+	background-position: center 15px;
 }
 
 h4 {
@@ -68,10 +79,10 @@ h4 {
 
 .fake-h2 {
 	text-indent: -99999px;
-	width: 281px;
+	width: 260px;
 	height: 25px;
 	background: url("../img/sprite-headlines.png") no-repeat;
-	background-position: -5px -42px;
+	background-position: 0px -50px;
 	display: inline-block;
 	float: left;
 	margin-right: 5px;
@@ -88,19 +99,19 @@ h3 {
 }
 
 #title-counters {
-	background-position: 50% -139px;
+	background-position: 50% -80px;
 }
 
 #title-nominees {
-	background-position: 50% -157px;
+	background-position: 50% -100px;
 }
 
 #title-photos {
-	background-position: 50% -179px;
+	background-position: 50% -120px;
 }
 
 #title-viewers {
-	background-position: 50% -199px;
+	background-position: 50% -140px;
 }
 
 /* TIMELINE NAV */
@@ -141,17 +152,6 @@ h3 {
 	position: relative;
 }
 
-#viewer-timeline-bottom-shadow {
-	position: relative;
-	top: -47px;
-	left: 25px;
-	display: block;
-	width: 310px;
-	height: 47px;
-	background: url("../img/viewer-timeline-bottom.png") no-repeat;
-	background-position: center top;
-}
-
 /* LOAD MORE */
 
 #loadmore {
@@ -182,6 +182,19 @@ h3 {
 	height: 52px;
 	background: url("../img/sprite-headlines.png") no-repeat;
 	background-position: -11px -621px;
+}
+
+/* MAIN TIMELINE SHADOWS */
+
+#timeline-top-shadow {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: block;
+	width: 500px;
+	height: 47px;
+	background: url("../img/divider-hor-bottom.png") no-repeat;
+	background-position: center top;
 }
 
 /* CUSTOM DRAG HANDLE on TIMELINE */
@@ -246,7 +259,8 @@ h3 {
 }
 
 /* TWEET STYLES */
-.celeb {
+
+/*.celeb {
 	background: url("../img/tweet-bg-celeb.png") no-repeat;
 	background-position: center bottom;
 }
@@ -254,7 +268,7 @@ h3 {
 .academy {
 	background: url("../img/tweet-bg-academy.png") no-repeat;
 	background-position: center bottom;
-}
+}*/
 
 #timeline .tweet-bg {
 	width: 470px;
@@ -265,7 +279,7 @@ h3 {
 }
 
 #viewer-timeline .tweet-bg {
-	width: 335px;
+	width: 290px;
 	padding: 10px 0px 10px 0px;
 	border-bottom: 1px solid #333;
 }
@@ -315,11 +329,11 @@ h3 {
 
 /* TWEET UTILITY */
 
-/* adding bg so IE behaves on fade*/
+/* adding bg so IE behaves on fade
 
 #timeline .tweet-utility, #timeline .tweet {
-background: #242424;
-}
+	background: #242424;
+} */
 
 .tweet-utility {
 	margin-top: 10px;
@@ -331,10 +345,6 @@ background: #242424;
 	display: inline-block;
 	vertical-align: bottom;
 	line-height: 20px;
-}
-
-.tweet-utility a {
-	color: #666;
 }
 
 .tweet-utility i {
@@ -350,8 +360,12 @@ background: #242424;
 	margin-left: 15px;
 }
 
-#viewer-timeline .tweet-actions a {
-	margin-left: 7px;
+#viewer-timeline .tweet-utility i {
+	display: none;
+}
+
+#viewer-timeline .tweet-utility a {
+	color: #666;
 }
 
 .action-reply span i {
@@ -434,7 +448,7 @@ background: #242424;
 	text-indent: -99999px;
 	margin-left: 6px;
 	display: inline-block;
-	width: 80px;
+	width: 44px;
 	height: 25px;
 	background: url("../img/sprite-ui.png");
 	background-position: -56px -50px;
@@ -485,7 +499,7 @@ background: #242424;
 	display: inline-block;
 	float: left;
 	width: 230px;
-	height: 92px;
+	height: 100px;
 }
 
 #counter-total * {
@@ -495,17 +509,17 @@ background: #242424;
 
 #counter-total .counter-bak {
 	width: 230px;
-	height: 92px;
-	background-position: -16px -254px; /*-254px;*/
+	height: 100px;
+	background-position: 0px -165px;
 }
 
 #counter-total .counter-label, #counter-total .counter-text {
-	width: 218px;
-	margin: 6px;
+	width: 230px;
+	margin: 3px;
 	text-align: center;
 	background-position: 999px 999px;
-	color: #E7D38D;
-	text-shadow: #E7D38D 0px 0px 7px;
+	color: #fff;
+	text-shadow: #fff 0px 0px 7px;
 }
 
 #counter-total .counter-text {
@@ -527,8 +541,8 @@ background: #242424;
 	top: 0px;
 	left: 0px;
 	width: 230px;
-	height: 92px;
-	background-position: -16px -349px;
+	height: 100px;
+	background-position: 0px -264px;
 }
 
 #counter-total .gloss {
@@ -537,16 +551,16 @@ background: #242424;
 	left: 0px;
 	width: 230px;
 	height: 43px;
-	background-position: -16px -444px;
+	background-position: 0px -364px;
 }
 
 /* COUNTER SECOND */
 
 #counter-seconds {
 	display: inline-block;
-	float: right;
-	width: 142px;
-	height: 92px;
+	float: left;
+	width: 120px;
+	height: 100px;
 }
 
 #counter-seconds * {
@@ -555,23 +569,23 @@ background: #242424;
 }
 
 #counter-seconds .counter-bak {
-	width: 142px;
-	height: 92px;
-	background-position: -256px -254px;
+	width: 120px;
+	height: 100px;
+	background-position: -230px -165px;
 }
 
 #counter-seconds .counter-label, #counter-seconds .counter-text {
-	width: 130px;
-	margin: 6px;
+	width: 120px;
+	margin: 3px;
 	text-align: center;
 	background-position: 999px 999px;
-	color: #FF444B;
-	text-shadow: #FF444B 0px 0px 7px;
+	color: #CC3333;
+	text-shadow: #CC3333 0px 0px 7px;
 }
 
 #counter-seconds .counter-text {
 	line-height: 70px;
-	font-size: 32px;
+	font-size: 28px;
 }
 
 #counter-seconds .counter-label {
@@ -589,7 +603,7 @@ background: #242424;
 	left: 0px;
 	width: 142px;
 	height: 92px;
-	background-position: -256px -349px;
+	background-position: -230px -264px;
 }
 
 #counter-seconds .gloss {
@@ -598,7 +612,7 @@ background: #242424;
 	left: 0px;
 	width: 142px;
 	height: 43px;
-	background-position: -256px -439px;
+	background-position: -230px -364px;
 }
 
 
@@ -619,7 +633,7 @@ background: #242424;
 	float:left;
 	position: relative;
 	margin-left: 8px;
-	width: 349px;
+	width: 330px;
 	height: 38px;
 	background-image: url("../img/sprite-headlines.png");
 	background-position: -20px -490px;
@@ -632,7 +646,7 @@ background: #242424;
 .flipper .count {
 	position: absolute;
 	top: 0px;
-	width: 334px;
+	width: 315px;
 	height: 38px;
 	text-align: right;
 }
@@ -654,17 +668,15 @@ background: #242424;
 /* PHOTO BROWSER */
 
 #photos {
-/*	min-height: 220px;*/
+	height: 220px;
 }
 
 #photo-browser {
-	width: 380px;
+	width: 350px;
 	height: 120px;
 	overflow: hidden;
 	white-space: nowrap;
 	position: relative;
-/*	background-color:#FF0000;*/
-	/*height:75px;*/
 }
 
 #photo-scroller {
@@ -675,7 +687,7 @@ background: #242424;
 .photo-assembly {
 	display: inline-block;
 	float: left;
-	margin-left: 35px;
+	margin-left: 30px;
 	font-size: 11px;
 	text-align: center;
 }
@@ -770,9 +782,7 @@ background: #242424;
 
 #share {
 	margin-left: 10px;
-	background: url("../img/tweet-box-background.jpg") no-repeat;
-	background-position: center bottom;
-	min-height: 230px;
+	min-height: 180px;
 }
 
 /* MODALS */
@@ -956,4 +966,22 @@ background: #242424;
 
 .mini {
 	font-size: 11px;
+}
+
+#credits a {
+	background: url("../img/sprite-ui.png") no-repeat;
+	display: inline-block;
+	height: 35px;
+	width: 165px;
+	text-indent: -9999px;
+	margin-top: 15px;
+	margin-left: 15px;
+}
+
+#credits .mr {
+	background-position: 0px -330px;
+}
+
+#credits .sr {
+	background-position: -170px -330px;
 }

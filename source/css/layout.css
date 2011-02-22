@@ -10,11 +10,13 @@
 }
 
 #page-container {
-	width: 995px;
+	width: 940px;
 	margin-left: auto;
 	margin-right: auto;
-	background: url("../img/body-bg-top.jpg") no-repeat;
+	background: #2E2E2E url("../img/body-bg-top.jpg") no-repeat;
 	background-position: center top;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 #sponsor {
@@ -30,35 +32,34 @@
 }
 
 #column-left {
-	margin-left: 30px;
+	margin-left: 10px;
 	width: 510px;
+	overflow:hidden;
 }
 
 #column-divider {
 	margin-left: 0px;
-	width: 60px;
+	width: 50px;
 	height: 800px;
 	background: url("../img/divider-vert.png") no-repeat;
-	background-position: 30px 20px;
+	background-position: 20px 0px;
 }
 
 #column-right {
 	margin-left: 0px;
-	width: 380px;
+	width: 370px;
 }
 
 #spotlight {
-/*	width:510px;*/
 	height:220px;
 	position:relative;
-/*	overflow:hidden;*/
 }
 
 #timeline-head {
-	padding-top: 30px;
+	padding-top: 40px;
 	background: url("../img/divider-hor-top.png") no-repeat;
 	background-position: center top;
-	min-height: 60px;
+	min-height: 50px;
 }
 
 #time-line container {
@@ -67,21 +68,21 @@
 }
 
 #timeline {
-	height: 1160px;
+	height: 1200px;
 	overflow: auto;
 }
 
 #viewer-timeline-container {
-	width: 382px;
+	width: 340px;
 	height: 360px;
-	padding-top: 7px;
-	padding-left: 15px;
+	padding-top: 5px;
 	background: url("../img/viewer-timeline-background.png") no-repeat;
 }
 
 #viewer-timeline {
-	width: 360px;
-	height: 345px;
+	width: 318px;
+	height: 346px;
+	margin-left: 15px;
 	overflow: auto;
 	position:relative;
 }
