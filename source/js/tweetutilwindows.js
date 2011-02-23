@@ -152,7 +152,7 @@ function TweetUtilsWindows()
 	
 	function getReplyContent()
 	{
-		var c 		 	= $('.modal-reply').clone(true);
+		var c = $('.modal-reply').clone(true);
 		c.find('#tbox-reply').attr('id', 'tweetbox-'+tweet.tweetID+'-reply');
 		var p = c.find('p');
 		p.text('Loading Tweetbox');

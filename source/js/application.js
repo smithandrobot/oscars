@@ -43,7 +43,6 @@ function Application()
 	
 	function onPhotosLoaded( e )
 	{
-		Log('photos loaded - '+toString());
 		tweetBox.show();
 		mainTweetLists.loadViewerList();
 	}
@@ -56,7 +55,6 @@ function Application()
 	
 	function onStatsLoaded( e )
 	{
-		Log('stats loaded');
 		mainTweetLists.load();
 	}
 	
@@ -75,14 +73,12 @@ function Application()
 	
 	function onNextSpotlightTweet( e )
 	{
-		Log('next spotlight tweet');
 		spotlightTweets.next();
 	}
 	
 	
 	function onPreviousSpotlightTweet( e )
 	{
-		Log('previous spotlight tweet');
 		spotlightTweets.previous();
 	}
 	

@@ -17,7 +17,9 @@ function TweetListController(server)
 	var viewerList 		= new TweetList(server + 'promoted.json');
 	viewerList.id		= "viewerList";
 	
-	var tweetCount		= new TweetCount();
+	var tweetCount		= new TweetCount();	
+	tweetCount.addEventListener('onLoadMoreTweets', onLoadMoreTweets);
+	
 	var selected		= null;
 	var last			= null;
 	var lists			= new Array();
@@ -39,6 +41,7 @@ function TweetListController(server)
 		expertList.load();
 		
 		celebExpertList.addEventListener('tweetListLoaded', celebExpertListLoaded);
+
 		celebExpertList.load();
 		
 		viewerList.addEventListener('tweetListLoaded', viewerListLoaded);
@@ -46,6 +49,7 @@ function TweetListController(server)
 		
 		celebList.addEventListener("onHidden", onHidden);
 		expertList.addEventListener("onHidden", onHidden);
+
 		celebExpertList.addEventListener("onHidden", onHidden);
 		viewerList.addEventListener("onHidden", onHidden);
 		
@@ -54,7 +58,10 @@ function TweetListController(server)
 		celebExpertList.addEventListener("onShowing", onListShowing);
 		viewerList.addEventListener("onShowing", onListShowing);
 		
-    	
+		celebExpertList.addEventListener('onUnreadTweets', onUnreadTweets);
+		expertList.addEventListener('onUnreadTweets', onUnreadTweets);
+		celebList.addEventListener('onUnreadTweets', onUnreadTweets);
+		
 		celebList.hide();
 		init();
 	}
@@ -79,7 +86,6 @@ function TweetListController(server)
 		lists.push({obj:celebExpertList, id:"all"});
 		
  		viewerList.element = $('#viewer-timeline .timeline-all').clone();
-		//viewerList.element.attr('id', 'viewer-timeline');
 		
 		$('#main-timeline').remove();
 		$('#viewer-timeline .timeline-all').remove();
@@ -92,7 +98,6 @@ function TweetListController(server)
 		
 		if(!rendered)
 		{
-			Log('tweets rendered');
 			dispatchEvent('tweetListRendered', self);
 			rendered = true;
 		}
@@ -117,7 +122,7 @@ function TweetListController(server)
 				if(last == null) 
 				{
 					list.show();
-					tweetCount.setCount(50);
+					//tweetCount.update(0);
 				};
 				last = list;
 				return;
@@ -131,7 +136,6 @@ function TweetListController(server)
 	function onHidden(e)
 	{
 		last.show();
-		tweetCount.setCount(90);
 	};
 	
 	
@@ -140,6 +144,16 @@ function TweetListController(server)
 		//alert(e.target.id+'list showing');
 	}
 	
+	function onUnreadTweets( e )
+	{
+		var uncounted = e.target.unreadTweets;
+		tweetCount.update( uncounted );
+	}
+	
+	function onLoadMoreTweets( e )
+	{
+		last.updateList();
+	}
 	
 	return this;
 };

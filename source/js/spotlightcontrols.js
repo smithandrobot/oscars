@@ -50,29 +50,24 @@ function SpotlightControls()
 	
 	function onNext()
 	{
-		Log('next click');
 		dispatchEvent('onNextSpotlightTweet', self);
 	}
 	
 	
 	function onPrevious()
 	{
-		Log('previous click');
 		dispatchEvent('onPreviousSpotlightTweet', self);
 	}
 	
 	function enablePrev( b )
 	{
-		Log('enablePrev: '+b)
 		if(!b)previous.find('a').addClass('disabled');
 		if(b)previous.find('a').removeClass('disabled');
-		//previousOut	= ( b ) ? activeColor : inactiveColor;
 		
 	}
 	
 	function enableNext( b )
 	{
-		Log('enableNext: '+b)
 		if(!b)next.find('a').addClass('disabled');
 		if(b)next.find('a').removeClass('disabled');
 		nextOut = ( b ) ? activeColor : inactiveColor;

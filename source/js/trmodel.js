@@ -10,7 +10,7 @@ function TRModel( URL )
 	var stream = URL;
 	var data;
 	var loaded = false;
-
+	var date	= new Date();
 	var type;
 	
 	this.name  = 'model'
@@ -21,12 +21,11 @@ function TRModel( URL )
 	this.setType = function(t) { type = t; };
 	this.getType = function() { return type; };
 	
-	this.load = loadCustomCallBack//function () { $.ajax({ url: URL, dataType: 'jsonp', success: onStreamLoaded, error: onStreamError }); };	
+	this.load = loadCustomCallBack;
 	this.toString = function() { return "TRModel: "+this.id};
 	this.poll = poll;
 	this.trCallback = trCallback;
 	
-	// loadCustomCallBack( URL )
 	var onStreamError = function(xmlhttp, txtstatus, errorThrown)
 	{
 		//alert('stream error xmlhttp: '+xmlhttp+", txtstatus: "+txtstatus+' errorThrown: '+errorThrown);
@@ -35,25 +34,26 @@ function TRModel( URL )
 	var onStreamLoaded = function(d)
 	{
 		data = d;
-		Log('stream loaded data: '+data)
 		dispatchEvent("onDataChange", self);
 	};
 	
 	
-	function loadCustomCallBack( sinceID )
+	function loadCustomCallBack( sinceID , callback)
 	{
 		var aObj = {};
 		var callbackName = 'trCallback_'+String(self.id)+'_x';
 		var since = ( sinceID ) ? '?since_id='+sinceID : '';
-	//	Log('callback name: '+callbackName);
+
 		window[callbackName] = self.trCallback;
 		
-		aObj.url = stream+since;
-
-		aObj.cache = false;
-		aObj.dataType = 'jsonp';
-		aObj.success = onStreamLoaded;
-		aObj.error = onStreamError;
+		aObj.url 		= stream+since;
+		if( callback ) aObj.jsonp = callback;
+		aObj.cache 		= true;
+		aObj.dataType 	= 'jsonp';
+		aObj.data 		= {req_time : Math.floor(date.getTime()/1000)};
+		aObj.success 	= onStreamLoaded;
+		aObj.error 		= onStreamError;
+		
 		aObj.jsonpCallback  = callbackName;
 		
  		$.ajax(aObj); 
@@ -76,7 +76,7 @@ function TRModel( URL )
 	
 	function trCallback( d )
 	{
-		Log('trcallback data: '+d);
+		//Log('trcallback data: '+d);
 	}
 		
 	return this;

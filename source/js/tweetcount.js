@@ -1,3 +1,6 @@
+TweetCount.prototype = new EventDispatcher();
+TweetCount.constructor = TweetCount;
+
 function TweetCount() 
 {
 	var self		 = this;
@@ -5,12 +8,20 @@ function TweetCount()
 	var countElement = $('#loadmore-count');
 	var glow 		 = $('#loadmore-glow');
 	var count		 = 0;
-
-	this.setCount 	= setCount;
-	this.hide 		= hide;
-	this.show 		= show;
+	var showing		 = false;
 	
+	this.update		= update;
+	
+	element.click(onClick);
 	element.hide();
+	
+	
+	function onClick()
+	{
+		element.hide();
+		dispatchEvent('onLoadMoreTweets', self);
+	}
+	
 	
 	function setCount(n)
 	{
@@ -22,13 +33,31 @@ function TweetCount()
 	function show()
 	{
 		element.fadeIn(500);
+		showing = true;
 	};
 	
 	
 	function hide()
 	{
 		element.fadeOut(2000);
+		showing = false;
 	};
+	
+	function update( n )
+	{
+		if(n < 0) n = 0;
+		setCount(n);
+		
+		if(n <= 0 && showing)
+		{
+			hide();
+		}
+		
+		if( n > 0 && !showing)
+		{
+			show();
+		}
+	}
 	
 	return this;
 };

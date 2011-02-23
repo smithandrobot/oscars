@@ -114,7 +114,7 @@ function SpotlightTweetList( server )
 	function onDataChanged( e )
 	{
 		if(!rendered) writeList( e );
-		if( rendered ) updateList( e );
+		if(rendered) updateList( e );
 	}
 	
 	
@@ -127,7 +127,6 @@ function SpotlightTweetList( server )
 		var html  = '';
 		var tweetObj;
 		var id;
-		
 		
 		if(data.length-1 < 0) 
 		{
@@ -147,8 +146,7 @@ function SpotlightTweetList( server )
 			tweets.unshift({tweet:t, id:id, html: t.getHTML()});
 		};
 		
-		tweetIndex = 0;
-		
+		tweetIndex = 0;		
 		self.controls.enablePrev(false);
 
 		show(tweetIndex);
