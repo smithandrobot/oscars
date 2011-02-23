@@ -1,8 +1,7 @@
 html {
 	color: #ccc;
-	background: #74000e;
-	}
-	
+}
+
 html *:focus {
 	outline: 0;
 }
@@ -19,7 +18,7 @@ body, div {
 	font-family: "Helvetica Neue", "Helvetica", Arial, sans;
 	font-size: 13px;
 	line-height: 1.4;
-	text-shadow: #000 0px 0px 3px;
+	text-shadow: #000000 0px 0px 3px;
 	}
 
 a {
@@ -44,8 +43,13 @@ ol {
 }
 
 li {
-	margin-left: 0px;
+	margin-left: 3px;
 	padding-left: 0px;
+}
+
+li a {
+	margin-left: 10px;
+	margin-right: 5px;
 }
 
 .top5, li {
@@ -257,6 +261,10 @@ h3 {
 	border-bottom: 1px solid #333;
 }
 
+#viewer-timeline .tweet {
+	width: 290px;
+}
+
 .tweet-profile-image {
 	padding: 10px;
 	float: left;
@@ -360,7 +368,6 @@ h3 {
 
 .spotlight-pagination {
 	display: block;
-	float: right;
 	font-size: 11px;
 	color: #3F3C32;
 	width: 113px;
@@ -368,8 +375,6 @@ h3 {
 	background: url("../img/sprite-ui.png");
 	background-position: -143px -0px;
 	text-align: center;
-	margin-top: 8px;
-	margin-right: 30px;
 }
 
 .spotlight-pagination span {
@@ -438,22 +443,26 @@ h3 {
 
 #spotlight-tweet-container {
 	height: 190px;
-	width : 510px;
+	width : 530px;
 }
 
 
 #spotlight-tweet-container .tweet {
 	position : absolute;
 	top : 0px;
-	width: 450px;
-/*	background-color : #FF0000;*/
+	width: 530px;
 }
 
-#spotlight .tweet-name-screen, #spotlight .tweet-text {
+#spotlight .tweet-name a, #spotlight .tweet-text {
+	filter:progid:DXImageTransform.Microsoft.Glow(Color=#000000,Strength=3);
+/*	border: 1px solid red;*/
+}
+
+#spotlight .tweet-name-screen, #spotlight .tweet-name, #spotlight .tweet-text {
 	font-size: 24px;
 	letter-spacing: 0em;
 	line-height: 1.1;
-	width: 450px;
+	width: 440px;
 }
 
 /* VISUALISERS */
@@ -516,7 +525,7 @@ h3 {
 	left: 0px;
 	width: 230px;
 	height: 100px;
-	background-position: 0px -264px;
+	background-position: 0px -263px;
 }
 
 #counter-total .gloss {
@@ -577,7 +586,7 @@ h3 {
 	left: 0px;
 	width: 142px;
 	height: 92px;
-	background-position: -230px -264px;
+	background-position: -230px -263px;
 }
 
 #counter-seconds .gloss {
@@ -637,6 +646,10 @@ h3 {
 .nominee-sub span {
 	font-size: 11px;
 	color: #666666;
+}
+
+.flip-fx img {
+	display: none;
 }
 
 /* PHOTO BROWSER */
@@ -944,12 +957,13 @@ h3 {
 
 #credits a {
 	background: url("../img/sprite-ui.png") no-repeat;
-	display: inline-block;
+	display: block;
 	height: 35px;
 	width: 165px;
 	text-indent: -9999px;
 	margin-top: 15px;
 	margin-left: 15px;
+	float: left;
 }
 
 #credits .mr {

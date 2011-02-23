@@ -47,6 +47,11 @@ function styleTweetBox()
 	counter.css('font-size', 16);
 }
 
+// append scrollbar to all DOM nodes with class="css-scrollbar"
+  $(function(){
+    $('.css-scrollbar').scrollbar();
+    $('.fff').scrollbar();
+  })
 
 // modal managers -- action-follow
 		
