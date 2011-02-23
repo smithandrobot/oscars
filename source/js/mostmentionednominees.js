@@ -7,6 +7,13 @@ function MostMentionedNominees( server )
 	var rendered 	= false;
 	var model		= new TRModel( 'http://tweetriver.com/massrelevance.json' );
 	var streams;
+	var element		= $('#nominees');
+	var col1		= element.find('ol:first');
+	var col2		= element.find('ol:first').next();
+	
+	clearSceenData();
+	// Log('col1 text: '+col1.find('li:first').text());
+	// Log('col2 text: '+col2.find('li:first').text());
 	
 	var oStreams 	= [
 					   {name: 'Javier Bardem', stream : 'oscars-actor-bardem'},
@@ -81,15 +88,27 @@ function MostMentionedNominees( server )
 	{	
 		var i;
 		var stream;
-		
-		Log('total streams: '+streams.length)
+		var delay = 300;
+		var total = streams.length - 1;
+		clearSceenData();
+
 		streams.sort(sortNumber);
 		
-		for(var i in streams)
+		// animateFlipper(1);
+		//setTimeout(function(){animateFlipper(1)}, 200);
+		for(i = 0; i<= total; i++)
 		{
 			stream = streams[i];
-			Log(stream.nomineeName+' = '+stream.count.total);
+		
+			if(i < 5)
+			{
+				// Log(stream.nomineeName+' = '+stream.count.total+' i: '+i);
+				setTimeout(animateFlipper, (delay*i),(i+1));
+				setTimeout(stopFlipper, (delay*i)+delay+50, (i+1), stream.nomineeName, Utils.addCommas(stream.count.total));
+			}
+			
 		}
+		
 	}
 	
 	
@@ -129,9 +148,47 @@ function MostMentionedNominees( server )
 	}
 	
 	
+	function clearSceenData()
+	{
+		for(var i = 1 ; i<= 5; i++)
+		{
+			element.find('#number'+String(i)).find('.count').text('');
+			element.find('#number'+String(i)).find('.name a').text('');
+		}
+		
+		col1.find('li').each(clearLIData);
+		col2.find('li').each(clearLIData);
+	}
+	
+	
+	function animateFlipper(id)
+	{
+		var flipper = element.find('#number'+String(id));
+		flipper.find('.flip-fx img').css({display:'inline'});
+	}
+	
+	
+	function stopFlipper(id, name, total)
+	{
+		var flipper = element.find('#number'+String(id));
+		Log('stopping animation, name: '+id+', total: '+total);
+		flipper.find('.name a').text(name);
+		flipper.find('.count').text(total);
+		flipper.find('.flip-fx img').css({display:'none'});
+	}
+	
+	
+	function clearLIData()
+	{
+		$(this).find('a').text('');
+		$(this).find('span').text('');
+	}
+	
+	
 	function sortNumber(a,b)
 	{
-		return a - b;
+		Log(a.count.total+' - '+b.count.total);
+		return b.count.total - a.count.total;
 	}
 		
 	
