@@ -28,7 +28,7 @@ function Tweet()
 	this.html;
 	this.celeb 		= false;
 	this.getHTML 	= getHTML;
-	
+	this.orderID;
 	
 	function setData(d)
 	{
@@ -41,6 +41,7 @@ function Tweet()
 		self.followers  = d.user.followers_count;
 		self.following	= d.user.friends_count;
 		self.tweets		= d.user.statuses_count;
+		self.orderID	= d.order_id;
 		profileImg	 	= d.user.profile_image_url;
 		celebBadge	 	= (self.celeb) ? celebBadge : '';
 	};
@@ -65,18 +66,15 @@ function Tweet()
 	
 	function onClickRetweet()
 	{
-		Log('over retweet - '+self.tweetID);
 	}
 	
 	
 	function onClickReply()
 	{
-		Log('reply - '+replyModal);
 	}
 	
 	function onClickFollow()
 	{
-		Log('follow - '+self.tweetID);
 	}	
 	
 	function onTweetOver() {e.find('.tweet-utility').fadeTo('fast', 1); };
