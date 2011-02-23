@@ -57,7 +57,7 @@ function TweetPhotoModal()
 		decorateCloseBtn(element);
 		element.appendTo(document.body);
 		
-    	var docY = $(window).height() / 2;
+    	var docY = ($(window).height() / 2) - 100;
     	var docX = $(document).width() / 2;
 		var top = docY - (element.height() / 2);
 		var left = docX - 100;
@@ -82,7 +82,7 @@ function TweetPhotoModal()
 		element.find('img').attr( 'height', this.height );
 		element.find('img').fadeIn('slow');
 		
-    	var docY = $(window).height() / 2;
+    	var docY = ($(window).height() / 2) - 100;
     	var docX = $(document).width() / 2;	
 		var height = element.height() / 2;
 		var width = img.width / 2;

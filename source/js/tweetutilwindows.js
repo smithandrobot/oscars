@@ -21,7 +21,7 @@ function TweetUtilsWindows()
 		var qTipObj 	 = {};
 		var settings	 = getQtipSettingsObj();
 		qTipObj.content  = getBioContent();
-		qTipObj.position = { corner: { target: 'topLeft', tooltip: 'bottomLeft'}, adjust: { x: -18, y: 20 } };						
+		qTipObj.position = { corner: { target: 'topMiddle', tooltip: 'bottomMiddle'}, adjust: { x: 0, y: 0, screen: true } };						
 		qTipObj.style    = settings.style;
 		qTipObj.hide	 = settings.hide;
 		qTipObj.show	 = settings.show;
@@ -42,7 +42,7 @@ function TweetUtilsWindows()
 		var settings	 = getQtipSettingsObj();
 		qTipObj.content	 = new Object();
 		qTipObj.content.text  = getReplyContent();
-		qTipObj.position = { corner : { target: 'topLeft', tooltip: 'bottomLeft'}, adjust : { x: -18, y: 20 } };						
+		qTipObj.position = { corner: { target: 'topMiddle', tooltip: 'bottomMiddle'}, adjust: { x: 0, y: 15 } };						
 		qTipObj.style    = settings.style;
 		qTipObj.hide	 = settings.hide;
 		qTipObj.show	 = settings.show;
@@ -64,7 +64,7 @@ function TweetUtilsWindows()
 		var qTipObj 	 = {};
 		var settings	 = getQtipSettingsObj();
 		qTipObj.content = getReTweetContent();
-		qTipObj.position = { corner: { target: 'topLeft', tooltip: 'bottomLeft'}, adjust: { x: -18, y: 20 } };
+		qTipObj.position = { corner: { target: 'topMiddle', tooltip: 'bottomMiddle'}, adjust: { x: 0, y: 15 } };
 		qTipObj.style    = settings.style;
 		qTipObj.hide	 = settings.hide;
 		qTipObj.show	 = settings.show;
@@ -87,7 +87,7 @@ function TweetUtilsWindows()
 		var qTipObj 	 = {};
 		var settings	 = getQtipSettingsObj();
 		qTipObj.content  = getFollowContent();
-		qTipObj.position = { corner: { target: 'topLeft', tooltip: 'bottomLeft'}, adjust: { x: -40, y: 10 } };
+		qTipObj.position = { corner: { target: 'topMiddle', tooltip: 'bottomMiddle'}, adjust: { x: 0, y: 15 } };
 		qTipObj.style    = settings.style;
 		qTipObj.hide	 = settings.hide;
 		qTipObj.show	 = settings.show;
