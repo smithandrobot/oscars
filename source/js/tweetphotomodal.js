@@ -50,8 +50,6 @@ function TweetPhotoModal()
 		element.find('.photo-tweet-body').html( self.tweet.tweetText);
 		element.find('.photo-tweet-time').text( self.tweet.time );
 		element.find('img').attr( 'src', './img/ajax-loader.gif' );
-
-
 		
 		element.css('width', 200);
 		decorateCloseBtn(element);
@@ -73,8 +71,7 @@ function TweetPhotoModal()
 	
 	
 	function onImageLoad(i)
-	{
-		
+	{		
 		var padding = 15;
 		element.find('img').hide();
 		element.find('img').attr( 'src', this.src );
@@ -99,7 +96,6 @@ function TweetPhotoModal()
 	
 	function onClose()
 	{
-		//return element.detach();
 		TweetPhotoModal.constructor.modal.fadeOut(250);
 		TweetPhotoModal.constructor.overlay.fadeOut(250);
 	}

@@ -50,7 +50,7 @@ function TRModel( URL )
 		if( callback ) aObj.jsonp = callback;
 		aObj.cache 		= true;
 		aObj.dataType 	= 'jsonp';
-		aObj.data 		= {req_time : Math.floor(date.getTime()/1000)};
+		//aObj.data 		= {req_time : Math.floor(date.getTime()/1000)};
 		aObj.success 	= onStreamLoaded;
 		aObj.error 		= onStreamError;
 		

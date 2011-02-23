@@ -77,7 +77,7 @@ function MostMentionedNominees( server )
 	{
 		var streams;
 		
-		dispatchEvent('onMostMentionedLoaded', self);
+		// dispatchEvent('onMostMentionedLoaded', self);
 		
 		streams = getStreams(e.target.getData().streams);
 		renderStreams(streams);
@@ -88,27 +88,49 @@ function MostMentionedNominees( server )
 	{	
 		var i;
 		var stream;
-		var delay = 300;
+		var delay = 500;
 		var total = streams.length - 1;
-		clearSceenData();
-
-		streams.sort(sortNumber);
+		var fID;
 		
-		// animateFlipper(1);
-		//setTimeout(function(){animateFlipper(1)}, 200);
-		for(i = 0; i<= total; i++)
+		clearSceenData();
+		streams.sort( sortNumber );
+		renderFlips( streams );
+	}
+	
+	
+	function renderFlips( streams )
+	{
+		var delay = 500;
+		for(i = 0; i<= 4; i++)
 		{
 			stream = streams[i];
+			setTimeout(function(id){ return function() { animateFlipper(id); } }(i+1),  (delay*i) );
+			setTimeout(function(id, name, total){ return function() { stopFlipper(id, name, total, streams); } }( (i+1),stream.nomineeName, Utils.addCommas(stream.count.approved), streams ), (delay*i)+delay+50);
+		}	
+	}
+	
+	
+	function renderLists( streams )
+	{
+		var index = 4;
 		
-			if(i < 5)
-			{
-				// Log(stream.nomineeName+' = '+stream.count.total+' i: '+i);
-				setTimeout(animateFlipper, (delay*i),(i+1));
-				setTimeout(stopFlipper, (delay*i)+delay+50, (i+1), stream.nomineeName, Utils.addCommas(stream.count.total));
-			}
-			
-		}
+		col1.find('li').each(
+		function()
+		{
+			var stream = streams[ ++index ];
+			$(this).find('a').text(stream.nomineeName);
+			$(this).find('span').text(Utils.addCommas(stream.count.approved));
+		});
 		
+		col2.find('li').each(
+		function()
+		{
+			var stream = streams[ ++index ];
+			$(this).find('a').text(stream.nomineeName);
+			$(this).find('span').text(Utils.addCommas(stream.count.approved));
+		});
+		
+		dispatchEvent('onMostMentionedLoaded', self);
 	}
 	
 	
@@ -168,13 +190,14 @@ function MostMentionedNominees( server )
 	}
 	
 	
-	function stopFlipper(id, name, total)
+	function stopFlipper(id, name, total, streams)
 	{
 		var flipper = element.find('#number'+String(id));
-		Log('stopping animation, name: '+id+', total: '+total);
 		flipper.find('.name a').text(name);
 		flipper.find('.count').text(total);
 		flipper.find('.flip-fx img').css({display:'none'});
+		
+		if(id == 5) renderLists( streams );
 	}
 	
 	
@@ -187,8 +210,7 @@ function MostMentionedNominees( server )
 	
 	function sortNumber(a,b)
 	{
-		Log(a.count.total+' - '+b.count.total);
-		return b.count.total - a.count.total;
+		return b.count.approved - a.count.approved;
 	}
 		
 	
