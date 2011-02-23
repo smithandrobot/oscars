@@ -118,6 +118,19 @@ h3 {
 	background-position: 50% -140px;
 }
 
+/* LOADING */
+
+.please-wait {
+	text-align:center;
+	padding-top: 60px;
+	color: #666666;
+}
+
+.loading-text {
+	text-shadow: none;
+	color: #000000;
+}
+
 /* TIMELINE NAV */
 
 #timeline-head * {
@@ -165,6 +178,7 @@ h3 {
 	height: 52px;
 	background: url("../img/sprite-headlines.png") no-repeat;
 	background-position: -11px -571px;
+	display: none;
 }
 
 #loadmore a {

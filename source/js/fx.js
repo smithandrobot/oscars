@@ -40,7 +40,7 @@ function styleTweetBox()
 	label.css('color', "#ccc");
 	counter.css('position', 'absolute');
 	counter.css('color', "#666");
-	counter.css('left', '260px');
+	counter.css('left', '240px');
 	counter.css('top', '0px');
 	counter.css('text-align', 'right');
 	counter.css('width', 80);
@@ -50,7 +50,7 @@ function styleTweetBox()
 // append scrollbar to all DOM nodes with class="css-scrollbar"
   $(function(){
     $('.css-scrollbar').scrollbar();
-    $('.fff').scrollbar();
+    $('.css-scrollbar-2').scrollbar();
   })
 
 // modal managers -- action-follow

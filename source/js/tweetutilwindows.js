@@ -230,6 +230,7 @@ function TweetUtilsWindows()
 	{
 		var tweetBox	= $('#tweetbox-'+tweet.tweetID+'-reply');
 		var label 		= tweetBox.find('iframe').contents().find("label");
+		var textarea 	= tweetBox.find('iframe').contents().find("#tweet-box");
 		counter 		= tweetBox.find('iframe').contents().find("#counter");
 
 		label.css('font-size', 16);
@@ -239,6 +240,8 @@ function TweetUtilsWindows()
 		counter.css('text-align', 'right');
 		counter.css('width', 80);
 		counter.css('font-size', 16);
+		
+		textarea.css('font-size', 11);
 	}
 	
 	
