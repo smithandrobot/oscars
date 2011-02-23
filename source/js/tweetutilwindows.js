@@ -193,7 +193,7 @@ function TweetUtilsWindows()
 				  T('#tweetbox-'+tweet.tweetID+'-reply').tweetBox
 					(
 						{
-				    		height: 140,
+				    		height: 100,
 				    		width: 230,
 				    		defaultContent: '@'+tweet.screenName,
 							complete: onTweetBoxLoaded,
