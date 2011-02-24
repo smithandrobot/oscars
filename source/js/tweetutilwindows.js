@@ -16,8 +16,11 @@ function TweetUtilsWindows()
 	
 	function setBioModal( t , e )
 	{
+
 		tweet 			 = t;
 		var bioModal 	 = e.find('.expert-bio');
+
+		
 		var qTipObj 	 = {};
 		var settings	 = getQtipSettingsObj();
 		qTipObj.content  = getBioContent();
@@ -25,10 +28,11 @@ function TweetUtilsWindows()
 		qTipObj.style    = settings.style;
 		qTipObj.hide	 = settings.hide;
 		qTipObj.show	 = settings.show;
+		qTipObj.exclusive= true;
 		
 		decorateCloseBtn(qTipObj.content);
 		bioModal.qtip(qTipObj);
-		
+		t.bioModal = true;
 		modal = bioModal;
 		return self;
 	}
@@ -94,6 +98,7 @@ function TweetUtilsWindows()
 		
 		decorateCloseBtn(qTipObj.content);
 		decorateCancelBtn(qTipObj.content);
+		decorateFollowBtn(qTipObj.content);
 		
 		followModal.qtip(qTipObj);
 
@@ -119,7 +124,7 @@ function TweetUtilsWindows()
 	
 	function getBioContent()
 	{
-		var c = $('.modal-bio').clone();
+		var c = $('#modal-storage .modal-bio').clone();
 		c.find('h5').text(tweet.userName);
 		c.find('.mini').text(tweet.bio);
 		c.find('#modal-bio-screen-name').text(tweet.screenName);
@@ -133,7 +138,7 @@ function TweetUtilsWindows()
 	
 	function getReTweetContent()
 	{
-		var c = $('.modal-retweet').clone();
+		var c = $('#modal-storage .modal-retweet').clone();
 		c.find('.mini').text('Reweet this from '+tweet.userName+'?');
 		c.find('#modal-retweet-content').html(tweet.htmlText);
 		
@@ -143,7 +148,7 @@ function TweetUtilsWindows()
 	
 	function getFollowContent()
 	{
-		var c = $('.modal-follow').clone();
+		var c = $('#modal-storage .modal-follow').clone();
 		c.find('p').text('Start Following '+tweet.userName+' (@'+tweet.screenName+')?');
 		
 		return c;
@@ -152,7 +157,7 @@ function TweetUtilsWindows()
 	
 	function getReplyContent()
 	{
-		var c = $('.modal-reply').clone(true);
+		var c = $('#modal-storage .modal-reply').clone(true);
 		c.find('#tbox-reply').attr('id', 'tweetbox-'+tweet.tweetID+'-reply');
 		var p = c.find('p');
 		p.text('Loading Tweetbox');
@@ -179,6 +184,27 @@ function TweetUtilsWindows()
 	{
 		var reTweetCancelBtn = $(e).find('.button-cancel');
 		reTweetCancelBtn.click(onClose);	
+	}
+	
+	
+	function decorateFollowBtn( c )
+	{
+		var followBtn = $(c).find('.button-follow');
+		followBtn.click( followUser )
+	}
+	
+	
+	function followUser()
+	{
+		twttr.anywhere
+			(
+
+				function (T) 
+				{
+					var user = T.User.find( tweet.screenName );
+					user.follow();
+				}
+			);
 	}
 	
 	

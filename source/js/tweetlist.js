@@ -26,6 +26,7 @@ function TweetList(URL)
 	this.unreadTweets	= 0;
 	this.updateList		= updateList;
 	
+	
 	function load()
 	{
 		model.addEventListener("onDataChange", dataChanged);
@@ -41,7 +42,6 @@ function TweetList(URL)
 	
 	function dataChanged(e)
 	{
-
 		if(!rendered)
 		{
 			 writeList( e );
@@ -67,7 +67,7 @@ function TweetList(URL)
 		{
 			tweet 	 = tweets[i].tweet;
 			tweetObj = tweet.getHTML();
-			tweetObj.stop().delay(delay*i).animate({opacity:1, top:0}, { duration:500, complete: function(){ $(this).css('filter', '');} });
+			tweetObj.stop().delay(delay*i).animate( {opacity:1, top:0}, { duration:500, complete: function(){ $(this).css('filter', '');} } );
 			//tweetObj.delay(i*delay).fadeIn(250);
 			self.element.append(tweetObj);
 		};
@@ -106,9 +106,11 @@ function TweetList(URL)
 			});
 	};
 	
+	
 	function clearScrollBar()
 	{
-		if(self.id != "expertList") {
+		if(self.id != "expertList") 
+		{
 			Log("hiding "+self.id);
 			$("#timeline .scrollbar-pane").remove();
 			$("#timeline .scrollbar-handle-container").remove();
@@ -162,7 +164,7 @@ function TweetList(URL)
 		{
 			clearTimeout(timeout);
 			timeout = setTimeout(poll, INTERVAL);
-			self.unreadTweets = 0//data.length;
+			self.unreadTweets = 0;//data.length;
 			dispatchEvent('onUnreadTweets', self)
 			return false;
 		}

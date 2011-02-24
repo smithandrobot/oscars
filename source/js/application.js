@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 function Application()
 {
-	twttr.anywhere.config({ callbackURL: "http://www.smithandrobot.com/tapp/tapp_callback.php" });
+	// twttr.anywhere.config({ callbackURL: "http://www.smithandrobot.com/tapp/tapp_callback.php" });
 	var server 		   = 'http://tr-cache-2.appspot.com/massrelevance/';
 	//var server 		   	= 'http://tr-cache-2.appspot.com/smithandrobot/';
 	var mainTweetLists 	= new TweetListController( server );
