@@ -7,7 +7,8 @@ function SpotlightTweetList( server )
 	var INTERVAL	= 1000*5;
 	
 	var self	  		= this;
-	var model 	  		= new TRModel(server + 'promoted.json');
+	var model 	  		= new TRModel('http://tr-cache-2.appspot.com/smithandrobot/promoted.json');
+	// var model 	  		= new TRModel(server + 'oscars-spotlight.json');
 	var tweets	  		= new Array();
 	var rendered  		= false;
 	var tweetIndex 		= 0;
