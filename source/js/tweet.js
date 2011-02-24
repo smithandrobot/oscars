@@ -19,7 +19,25 @@ function Tweet()
 	var followModal;
 	var reTweetModal;
 	var replyModal;
-	
+	var nominees = [ 'Chris_Sanders_',
+					 'DanaBrunetti',
+					 'DavidORussell',
+					 'Bedlam_Gareth',
+					 '_HelenaBCarter_',
+					 'joshfoxintlwow',
+					 'leeunkrich',
+					 'Mruff221',
+					 'sebastianjunger',
+					 'TimHetherington',
+					 'saranesson',
+					 'suncomeupfilm',
+					 'yangruby',
+					 'igorstudios', 
+					 'arrahman',
+					 'trent_reznor',
+					 'troyverges',
+					 'didoofficial',
+				   ];
 	//  Public
 	this.htmlText;
 	this.tweetID;
@@ -60,6 +78,7 @@ function Tweet()
 		decorate(element);
 		element.css({position:"relative"});
 		element.css({opacity:0, top:-10});
+
 		return element;
 	}
 	
@@ -104,7 +123,7 @@ function Tweet()
 	
 	
 	function decorate(e)
-	{	
+	{			
 		e.find('.action-follow').click(onClickFollow);
 		e.find('.tweet-utility').fadeTo('fast', .2);
 		
