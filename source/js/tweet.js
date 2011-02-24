@@ -47,9 +47,11 @@ function Tweet()
 	this.celeb 		= false;
 	this.getHTML 	= getHTML;
 	this.orderID;
+	this.tweetText;
 	
 	function setData(d)
 	{
+		self.tweetText	= d.text;
 		self.htmlText 	= TweetParser.parse(d.text);
 		self.tweetID 	= d.id;
 		verified 	 	= d.user.verified;

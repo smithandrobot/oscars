@@ -76,7 +76,7 @@ function TweetUtilsWindows()
 		
 		decorateCloseBtn(qTipObj.content);
 		decorateCancelBtn(qTipObj.content);
-		decorateReTweet(qTipObj.content);
+		decorateRetweetBtn(qTipObj.content);
 		
 		reTweetModal.qtip(qTipObj);
 		modal = reTweetModal;
@@ -174,12 +174,6 @@ function TweetUtilsWindows()
 	}
 	
 	
-	function decorateReTweet( e )
-	{
-		var reTweetBtn = $(e).find('.button-retweet');
-	}
-	
-	
 	function decorateCancelBtn( e )
 	{
 		var reTweetCancelBtn = $(e).find('.button-cancel');
@@ -191,6 +185,12 @@ function TweetUtilsWindows()
 	{
 		var followBtn = $(c).find('.button-follow');
 		followBtn.click( followUser )
+	}
+	
+	function decorateRetweetBtn( c )
+	{
+		var retweetBtn = $(c).find('.button-retweet');
+		retweetBtn.click( reTweet )
 	}
 	
 	
@@ -205,6 +205,20 @@ function TweetUtilsWindows()
 					user.follow();
 				}
 			);
+	}
+	
+	function reTweet()
+	{
+		twttr.anywhere
+		(
+		
+			function (T) 
+			{
+				Log('retwesting status: '+tweet.tweetID)
+				T.Status.retweet(tweet.tweetID);
+			}
+		);
+	
 	}
 	
 	

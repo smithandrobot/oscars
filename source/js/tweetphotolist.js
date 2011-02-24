@@ -68,13 +68,14 @@ function TweetPhotoList( server )
 			t = new TweetPhoto();
 			t.addEventListener('onPhotoReady', onPhotoReady);
 			t.id = i;
-			tweets.unshift( {tweet:t, id:i} );
+			tweets.push( {tweet:t, id:i} );
 			t.setData( data[i] );
 		};
 		
 		lastID = data[0].order_id;
 		
 		show();
+		
 		if(!rendered)
 		{
 			dispatchEvent( 'tweetPhotoListLoaded', self );
