@@ -13,6 +13,7 @@ function TweetList(URL)
 	var timeout   		= null;
 	var lastID	  		= null;
 	var active	  		= false;
+	var stream			= URL;
 	
 	this.updateList		= false;
 	this.element  		= null;
@@ -52,6 +53,7 @@ function TweetList(URL)
 	
 	function show()
 	{
+		Log(self.id+' stream: '+stream);
 		var html ='';
 		var tweet;
 		var total = tweets.length - 1;
@@ -70,8 +72,8 @@ function TweetList(URL)
 			self.element.append(tweetObj);
 		};
 
-		if(self.id != "viewerList") self.element.insertAfter('#loadmore');
-		if(self.id == "viewerList") $('#viewer-timeline').append(self.element);
+		if(self.id != "expertList") self.element.insertAfter('#loadmore');
+		if(self.id == "expertList") $('#viewer-timeline').append(self.element);
 		
 		if(self.element) self.element.fadeIn(250, null, function(){dispatchEvent("onShowing", self);});
 		

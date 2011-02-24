@@ -4,9 +4,9 @@ $(document).ready(function() {
 
 function Application()
 {
-	twttr.anywhere.config({ callbackURL: "http://www.smithandrobot.com/tapp/" });
-	// var server 		   = 'http://tr-cache-2.appspot.com/massrelevance/';
-	var server 		   	= 'http://tr-cache-2.appspot.com/smithandrobot/';
+	twttr.anywhere.config({ callbackURL: "http://www.smithandrobot.com/tapp/tapp_callback.php" });
+	var server 		   = 'http://tr-cache-2.appspot.com/massrelevance/';
+	//var server 		   	= 'http://tr-cache-2.appspot.com/smithandrobot/';
 	var mainTweetLists 	= new TweetListController( server );
 	var tweetPhotos	   	= new TweetPhotoList( server );
 	var filterNav	   	= new FilterNav();
@@ -49,7 +49,6 @@ function Application()
 	
 	function onSpotlightTweetsLoaded( e )
 	{
-		//tweetPhotos.load();
 		tweetStats.init()
 	}
 	
@@ -67,7 +66,6 @@ function Application()
 	function onMostMentionedRendered( e )
 	{
 		tweetPhotos.load();
-		// 
 	}
 	
 	

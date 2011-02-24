@@ -4,7 +4,7 @@ TweetPhotoList.constructor = TweetPhotoList;
 
 function TweetPhotoList( server )
 {
-	var PAGE_SIZE 	= 355;
+	var PAGE_SIZE 	= 340;
 	var INTERVAL	= 1000*60;
 	
 	var url			= server + 'photos.json';

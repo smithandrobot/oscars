@@ -5,8 +5,8 @@ function FilterNav()
 {
 	var self 	= this;
 	var all 	= $('#filter-all');
-	var celebs 	= $('#filter-celebList');
-	var experts = $('#filter-expertList');
+	var celebs 	= $('#filter-celebs');
+	var viewers = $('#filter-viewers');
 	
 	this.show 	= show;
 	this.filter = null;
@@ -28,7 +28,7 @@ function FilterNav()
 	{
 		all.click(onClick);
 		celebs.click(onClick);
-		experts.click(onClick);
+		viewers.click(onClick);
 	};
 	
 	
@@ -43,10 +43,10 @@ function FilterNav()
 	function select( id )
 	{
 		self.filter = id;
-		
+		Log('id: '+id)
 		if(id != 'filter-all')  $('#filter-all').parent().toggleClass('down', false);
-		if(id != 'filter-celebList')  $('#filter-celebList').parent().toggleClass('down', false);
-		if(id != 'filter-expertList')  $('#filter-expertList').parent().toggleClass('down', false);
+		if(id != 'filter-celebs')  $('#filter-celebs').parent().toggleClass('down', false);
+		if(id != 'filter-viewers')  $('#filter-viewers').parent().toggleClass('down', false);
 		
 		dispatchEvent('onFilterChange', self);
 	};
