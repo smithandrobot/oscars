@@ -43,8 +43,7 @@ function Application()
 	
 	function onPhotosLoaded( e )
 	{
-		tweetBox.show();
-		mainTweetLists.loadViewerList();
+		mainTweetLists.loadExpertList();
 	}
 	
 	function onSpotlightTweetsLoaded( e )

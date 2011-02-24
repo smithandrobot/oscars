@@ -81,6 +81,8 @@ function TweetList(URL)
 		
 		clearTimeout(timeout);
 		setTimeout(poll, INTERVAL);
+		
+		// addd scrollbar initialization code here
 	};
 	
 	
