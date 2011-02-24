@@ -304,6 +304,11 @@ h3 {
 	overflow: hidden;
 }
 
+#viewer-timeline .tweet-profile-image img {
+	width: 32px;
+	height: 32px;
+}
+
 #viewer-timeline .tweet-profile-image {
 	padding: 0px;
 	background: none;
