@@ -97,7 +97,7 @@ function TweetList(URL)
 		if(self.element) self.element.fadeOut(250, null, 
 			function()
 			{ 
-				$(".qtip").remove();
+				//$(".qtip").remove();
 				self.element.detach();
 				var l = $('#loadmore').detach();
 				clearScrollBar();
@@ -203,6 +203,7 @@ function TweetList(URL)
 			tweetObj = tweet.getHTML();
 			tweetObj.animate({opacity:1, top:0}, { duration:500, complete: function(){ $(this).css('filter', '');} });
 			self.element.prepend(tweetObj);
+			tweets.unshift({tweet:tweet, id:i})
 		};
 
 		

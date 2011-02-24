@@ -105,8 +105,6 @@ function Tweet()
 	
 	function decorate(e)
 	{	
-		// e.find('.action-retweet').click(onClickRetweet);
-		// e.find('.action-reply').click(onClickReply);
 		e.find('.action-follow').click(onClickFollow);
 		e.find('.tweet-utility').fadeTo('fast', .2);
 		

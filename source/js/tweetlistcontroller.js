@@ -31,9 +31,9 @@ function TweetListController(server)
 	this.load			= load;
 	this.loadExpertList	= loadExpertList//viewerList.load;
 	
-	$('#main-timeline').hide();
-	$('#main-timeline').hide();
-	$('#viewer-timeline .timeline-all').hide();
+	// $('#main-timeline').hide();
+	// $('#main-timeline').hide();
+	// $('#viewer-timeline .timeline-all').hide();
 		
 	function load()
 	{
@@ -84,8 +84,8 @@ function TweetListController(server)
 		
  		expertList.element = $('#viewer-timeline .timeline-all').clone();
 		
-		$('#main-timeline').remove();
-		$('#viewer-timeline .timeline-all').remove();
+		// $('#main-timeline').remove();
+		//$('#viewer-timeline .timeline-all').remove();
 	};
 
 	
@@ -104,6 +104,7 @@ function TweetListController(server)
 	
 	function viewerListLoaded( e )
 	{
+		$('#viewer-timeline .timeline-all').remove();
 		e.target.show();
 	}
 	
@@ -121,7 +122,7 @@ function TweetListController(server)
 				if(last == null) 
 				{
 					list.show();
-					//tweetCount.update(0);
+					$('#main-timeline').remove();
 				};
 				last = list;
 				return;

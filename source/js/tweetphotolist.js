@@ -29,7 +29,7 @@ function TweetPhotoList( server )
 	
 	function init()
 	{
-		element.empty();
+		
 		page.text( currPage );
 		total.text( totalPages );
 		decoratePagingButtons();
@@ -123,6 +123,7 @@ function TweetPhotoList( server )
 		var tweetObj;
 		var i = 0;
 		
+		element.empty();
 		element.html('');
 		
 		for(i;i<=totalTweets;i++)	

@@ -23,7 +23,7 @@ function SpotlightTweetList( server )
 	this.load	  		= load;
 	this.controls;
 	
-	element.empty();
+	//element.empty();
 	
 	
 	function load()
@@ -60,6 +60,7 @@ function SpotlightTweetList( server )
 
 		
 		lastTweet = tweet;
+		element.find('.please-wait').empty();
 	};
 	
 
