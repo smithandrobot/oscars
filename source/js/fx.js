@@ -32,12 +32,6 @@ function styleTweetBox()
 	counter.css('font-size', 16);
 }
 
-// append scrollbar to all DOM nodes with class="css-scrollbar"
-$(function(){
-    $('.css-scrollbar').scrollbar();
-    $('.css-scrollbar-2').scrollbar();
-  });
-
 $(function(){
 	$(".top5").click(function(){
 	     window.top.location=$(this).find("a").attr("href");

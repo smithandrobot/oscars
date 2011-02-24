@@ -83,6 +83,9 @@ function TweetList(URL)
 		setTimeout(poll, INTERVAL);
 		
 		// addd scrollbar initialization code here
+		
+		if(self.id != "expertList") $('.css-scrollbar').scrollbar();
+		if(self.id == "expertList") $('.css-scrollbar-2').scrollbar();
 	};
 	
 	
@@ -96,9 +99,23 @@ function TweetList(URL)
 			{ 
 				$(".qtip").remove();
 				self.element.detach();
+				var l = $('#loadmore').detach();
+				clearScrollBar();
+				$("#timeline").prepend(l);
 				dispatchEvent("onHidden", self);
 			});
 	};
+	
+	function clearScrollBar()
+	{
+		if(self.id != "expertList") {
+			Log("hiding "+self.id);
+			$("#timeline .scrollbar-pane").remove();
+			$("#timeline .scrollbar-handle-container").remove();
+			$("#timeline .scrollbar-handle-up").remove();
+			$("#timeline .scrollbar-handle-down").remove();
+		}
+	}
 
 
 	function writeList( e )
