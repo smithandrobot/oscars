@@ -7,7 +7,7 @@ function TweetPhotoList( server )
 	var PAGE_SIZE 	= 340;
 	var INTERVAL	= 1000*60;
 	
-	var url			= server + 'photos.json';
+	var url			= server + 'oscars-pix.json';
 	var poller		= null;
 	var lastID		= null;
 	var self	  	= this;
