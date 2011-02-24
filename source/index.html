@@ -47,7 +47,12 @@
 		<script type="text/javascript" src="js/application.js" charset="utf-8"></script>
 	</head>
 	<body>
+		<!--[if IE 6]>
+		<script type="text/javascript"> 
+			document.write("<div class='warning'><b>This page cannot load properly because your browser (version 6) needs to be <a href='http://www.microsoft.com/windows/internet-explorer' target='_top'>updated</a>.</b></div>");</script>
+		<![endif]-->
 		<div id="page-container">
+			<noscript><div><b>This page cannot load properly because JavaScript is turned off.</b> Try turning it on and reloading</div></noscript>
 			<h1>
 				Twitter @redcarpet
 			</h1>
@@ -57,10 +62,7 @@
 				</div>
 				<div id="spotlight">
 					<div id="spotlight-tweet-container">
-<<<<<<< HEAD
 						<div class="please-wait"><img src="img/loader-dark.gif" width="32" height="32" alt=""><br>Waiting for Tweet</div>
-=======
->>>>>>> 314a431dcb58917a3a0006d0d1b80be7b6ca75b1
 					</div>
 				</div>
 				<div id="timeline-head">

@@ -30,6 +30,20 @@ a:hover {
 	color: #F3E898;
 }
 
+noscript div, .warning {
+	line-height: 50px;
+	background: #CAA642;
+	color: #333;
+	text-shadow: none;
+	font-size: 16px;
+	text-align: center;
+}
+
+.warning a {
+	color: #74000e;
+	text-decoration: underline;
+}
+
 ol {
 	display: inline;
 	margin-left: 0px;
