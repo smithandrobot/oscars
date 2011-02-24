@@ -8,27 +8,12 @@ $(document).ready(function() {
 $(function()
 {
 		
-// photo browser
-	
-	// $('#photo-paging .next').click(function() {
-	//   $('#photo-scroller').animate({
-	//     left: '-=355'
-	//   }, 250, function() {
-	//     // Animation complete.
-	//   });
-	// });
-	// 
-	// $('#photo-paging .previous').click(function() {
-	//   $('#photo-scroller').animate({
-	//     left: '+=355'
-	//   }, 250, function() {
-	//     // Animation complete.
-	//   });
-	// });
 	
 });
 
 // tweet box styling
+
+
 
 function styleTweetBox()
 {
@@ -48,16 +33,23 @@ function styleTweetBox()
 }
 
 // append scrollbar to all DOM nodes with class="css-scrollbar"
-  $(function(){
+$(function(){
     $('.css-scrollbar').scrollbar();
     $('.css-scrollbar-2').scrollbar();
-  })
+  });
+
+$(function(){
+	$(".top5").click(function(){
+	     window.top.location=$(this).find("a").attr("href");
+	     return false;
+	});
+  });
 
 // modal managers -- action-follow
 		
 		function init()
 		{
+		
 			
 		}
 		
-

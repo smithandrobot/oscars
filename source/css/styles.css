@@ -481,9 +481,8 @@ h3 {
 	width: 530px;
 }
 
-#spotlight .tweet-name a, #spotlight .tweet-text {
-	filter:progid:DXImageTransform.Microsoft.Glow(Color=#000000,Strength=3);
-/*	border: 1px solid red;*/
+#spotlight .tweet-name, #spotlight .tweet-text {
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=135,strength=2);
 }
 
 #spotlight .tweet-name-screen, #spotlight .tweet-name, #spotlight .tweet-text {
@@ -632,6 +631,7 @@ h3 {
 .top5 * {
 	font-size: 18px;
 	line-height: 34px;
+	cursor: pointer;
 }
 
 #nominees b, .flipper {
