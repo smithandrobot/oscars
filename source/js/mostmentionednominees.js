@@ -10,10 +10,7 @@ function MostMentionedNominees( server )
 	var element		= $('#nominees');
 	var col1		= element.find('ol:first');
 	var col2		= element.find('ol:first').next();
-	
-	clearSceenData();
-	// Log('col1 text: '+col1.find('li:first').text());
-	// Log('col2 text: '+col2.find('li:first').text());
+	var INTERVAL	= 1000*5;
 	
 	var oStreams 	= [
 					   {name: 'Javier Bardem', stream : 'oscars-actor-bardem'},
@@ -50,6 +47,8 @@ function MostMentionedNominees( server )
 	this.load 		= load;
 	this.toString   = toString;
 
+	clearSceenData();
+	
 	function load()
 	{
 		if(!rendered)
@@ -57,6 +56,7 @@ function MostMentionedNominees( server )
 			model.addEventListener("onDataChange", dataChanged);
 			model.load(  null , 'jsonp' );
 			rendered = true;
+			decorateFlipBtns();
 		}
 	};
 	
@@ -120,7 +120,8 @@ function MostMentionedNominees( server )
 			var stream = streams[ ++index ];
 			var a =  $(this).find('a')
 			a.text(stream.nomineeName);
-			a.attr('href', 'http://search.twitter.com/search?q=%23'+stream.nomineeName)
+			a.attr('href', 'http://search.twitter.com/search?q='+stream.nomineeName);
+			a.attr('target', '_blank');
 			$(this).find('span').text(Utils.addCommas(stream.count.approved));
 		});
 		
@@ -130,7 +131,8 @@ function MostMentionedNominees( server )
 			var stream = streams[ ++index ];
 			var a =  $(this).find('a')
 			a.text(stream.nomineeName);
-			a.attr('href', 'http://search.twitter.com/search?q=%23'+stream.nomineeName)
+			a.attr('href', 'http://search.twitter.com/search?q='+stream.nomineeName);
+			a.attr('target', '_blank');
 			
 			$(this).find('span').text(Utils.addCommas(stream.count.approved));
 		});
@@ -199,7 +201,8 @@ function MostMentionedNominees( server )
 	{
 		var flipper = element.find('#number'+String(id));
 		flipper.find('.name a').text(name);
-		flipper.find('.name a').attr('href', 'http://search.twitter.com/search?q=%23'+name);
+		flipper.find('.name a').attr('href', 'http://search.twitter.com/search?q='+name);		
+		flipper.find('.name a').attr('target', '_blank');
 		flipper.find('.count').text(total);
 		flipper.find('.flip-fx img').css({display:'none'});
 		
@@ -220,6 +223,16 @@ function MostMentionedNominees( server )
 	}
 		
 	
+	function decorateFlipBtns()
+	{
+		$(".top5").click(function(){
+			$(this).find("a").attr("target", "_blank");
+			window.open($(this).find("a").attr("href"), '_blank');
+			return false;
+		});
+	}
+	
+	
 	function toString()
 	{
 	 	return "most nominated list";
@@ -228,8 +241,3 @@ function MostMentionedNominees( server )
 	
 	return this;
 };
-
-function results( e )
-{
-	Log('got results');
-}

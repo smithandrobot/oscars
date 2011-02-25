@@ -75,11 +75,14 @@ function Tweet()
 		var bioButton;
 		
 		element = $(render());
-		if(verified) 
+		if( isNominee(self.screenName)) 
 		{
-			$('<span class="badge-celebrity">Celeb</span>').insertAfter(element.find('.tweet-name-full'))
-			Log('found verified user');
+			$('<span class="badge-nominee">Nominee</span>').insertAfter(element.find('.tweet-name-full'));
 		}
+		if(verified) $('<span class="badge-celebrity">Celeb</span>').insertAfter(element.find('.tweet-name-full'));
+		
+
+		
 		if(self.type == 'viewer')
 		{
 			bioButton = element.find('.expert-bio');
@@ -130,6 +133,17 @@ function Tweet()
 			  '   </div>'+
 			  '</div>';
 	};
+	
+	
+	function isNominee( sName )
+	{
+		for( var i in nominees)
+		{
+			if(sName == nominees[i]) return true;
+		}
+		
+		return false;
+	}
 	
 	
 	function decorate(e)
