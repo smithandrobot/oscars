@@ -8,7 +8,9 @@ function TweetStats()
 	var totalCount 	 		= $('#total-tweets');
 	var tweetsPerSec 		= $('#total-tweets-second');
 	var rendered			= false;
-	var model				= new TRModel('http://tr-cache-2.appspot.com/massrelevance/oscars-all/meta.json')
+	var model				= new TRModel('http://tr-cache-2.appspot.com/massrelevance/oscars-all/meta.json');
+	var tweetsPerMinInterval;
+	var tweetsTotalInterval;
 	this.totalTweets	 	= 0;
 	this.totalTweetsPerMin 	= 0;
 	this.toString			= toString;
@@ -33,6 +35,7 @@ function TweetStats()
 	
 	function onDataChange( e )
 	{
+		Log('data change in tweet stats');
 		var data = e.target.getData();
 		this.totalTweets = data.count.approved;
 		var perMin = data.tweets.minute.total;
@@ -50,7 +53,7 @@ function TweetStats()
 		.onUpdate(updateTotal)
 		.to({totalTweets:totalTweets}, 2000)
 		.start();
-		setInterval(TWEEN.update, 1000/31);
+		tweetsTotalInterval = setInterval(TWEEN.update, 1000/31);
 	};
 	
 	function setTweetsPerSec(n)
@@ -62,7 +65,7 @@ function TweetStats()
 		.onComplete( onComplete ) 
 		.to({totalTweetsPerMin:totalTweetsPerMin}, 2000)
 		.start();
-		setInterval(TWEEN.update, 1000/31);
+		tweetsPerMinInterval =setInterval(TWEEN.update, 1000/31);
 	};
 	
 	
@@ -79,10 +82,12 @@ function TweetStats()
 	
 	function onComplete()
 	{
+		setTimeout(poll, INTERVAL);
 		if(rendered) return;
 		dispatchEvent( 'onStatsLoaded' , self);
 		rendered = true;
-		setTimeout(poll, INTERVAL);
+		clearInterval(tweetsTotalInterval);
+		clearInterval(tweetsPerMinInterval);
 	}
 	
 	

@@ -56,7 +56,7 @@ function Tweet()
 		self.tweetText	= d.text;
 		self.htmlText 	= TweetParser.parse(d.text);
 		self.tweetID 	= d.id_str;
-		self.time		= d.created_at.slice(0, -10);
+		self.time		= parseDate(d.created_at);
 		verified 	 	= d.user.verified;
 		self.screenName	= d.user.screen_name;
 		self.userName 	= d.user.name;
@@ -171,5 +171,21 @@ function Tweet()
 		replyModal.replyModal( self, e );
 	}
 	
+	/*
+		new date: Fri Feb 25  Fri Feb 25 15:00:
+		new date: Fri Feb 25  Fri Feb 25 14:58:
+		new date: Fri Feb 25  Fri Feb 25 14:07:
+		new date: Fri Feb 25  Fri Feb 25 05:13:
+		new date: Fri Feb 25  Fri Feb 25 05:12:
+	*/
+	
+	function parseDate( d )
+	{
+		var date = d.slice(0,-19);
+		var time = d.slice(0, -14).slice();
+		var newTime = date+' '+time;
+		Log('new date: '+newTime);
+		return newTime;
+	}
 	return this;
 };

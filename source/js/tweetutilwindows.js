@@ -117,7 +117,7 @@ function TweetUtilsWindows()
                 			 padding: 0,
 							 border: false,
 				 			 width: { min: 294 }
-			   				};
+					    };
 		obj.hide 	 = { fixed: true };
 		obj.show 	 = { delay: 0, when:'click' };
 		return obj;
