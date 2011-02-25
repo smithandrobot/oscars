@@ -47,6 +47,8 @@
 		
 	  </filelist>
 	</concat>
+	
+	<copy todir="${deploy}/css/" file="css/styles.css" />
 
 	<echo message="Init..." />
 	<tstamp/>
@@ -61,12 +63,5 @@
 	</jscomp>
 	
 	<delete dir="${build}"/>
-	
-	<target name="staging">
-		<echo message="Starting file transfer...hode up a sec..." />
-		<exec dir="." executable="rsync" searchpath="true" resolveexecutable="true" os="Mac OS X" failonerror="false">
-			<arg line="rsync -e ssh -vru ${deploy}/. smithandrobot.com:/var/www/smithandrobot.com/davids_playground/tapp/" />
-		</exec>
-	</target>
 	
 </project>
