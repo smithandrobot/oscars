@@ -53,7 +53,7 @@ function Tweet()
 	{
 		self.tweetText	= d.text;
 		self.htmlText 	= TweetParser.parse(d.text);
-		self.tweetID 	= d.id;
+		self.tweetID 	= d.id_str;
 		verified 	 	= d.user.verified;
 		self.screenName	= d.user.screen_name;
 		self.userName 	= d.user.name;

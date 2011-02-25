@@ -81,10 +81,13 @@ function TweetStats()
 	
 	function getAverage(a)
 	{
-		var i 	  = 0;
-		var total = a.length-1;
-		var count = 0;
+		// only use the last 10 elements in the array
+		a.splice(0, 50);
 		
+		var i 	  = 0;
+		var total = a.length - 1;
+		var count = 0;
+				
 		for(i; i<= total; i++)
 		{
 			count += a[i];

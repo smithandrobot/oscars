@@ -184,8 +184,9 @@ function TweetUtilsWindows()
 	function decorateFollowBtn( c )
 	{
 		var followBtn = $(c).find('.button-follow');
-		followBtn.click( followUser )
+		followBtn.click( followUser );
 	}
+	
 	
 	function decorateRetweetBtn( c )
 	{
@@ -198,27 +199,33 @@ function TweetUtilsWindows()
 	{
 		twttr.anywhere
 			(
-
 				function (T) 
 				{
 					var user = T.User.find( tweet.screenName );
 					user.follow();
 				}
 			);
+			
+		modal.qtip( "hide" );
 	}
 	
 	function reTweet()
 	{
 		twttr.anywhere
-		(
-		
+		(		
 			function (T) 
 			{
-				Log('retwesting status: '+tweet.tweetID)
-				T.Status.retweet(tweet.tweetID);
+				var status = T.Status.find(tweet.tweetID);
+				for(var i in status)
+				{
+					Log('status.'+i+' = '+status[i]);
+				}
+
+				status.retweet();
 			}
 		);
-	
+		
+		modal.qtip( "hide" );
 	}
 	
 	
@@ -238,7 +245,7 @@ function TweetUtilsWindows()
 				    		defaultContent: '@'+tweet.screenName,
 							complete: onTweetBoxLoaded,
 				    		label: "",
-							data:{ in_reply_to_status_id:tweet.tweetID } 
+							data:{ 'in_reply_to_status_id' : tweet.tweetID } 
 				  		}
 					);
 				}
@@ -287,7 +294,6 @@ function TweetUtilsWindows()
 	
 	function onClose()
 	{
-		Log( 'closing' );
 		modal.qtip( "hide" );
 		return false;
 	}
