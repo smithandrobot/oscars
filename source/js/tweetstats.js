@@ -11,8 +11,10 @@ function TweetStats()
 	var model				= new TRModel('http://tr-cache-2.appspot.com/massrelevance/oscars-all/meta.json');
 	var tweetsPerMinInterval;
 	var tweetsTotalInterval;
+	
 	this.totalTweets	 	= 0;
 	this.totalTweetsPerMin 	= 0;
+	
 	this.toString			= toString;
 	this.init				= init;
 	
@@ -35,13 +37,12 @@ function TweetStats()
 	
 	function onDataChange( e )
 	{
-		Log('data change in tweet stats');
 		var data = e.target.getData();
 		this.totalTweets = data.count.approved;
 		var perMin = data.tweets.minute.total;
 		this.totalTweetsPerMin = getAverage(perMin)
 		setTotalTweets(this.totalTweets);
-		setTimeout(setTweetsPerSec, 1000, [this.totalTweetsPerMin]);
+		setTimeout(function(n){ return function() { setTweetsPerSec(n); } }(this.totalTweetsPerMin),  1000 );
 	}
 	
 	
@@ -58,7 +59,6 @@ function TweetStats()
 	
 	function setTweetsPerSec(n)
 	{
-		Log('tweets per min: '+n);
 		totalTweetsPerMin = n
 		var tween = new TWEEN.Tween(self)
 		.onUpdate(updateTweetsPerSec)
@@ -76,7 +76,9 @@ function TweetStats()
 	
 	function updateTweetsPerSec()
 	{
-		tweetsPerSec.text(Utils.addCommas(Math.round(self.totalTweetsPerMin)));
+		var org = Math.round( self.totalTweetsPerMin);
+		var wCommas = Utils.addCommas( org )
+		tweetsPerSec.text( org );
 	}
 	
 	

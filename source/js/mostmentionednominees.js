@@ -172,8 +172,8 @@ function MostMentionedNominees( server )
 			element.find('#number'+String(i)).find('.name a').text('');
 		}
 		
-		col1.find('li').each(clearLIData);
-		col2.find('li').each(clearLIData);
+		//col1.find('li').each(clearLIData);
+		//col2.find('li').each(clearLIData);
 	}
 	
 	
