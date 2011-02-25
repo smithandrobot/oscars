@@ -238,7 +238,7 @@ function TweetUtilsWindows()
 				  T('#tweetbox-'+tweet.tweetID+'-'+time+'-reply').tweetBox
 					(
 						{
-				    		height: 100,
+				    		height: 70,
 				    		width: 230,
 				    		defaultContent: '@'+tweet.screenName,
 							complete: onTweetBoxLoaded,
@@ -273,10 +273,10 @@ function TweetUtilsWindows()
 	
 	function styleTweetBox()
 	{
-		var tweetBox	= $('#tweetbox-'+tweet.tweetID+'-reply');
+		var tweetBox	= $('#tweetbox-'+tweet.tweetID+'-'+time+'-reply');
 		var label 		= tweetBox.find('iframe').contents().find("label");
 		var textarea 	= tweetBox.find('iframe').contents().find("#tweet-box");
-		counter 		= tweetBox.find('iframe').contents().find("#counter");
+		var counter 	= tweetBox.find('iframe').contents().find("#counter");
 
 		label.css('font-size', 16);
 		label.css('color', "#ccc");
