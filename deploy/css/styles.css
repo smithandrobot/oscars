@@ -711,6 +711,8 @@ h3 {
 	margin-left: 30px;
 	font-size: 11px;
 	text-align: center;
+	width: 83px;
+	overflow: hidden;
 }
 
 #photo-browser .photo {
