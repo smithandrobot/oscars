@@ -171,21 +171,10 @@ function Tweet()
 		replyModal.replyModal( self, e );
 	}
 	
-	/*
-		new date: Fri Feb 25  Fri Feb 25 15:00:
-		new date: Fri Feb 25  Fri Feb 25 14:58:
-		new date: Fri Feb 25  Fri Feb 25 14:07:
-		new date: Fri Feb 25  Fri Feb 25 05:13:
-		new date: Fri Feb 25  Fri Feb 25 05:12:
-	*/
-	
 	function parseDate( d )
 	{
 		var date = d.slice(0,-19);
-		var time = d.slice(0, -14).slice();
-		var newTime = date+' '+time;
-		Log('new date: '+newTime);
-		return newTime;
+		return date;
 	}
 	return this;
 };
