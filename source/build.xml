@@ -18,23 +18,33 @@
 		
 	<concat destfile="${build}/js/project.js">
 	  <filelist dir="${src}">
+		
 		<!-- Utils -->
-		<file name="utils/utils.js" />
-		<file name="utils/log.js" />
-		<file name="utils/event.js" />
-		<file name="utils/eventmanager.js" />
-		<file name="utils/eventdispatcher.js" />
-		<file name="utils/tweetparser.js" />
+		<file name="utils/utils.js"/>
+		<file name="utils/log.js"/>
+		<file name="utils/event.js"/>
+		<file name="utils/eventmanager.js"/>
+		<file name="utils/eventdispatcher.js"/>
+		<file name="utils/tweetparser.js"/>
+		<file name="utils/mediaparser.js"/>
 		
 		<!-- Application -->
-		<file name="trmodel.js" />
-		<file name="tweet.js" />
-		<file name="tweetstats.js" />
-		<file name="tweetcount.js" />
-		<file name="tweetlist.js" />
-		<file name="tweetlistcontroller.js" />
-		<file name="filternav.js" />
-		<file name="application.js" />
+		<file name="tweetutilwindows.js"/>
+		<file name="tweetphotomodal.js"/>
+		<file name="trmodel.js"/>
+		<file name="tweetphoto.js"/>
+		<file name="tweet.js"/>
+		<file name="tweetstats.js"/>
+		<file name="tweetcount.js"/>
+		<file name="tweetphotolist.js"/>
+		<file name="tweetlist.js"/>
+		<file name="spotlighttweetlist.js"/>
+		<file name="spotlightcontrols.js"/>
+		<file name="tweetlistcontroller.js"/>
+		<file name="filternav.js"/>
+		<file name="mostmentionednominees.js"/>
+		<file name="application.js"/>
+		
 	  </filelist>
 	</concat>
 

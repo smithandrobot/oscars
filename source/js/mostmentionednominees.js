@@ -41,8 +41,7 @@ function MostMentionedNominees( server )
 		        	   {name: 'Coen Brothers', stream : 'oscars-directing-coen'},
 		        	   {name: 'David Fincher', stream : 'oscars-directing-fincher'},
 		        	   {name: 'Tom Hooper', stream : 'oscars-directing-hooper'},
-		        	   {name: 'David Russell', stream : 'oscars-directing-russell'}
-					];
+		        	   {name: 'David Russell', stream : 'oscars-directing-russell'}]
 					
 	this.load 		= load;
 	this.toString   = toString;

@@ -22,7 +22,8 @@ TweetParser = (function TweetParser()
         var tweet = str;
         tweet = parseLinks(tweet);
         tweet = parseHashtags(tweet);
-        tweet = parseUser(tweet);
+        //
+		// tweet = parseUser(tweet);
 
         return tweet;
     }
@@ -36,7 +37,7 @@ TweetParser = (function TweetParser()
 		
         for (var i = 0; i<= total; i++)
         {
-            replaceString = "<a href='http://search.twitter.com/search?q=" + hashArray[i].replace("#", "%23") + "' target='_blank'>" + hashArray[i] + "</a>";
+            replaceString = "<a href='http://search.twitter.com/search?q=" + hashArray[i].replace("#", "%23") + " target='_blank'>" + hashArray[i] + "</a>";
             str = str.replace(hashArray[i], replaceString);
         }
 
@@ -53,7 +54,7 @@ TweetParser = (function TweetParser()
 
         for (var i = 0; i <= total; i++)
         {
-            replaceString = "<a href='http://twitter.com/" + userArray[i] + "' target='_blank'>" + userArray[i] + "</a>";
+            replaceString = "<a href='http://twitter.com/" + userArray[i] + "'>" + userArray[i] + "</a>";
             str = str.replace(userArray[i], replaceString);
         }
 

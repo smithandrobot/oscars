@@ -16,24 +16,24 @@ function styleTweetBox()
 	counter.css('width', 80);
 	counter.css('font-size', 16);
 	
-	box.focus(function() {
-		$(this).addClass('newly-focused');
-		$(this).setCursorPosition(0);
-		return;
-	});
-	
-	box.blur(function() {
-		$(this).removeClass('newly-focused');
-		return;
-	});
-	
-	box.click(function() {
-		if ($(this).hasClass('newly-focused')) {
-			$(this).setCursorPosition(0);
-			$(this).removeClass('newly-focused');
-		}
-		return;
-	});
+	// box.focus(function() {
+	// 	$(this).addClass('newly-focused');
+	// 	$(this).setCursorPosition(0);
+	// 	return;
+	// });
+	// 
+	// box.blur(function() {
+	// 	$(this).removeClass('newly-focused');
+	// 	return;
+	// });
+	// 
+	// box.click(function() {
+	// 	if ($(this).hasClass('newly-focused')) {
+	// 		$(this).setCursorPosition(0);
+	// 		$(this).removeClass('newly-focused');
+	// 	}
+	// 	return;
+	// });
 	
 }
 

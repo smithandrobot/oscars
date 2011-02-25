@@ -13,6 +13,7 @@ function TweetListController(server)
 	viewerList.id	= "viewers";
 	
 	var expertList 		= new TweetList(server + 'oscars-experts.json');
+	//var expertList 		= new TweetList('http://tweetriver.com/smithandrobot/promoted.json');
 	expertList.id		= "expertList";
 	
 	var tweetCount		= new TweetCount();	
@@ -25,6 +26,7 @@ function TweetListController(server)
 	var self			= this;
 	
 	// Public Methods
+	
 	this.select			= select;
 	this.load			= load;
 	this.loadExpertList	= loadExpertList;

@@ -1,8 +1,8 @@
 html {
+	background: #2E2E2E;
 	color: #ccc;
-	background: #242424;
-	}
-	
+}
+
 html *:focus {
 	outline: 0;
 }
@@ -19,40 +19,70 @@ body, div {
 	font-family: "Helvetica Neue", "Helvetica", Arial, sans;
 	font-size: 13px;
 	line-height: 1.4;
-	text-shadow: #000 0px 0px 3px;
+	text-shadow: #000000 0px 0px 3px;
 	}
 
 a {
-	color: #E7D38D;
+	color: #CAA642;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #FEF9C5;
+	color: #F3E898;
+}
+
+noscript div, .warning {
+	line-height: 50px;
+	background: #CAA642;
+	color: #333;
+	text-shadow: none;
+	font-size: 16px;
+	text-align: center;
+}
+
+.warning a {
+	color: #74000e;
+	text-decoration: underline;
 }
 
 ol {
 	display: inline;
-	margin-left: 20px;
+	margin-left: 0px;
 	margin-top: 15px;
+	margin-right: 15px;
 	font-size: 11px;
 	line-height: 1.6em;
 	min-height: 200px;
+	min-width: 165px;
 	float:left;
 }
 
 li {
-	margin-left: 0px;
+	margin-left: 3px;
 	padding-left: 0px;
+}
+
+li a {
+	margin-left: 10px;
+	margin-right: 5px;
+}
+
+.top5, li {
+	color: #666;
+	font-weight: bold;
+}
+
+.top5 a, li a {
+	color :#fff;
+	font-weight: normal;
 }
 
 h1 {
 	text-indent: -99999px;
-	width: 510px;
-	height: 37px;
-	margin-bottom: 15px;
+	height: 59px;
+	margin-bottom: 20px;
 	background: url("../img/sprite-headlines.png") no-repeat;
-	background-position: 0px 0px;
+	background-position: center 15px;
 }
 
 h4 {
@@ -68,10 +98,10 @@ h4 {
 
 .fake-h2 {
 	text-indent: -99999px;
-	width: 281px;
+	width: 266px;
 	height: 25px;
 	background: url("../img/sprite-headlines.png") no-repeat;
-	background-position: -5px -42px;
+	background-position: 0px -50px;
 	display: inline-block;
 	float: left;
 	margin-right: 5px;
@@ -88,19 +118,32 @@ h3 {
 }
 
 #title-counters {
-	background-position: 50% -139px;
+	background-position: 50% -80px;
 }
 
 #title-nominees {
-	background-position: 50% -157px;
+	background-position: 50% -100px;
 }
 
 #title-photos {
-	background-position: 50% -179px;
+	background-position: 50% -120px;
 }
 
 #title-viewers {
-	background-position: 50% -199px;
+	background-position: 50% -140px;
+}
+
+/* LOADING */
+
+.please-wait {
+	text-align:center;
+	padding-top: 60px;
+	color: #666666;
+}
+
+.loading-text {
+	text-shadow: none;
+	color: #000000;
 }
 
 /* TIMELINE NAV */
@@ -141,37 +184,6 @@ h3 {
 	position: relative;
 }
 
-#timeline-top-shadow {
-	position: absolute;
-	top: 0px;
-	display: block;
-	width: 510px;
-	height: 16px;
-	background: url("../img/divider-hor-bottom.png") no-repeat;
-	background-position: center top;
-}
-
-#timeline-bottom-shadow {
-	position: relative;
-	top: -16px;
-	display: block;
-	width: 510px;
-	height: 16px;
-	background: url("../img/divider-hor-top.png") no-repeat;
-	background-position: center top;
-}
-
-#viewer-timeline-bottom-shadow {
-	position: relative;
-	top: -47px;
-	left: 25px;
-	display: block;
-	width: 310px;
-	height: 47px;
-	background: url("../img/viewer-timeline-bottom.png") no-repeat;
-	background-position: center top;
-}
-
 /* LOAD MORE */
 
 #loadmore {
@@ -181,6 +193,7 @@ h3 {
 	height: 52px;
 	background: url("../img/sprite-headlines.png") no-repeat;
 	background-position: -11px -571px;
+	display: none;
 }
 
 #loadmore a {
@@ -202,6 +215,19 @@ h3 {
 	height: 52px;
 	background: url("../img/sprite-headlines.png") no-repeat;
 	background-position: -11px -621px;
+}
+
+/* MAIN TIMELINE SHADOWS */
+
+#timeline-top-shadow {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: block;
+	width: 530px;
+	height: 24px;
+	background: url("../img/divider-hor-bottom.png") no-repeat;
+	background-position: center top;
 }
 
 /* CUSTOM DRAG HANDLE on TIMELINE */
@@ -236,37 +262,11 @@ h3 {
 	background: transparent;
 }
 
-/* CUSTOM DRAG HANDLE on USER TIMELINE */
 
-#viewer-timeline .jspDrag {
-	background: url("../img/sprite-ui.png") no-repeat;
-	background-position: -243px -152px;
-	width: 8px;
-	height: 8px;	
-}
-
-#viewer-timeline .jspDrag:hover {
-	background-position: -243px -153px;
-}
-
-
-#viewer-timeline .jspVerticalBar {
-	width: 14px;
-	background: transparent;
-}
-
-.jspCap {
-	display: block;
-	background: #eeeef4;
-}
-
-#viewer-timeline .jspVerticalBar .jspCap {
-	height: 5px;
-	background: transparent;
-}
 
 /* TWEET STYLES */
-.celeb {
+
+/*.celeb {
 	background: url("../img/tweet-bg-celeb.png") no-repeat;
 	background-position: center bottom;
 }
@@ -274,19 +274,24 @@ h3 {
 .academy {
 	background: url("../img/tweet-bg-academy.png") no-repeat;
 	background-position: center bottom;
-}
+}*/
 
 #timeline .tweet-bg {
 	width: 470px;
 	padding: 20px 0px 20px 0px;
 	background: url("../img/tweet-divider-hr.png") no-repeat;
 	background-position: bottom;
+
 }
 
 #viewer-timeline .tweet-bg {
-	width: 335px;
+	width: 290px;
 	padding: 10px 0px 10px 0px;
 	border-bottom: 1px solid #333;
+}
+
+#viewer-timeline .tweet {
+	width: 290px;
 }
 
 .tweet-profile-image {
@@ -297,6 +302,11 @@ h3 {
 	background: url("../img/sprite-ui.png") no-repeat;
 	background-position: -56px -148px;
 	overflow: hidden;
+}
+
+#viewer-timeline .tweet-profile-image img {
+	width: 32px;
+	height: 32px;
 }
 
 #viewer-timeline .tweet-profile-image {
@@ -334,24 +344,22 @@ h3 {
 
 /* TWEET UTILITY */
 
+/* adding bg so IE behaves on fade
+
+#timeline .tweet-utility, #timeline .tweet {
+	background: #242424;
+} */
+
 .tweet-utility {
 	margin-top: 10px;
 	font-size: 11px;
 	display: inline-block;
 }
 
-/*#spotlight .tweet-utility {
-	float: left;
-}*/
-
 .tweet-utility * {
 	display: inline-block;
 	vertical-align: bottom;
 	line-height: 20px;
-}
-
-.tweet-utility a {
-	color: #666;
 }
 
 .tweet-utility i {
@@ -367,8 +375,12 @@ h3 {
 	margin-left: 15px;
 }
 
-#viewer-timeline .tweet-actions a {
-	margin-left: 7px;
+#viewer-timeline .tweet-utility i {
+	display: none;
+}
+
+#viewer-timeline .tweet-utility a {
+	color: #666;
 }
 
 .action-reply span i {
@@ -390,7 +402,6 @@ h3 {
 
 .spotlight-pagination {
 	display: block;
-	float: right;
 	font-size: 11px;
 	color: #3F3C32;
 	width: 113px;
@@ -398,13 +409,16 @@ h3 {
 	background: url("../img/sprite-ui.png");
 	background-position: -143px -0px;
 	text-align: center;
-	margin-top: 8px;
 }
 
 .spotlight-pagination span {
 	line-height: 22px;
 	margin-left: 7px;
 	margin-right: 7px;
+}
+
+.disabled{
+	color: #3F3C32;
 }
 
 /* BADGES */
@@ -447,7 +461,7 @@ h3 {
 	text-indent: -99999px;
 	margin-left: 6px;
 	display: inline-block;
-	width: 80px;
+	width: 44px;
 	height: 25px;
 	background: url("../img/sprite-ui.png");
 	background-position: -56px -50px;
@@ -461,10 +475,27 @@ h3 {
 	background: none;
 }
 
-#spotlight .tweet-name-screen, #spotlight .tweet-text {
+#spotlight-tweet-container {
+	height: 190px;
+	width : 530px;
+}
+
+
+#spotlight-tweet-container .tweet {
+	position : absolute;
+	top : 0px;
+	width: 530px;
+}
+
+#spotlight .tweet-name, #spotlight .tweet-text {
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=135,strength=2);
+}
+
+#spotlight .tweet-name-screen, #spotlight .tweet-name, #spotlight .tweet-text {
 	font-size: 24px;
 	letter-spacing: 0em;
 	line-height: 1.1;
+	width: 440px;
 }
 
 /* VISUALISERS */
@@ -484,7 +515,7 @@ h3 {
 	display: inline-block;
 	float: left;
 	width: 230px;
-	height: 92px;
+	height: 100px;
 }
 
 #counter-total * {
@@ -494,17 +525,17 @@ h3 {
 
 #counter-total .counter-bak {
 	width: 230px;
-	height: 92px;
-	background-position: -16px -254px; /*-254px;*/
+	height: 100px;
+	background-position: 0px -165px;
 }
 
 #counter-total .counter-label, #counter-total .counter-text {
-	width: 218px;
-	margin: 6px;
+	width: 230px;
+	margin: 3px;
 	text-align: center;
 	background-position: 999px 999px;
-	color: #E7D38D;
-	text-shadow: #E7D38D 0px 0px 7px;
+	color: #fff;
+	text-shadow: #fff 0px 0px 7px;
 }
 
 #counter-total .counter-text {
@@ -526,8 +557,8 @@ h3 {
 	top: 0px;
 	left: 0px;
 	width: 230px;
-	height: 92px;
-	background-position: -16px -349px;
+	height: 100px;
+	background-position: 0px -263px;
 }
 
 #counter-total .gloss {
@@ -536,16 +567,16 @@ h3 {
 	left: 0px;
 	width: 230px;
 	height: 43px;
-	background-position: -16px -444px;
+	background-position: 0px -364px;
 }
 
 /* COUNTER SECOND */
 
 #counter-seconds {
 	display: inline-block;
-	float: right;
-	width: 142px;
-	height: 92px;
+	float: left;
+	width: 120px;
+	height: 100px;
 }
 
 #counter-seconds * {
@@ -554,23 +585,23 @@ h3 {
 }
 
 #counter-seconds .counter-bak {
-	width: 142px;
-	height: 92px;
-	background-position: -256px -254px;
+	width: 120px;
+	height: 100px;
+	background-position: -230px -165px;
 }
 
 #counter-seconds .counter-label, #counter-seconds .counter-text {
-	width: 130px;
-	margin: 6px;
+	width: 120px;
+	margin: 3px;
 	text-align: center;
 	background-position: 999px 999px;
-	color: #FF444B;
-	text-shadow: #FF444B 0px 0px 7px;
+	color: #CC3333;
+	text-shadow: #CC3333 0px 0px 7px;
 }
 
 #counter-seconds .counter-text {
 	line-height: 70px;
-	font-size: 32px;
+	font-size: 28px;
 }
 
 #counter-seconds .counter-label {
@@ -588,7 +619,7 @@ h3 {
 	left: 0px;
 	width: 142px;
 	height: 92px;
-	background-position: -256px -349px;
+	background-position: -230px -263px;
 }
 
 #counter-seconds .gloss {
@@ -597,7 +628,7 @@ h3 {
 	left: 0px;
 	width: 142px;
 	height: 43px;
-	background-position: -256px -439px;
+	background-position: -230px -364px;
 }
 
 
@@ -606,6 +637,7 @@ h3 {
 .top5 * {
 	font-size: 18px;
 	line-height: 34px;
+	cursor: pointer;
 }
 
 #nominees b, .flipper {
@@ -618,7 +650,7 @@ h3 {
 	float:left;
 	position: relative;
 	margin-left: 8px;
-	width: 349px;
+	width: 330px;
 	height: 38px;
 	background-image: url("../img/sprite-headlines.png");
 	background-position: -20px -490px;
@@ -631,7 +663,7 @@ h3 {
 .flipper .count {
 	position: absolute;
 	top: 0px;
-	width: 334px;
+	width: 315px;
 	height: 38px;
 	text-align: right;
 }
@@ -650,20 +682,22 @@ h3 {
 	color: #666666;
 }
 
+.flip-fx img {
+	display: none;
+}
+
 /* PHOTO BROWSER */
 
 #photos {
-	min-height: 220px;
+	height: 220px;
 }
 
 #photo-browser {
-	width: 380px;
+	width: 350px;
 	height: 120px;
 	overflow: hidden;
 	white-space: nowrap;
 	position: relative;
-/*	background-color:#FF0000;*/
-	/*height:75px;*/
 }
 
 #photo-scroller {
@@ -674,10 +708,9 @@ h3 {
 .photo-assembly {
 	display: inline-block;
 	float: left;
-	margin-left: 35px;
+	margin-left: 30px;
 	font-size: 11px;
 	text-align: center;
-
 }
 
 #photo-browser .photo {
@@ -693,6 +726,16 @@ h3 {
 	margin-bottom: 5px;
 }
 
+.shadow 
+{
+	-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000;
+	box-shadow: 3px 3px 4px #000;	
+	/* For IE 8 */	
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";	
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
 .photo img {
 	width: 75px;
 	height: 46px;
@@ -760,9 +803,7 @@ h3 {
 
 #share {
 	margin-left: 10px;
-	background: url("../img/tweet-box-background.jpg") no-repeat;
-	background-position: center bottom;
-	min-height: 230px;
+	min-height: 180px;
 }
 
 /* MODALS */
@@ -807,17 +848,72 @@ h3 {
 	height: 13px;
 	width: 13px;
 	background-position: -8px -114px;
+	
 }
 
 .modal-title-bar {
 	position: relative;
 	left: -15px;
 	margin-bottom: 10px;
-	width:240px
+	width:240px;
 }
 
-.ribon-title {
-	display: inline-block;
+/* Photo modal */
+.modal-photo
+{
+	width : 640px;
+/*	height : 570px;*/
+	background-color : #FFF;
+	padding:15px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.photo-tweet
+{
+	padding-bottom:15px;
+}
+
+.photo-tweet a
+{
+	color:#C30505;
+}
+
+.photo-tweet-image
+{
+	text-align:center;
+}
+
+.photo-tweet-time
+{
+	color:#CCCCCC;
+	font-size: 11px;
+}
+
+
+.photo-screen-name
+{
+	color:#C30505;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.photo-user-name, .photo-tweet-body
+{
+	color:#666666;
+	font-size: 13px;
+}
+
+.photo-tweet-body
+{
+	font-weight : normal;
+}
+.photo-screen-name, .photo-user-name, .photo-tweet-body, .photo-tweet-time
+{
+	text-shadow: none;	
+}
+
+.ribon-title {	display: inline-block;
 	font-size: 16px;
 	line-height: 30px;
 	color: #fff;
@@ -883,7 +979,7 @@ h3 {
 	background-position: -157px -77px;
 }
 
-.button-cancel a {
+.button-cancel a{
 	line-height: 29px;
 	margin-left: 15px;
 	vertical-align:bottom;
@@ -891,4 +987,23 @@ h3 {
 
 .mini {
 	font-size: 11px;
+}
+
+#credits a {
+	background: url("../img/sprite-ui.png") no-repeat;
+	display: block;
+	height: 35px;
+	width: 165px;
+	text-indent: -9999px;
+	margin-top: 35px;
+	margin-left: 10px;
+	float: left;
+}
+
+#credits .mr {
+	background-position: 0px -330px;
+}
+
+#credits .sr {
+	background-position: -170px -330px;
 }

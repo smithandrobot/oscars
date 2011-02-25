@@ -28,7 +28,7 @@ function Tweet()
 					 'arrahman',
 					 'trent_reznor',
 					 'troyverges',
-					 'didoofficial',
+					 'didoofficial'
 				   ];
 				
 	//  Public

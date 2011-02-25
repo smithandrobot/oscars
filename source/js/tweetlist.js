@@ -53,7 +53,6 @@ function TweetList(URL)
 	
 	function show()
 	{
-		Log(self.id+' stream: '+stream);
 		var html ='';
 		var tweet;
 		var total = tweets.length - 1;
@@ -132,15 +131,9 @@ function TweetList(URL)
 		var total = data.length-1;
 		var t;
 		
-		if(self.id != 'viewerList')
-		{
-			Log('writeList for '+self.id);
-		}
-		
 		for(i;i<=total;i++)	
 		{
 			t = new Tweet();
-			if(self.id == "viewerList") t.type = "viewer";
 			t.setData(data[i]);
 			tweets.push({tweet:t, id:i})
 		};
@@ -155,7 +148,11 @@ function TweetList(URL)
 	
 	function pollList( e )
 	{
-		if(!active) return;
+		if(!active && self.id != 'expertList') 
+		{
+			clearTimeout(timeout);
+			return;
+		}
 		
 		var data  = e.target.getData();
 		var i 	  = 0;
@@ -187,7 +184,13 @@ function TweetList(URL)
 		clearTimeout(timeout);
 		setTimeout(poll, INTERVAL);
 		self.unreadTweets = data.length;
-		dispatchEvent('onUnreadTweets', self)
+		
+		// don't dispatch if it's the exper list (lower right of page)
+		if(self.id != 'expertList') dispatchEvent('onUnreadTweets', self);
+		
+		// update expert list without notifying application
+		if(self.id == 'expertList') updateList();
+		
 	}
 	
 	
