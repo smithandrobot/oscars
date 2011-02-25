@@ -133,8 +133,7 @@ function SpotlightTweetList( server )
 		var html  = '';
 		var tweetObj;
 		var id;
-		
-		Log('update spotlight: '+total)
+
 		if(data.length-1 < 0) 
 		{
 			clearTimeout(timeout);
@@ -176,7 +175,6 @@ function SpotlightTweetList( server )
 		
 		for(i;i<=total;i++)	
 		{
-			Log('spotlight tweet: '+i);
 			t = new Tweet();
 			id = 'spotlight-'+t.tweetID;
 			t.setData(data[i]);

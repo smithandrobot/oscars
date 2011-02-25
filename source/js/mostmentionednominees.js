@@ -118,7 +118,9 @@ function MostMentionedNominees( server )
 		function()
 		{
 			var stream = streams[ ++index ];
-			$(this).find('a').text(stream.nomineeName);
+			var a =  $(this).find('a')
+			a.text(stream.nomineeName);
+			a.attr('href', 'http://search.twitter.com/search?q=%23'+stream.nomineeName)
 			$(this).find('span').text(Utils.addCommas(stream.count.approved));
 		});
 		
@@ -126,7 +128,10 @@ function MostMentionedNominees( server )
 		function()
 		{
 			var stream = streams[ ++index ];
-			$(this).find('a').text(stream.nomineeName);
+			var a =  $(this).find('a')
+			a.text(stream.nomineeName);
+			a.attr('href', 'http://search.twitter.com/search?q=%23'+stream.nomineeName)
+			
 			$(this).find('span').text(Utils.addCommas(stream.count.approved));
 		});
 		
@@ -194,6 +199,7 @@ function MostMentionedNominees( server )
 	{
 		var flipper = element.find('#number'+String(id));
 		flipper.find('.name a').text(name);
+		flipper.find('.name a').attr('href', 'http://search.twitter.com/search?q=%23'+name);
 		flipper.find('.count').text(total);
 		flipper.find('.flip-fx img').css({display:'none'});
 		

@@ -4,14 +4,6 @@ function Tweet()
 	
 	var self = this;
 	var verified;
-	this.screenName;
-	this.userName;
-	this.bio;
-	this.followers;
-	this.following;
-	this.tweets;
-	this.hasqTip = false;
-	
 	var element;
 	var rendered = false;
 	var profileImg;
@@ -38,7 +30,9 @@ function Tweet()
 					 'troyverges',
 					 'didoofficial',
 				   ];
+				
 	//  Public
+	
 	this.htmlText;
 	this.tweetID;
 	this.type 		= null;
@@ -48,12 +42,21 @@ function Tweet()
 	this.getHTML 	= getHTML;
 	this.orderID;
 	this.tweetText;
+	this.time;
+	this.screenName;
+	this.userName;
+	this.bio;
+	this.followers;
+	this.following;
+	this.tweets;
+	this.hasqTip = false;
 	
 	function setData(d)
 	{
 		self.tweetText	= d.text;
 		self.htmlText 	= TweetParser.parse(d.text);
 		self.tweetID 	= d.id_str;
+		self.time		= d.created_at.slice(0, -10);
 		verified 	 	= d.user.verified;
 		self.screenName	= d.user.screen_name;
 		self.userName 	= d.user.name;
@@ -72,6 +75,11 @@ function Tweet()
 		var bioButton;
 		
 		element = $(render());
+		if(verified) 
+		{
+			$('<span class="badge-celebrity">Celeb</span>').insertAfter(element.find('.tweet-name-full'))
+			Log('found verified user');
+		}
 		if(self.type == 'viewer')
 		{
 			bioButton = element.find('.expert-bio');
@@ -106,17 +114,17 @@ function Tweet()
 		return'<div class="tweet">'+
 			  '   <div class="tweet-bg">'+
 			  '       <div class="tweet-profile-image">'+
-			  '		      <a href="http://www.twitter.com/#!/'+self.screenName+'"><img src="'+profileImg+'" alt="'+self.userName+'" /></a>'+
+			  '		      <a href="http://www.twitter.com/#!/'+self.screenName+'" target="_blank" ><img src="'+profileImg+'" alt="'+self.userName+'" /></a>'+
 			  ' 	  </div>'+
 			  '       <div class="tweet-copy-block">'+
 			  ' 	      <div class="tweet-name">'+
-			  '	              <a class="tweet-name-screen" href="http://www.twitter.com/#!/'+self.screenName+'" title="'+self.userName+'">@'+self.screenName+'</a> <span class="tweet-name-full">'+self.userName+'</span>'+celebBadge+'<a href="#null" class="expert-bio">Bio</a>'+
+			  '	              <a class="tweet-name-screen" target="_blank" href="http://www.twitter.com/#!/'+self.screenName+'" title="'+self.userName+'">@'+self.screenName+'</a> <span class="tweet-name-full">'+self.userName+'</span>'+celebBadge+'<a href="#'+self.userName+'_bio" class="expert-bio">Bio</a>'+
 			  '           </div>'+
 			  ' 	      <div class="tweet-text">'+
 			  '	              '+self.htmlText+''+
 			  '	          </div>'+
 			  '		      <div class="tweet-utility">'+
-			  '		          <a href="http://www.twitter.com/#!/'+self.screenName+'/status/'+self.tweetID+'" class="tweet-timestamp" title="12:31 PM Feb 3rd">5 hours ago</a> <span class="tweet-actions"><a href="#null" class="action-retweet" title="Retweet"><span><i><!--icon--></i><b>Retweet</b></span></a><a href="#null" class="action-reply" title="Reply"><span><i><!--icon--></i><b>Reply</b></span></a><a href="#null" class="action-follow" title="Follow"><span><i><!--icon--></i><b>Follow</b></span></a></span>'+
+			  '		          <a target="_blank" href="http://www.twitter.com/#!/'+self.screenName+'/status/'+self.tweetID+'" class="tweet-timestamp" title="'+self.time+'">'+self.time+'</a> <span class="tweet-actions"><a href="#retweet" class="action-retweet" title="Retweet"><span><i><!--icon--></i><b>Retweet</b></span></a><a href="#reply" class="action-reply" title="Reply"><span><i><!--icon--></i><b>Reply</b></span></a><a href="#follow" class="action-follow" title="Follow"><span><i><!--icon--></i><b>Follow</b></span></a></span>'+
 			  '		      </div>'+
 			  '	      </div>'+
 			  '   </div>'+

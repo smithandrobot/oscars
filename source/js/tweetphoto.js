@@ -45,7 +45,9 @@ function TweetPhoto()
 		if(thumb == undefined) return false;
 		
 		if(element == undefined) element = $(render());
-		element.find('a').text(source);
+		element.find('a').text('@'+self.screenName);
+		element.find('a').attr('href', 'http://twitter.com/#!/'+self.screenName);
+		element.find('a').attr('target', '_blank');
 		element.find('.photo').css('background-image', 'url('+thumb.src+')');
 		decorate(element);
 		return element;

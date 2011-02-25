@@ -127,7 +127,7 @@ function TweetUtilsWindows()
 		var c = $('#modal-storage .modal-bio').clone();
 		c.find('h5').text(tweet.userName);
 		c.find('.mini').text(tweet.bio);
-		c.find('#modal-bio-screen-name').text(tweet.screenName);
+		c.find('#modal-bio-screen-name').text('@'+tweet.screenName);
 		c.find('.bio-tweets .bio-tweet-count').text( Utils.addCommas( tweet.tweets ) );
 		c.find('.bio-following .bio-tweet-count').text( Utils.addCommas( tweet.following ) );
 		c.find('.bio-followers .bio-tweet-count').text( Utils.addCommas( tweet.followers ) );
@@ -211,17 +211,13 @@ function TweetUtilsWindows()
 	
 	function reTweet()
 	{
+		
+
 		twttr.anywhere
 		(		
 			function (T) 
 			{
-				var status = T.Status.find(tweet.tweetID);
-				for(var i in status)
-				{
-					Log('status.'+i+' = '+status[i]);
-				}
-
-				status.retweet();
+				var status = T.Status.retweet(tweet.tweetID);
 			}
 		);
 		
