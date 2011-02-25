@@ -44,17 +44,20 @@ function TweetListController(server)
 		allList.addEventListener("onShowing", onListShowing);
 		celebList.addEventListener("onShowing", onListShowing);
 		viewerList.addEventListener("onShowing", onListShowing);
-		expertList.addEventListener("onShowing", onListShowing);
+
 
 		viewerList.addEventListener('onUnreadTweets', onUnreadTweets);
 		celebList.addEventListener('onUnreadTweets', onUnreadTweets);
 		allList.addEventListener('onUnreadTweets', onUnreadTweets);
+		
 
 		init();
 	}
 	
 	function loadExpertList()
 	{
+		expertList.addEventListener("onShowing", onListShowing);
+		expertList.addEventListener('expertListRendered', onExpertListRendered)
 		expertList.addEventListener('tweetListLoaded', viewerListLoaded);
 		expertList.load();
 	}
@@ -72,18 +75,16 @@ function TweetListController(server)
  		viewerList.element = $('#main-timeline').clone();
 		viewerList.element.attr('id', 'viewers');
 		lists.push({obj:viewerList, id:"viewers"});
-		
- 		expertList.element = $('#viewer-timeline .timeline-all').clone();
 
 	};
 
 	
 	function allListLoaded( e )
 	{
-		select( 'all' );
 		
 		if(!rendered)
 		{
+			select( 'all' );
 			dispatchEvent('tweetListRendered', self);
 			rendered = true;
 		}
@@ -92,6 +93,7 @@ function TweetListController(server)
 	
 	function viewerListLoaded( e )
 	{
+ 		expertList.element = $('#viewer-timeline .timeline-all').clone();
 		$('#viewer-timeline .timeline-all').remove();
 		e.target.show();
 	}
@@ -142,5 +144,10 @@ function TweetListController(server)
 		last.updateList();
 	}
 	
+	
+	function onExpertListRendered( e )
+	{
+		dispatchEvent('onExpertListRendered', self);
+	}
 	return this;
 };

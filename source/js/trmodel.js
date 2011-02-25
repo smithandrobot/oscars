@@ -31,7 +31,7 @@ function TRModel( URL )
 		//alert('stream error xmlhttp: '+xmlhttp+", txtstatus: "+txtstatus+' errorThrown: '+errorThrown);
 	};
 
-	var onStreamLoaded = function(d)
+	function onStreamLoaded(d)
 	{
 		data = d;
 		dispatchEvent("onDataChange", self);

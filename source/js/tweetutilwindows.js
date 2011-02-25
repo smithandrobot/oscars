@@ -7,7 +7,8 @@ function TweetUtilsWindows()
 	var replyID;
 	var loadingStatus;
 	var isIE = $.browser.msie;
-
+	var time;
+	
 	this.bioModal 	  = setBioModal;
 	this.replyModal   = setReplyModal;
 	this.reTweetModal = setReTweetModal;
@@ -41,6 +42,7 @@ function TweetUtilsWindows()
 	function setReplyModal( t , e )
 	{
 		tweet 			 = t;
+		time		 	 = new Date().getTime();
 		var replyModal 	 = e.find('.action-reply');
 		var qTipObj 	 = new Object();
 		var settings	 = getQtipSettingsObj();
@@ -158,7 +160,7 @@ function TweetUtilsWindows()
 	function getReplyContent()
 	{
 		var c = $('#modal-storage .modal-reply').clone(true);
-		c.find('#tbox-reply').attr('id', 'tweetbox-'+tweet.tweetID+'-reply');
+		c.find('#tbox-reply').attr('id', 'tweetbox-'+tweet.tweetID+'-'+time+'-reply');
 		var p = c.find('p');
 		p.text('Loading Tweetbox');
 		p.attr('id', 'modal-'+tweet.tweetID+'-loading-status');
@@ -233,7 +235,7 @@ function TweetUtilsWindows()
 			(
 				function (T) 
 				{
-				  T('#tweetbox-'+tweet.tweetID+'-reply').tweetBox
+				  T('#tweetbox-'+tweet.tweetID+'-'+time+'-reply').tweetBox
 					(
 						{
 				    		height: 100,

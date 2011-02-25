@@ -10,7 +10,7 @@ function MostMentionedNominees( server )
 	var element		= $('#nominees');
 	var col1		= element.find('ol:first');
 	var col2		= element.find('ol:first').next();
-	var INTERVAL	= 1000*5;
+	var INTERVAL	= 1000*10;
 	
 	var oStreams 	= [
 					   {name: 'Javier Bardem', stream : 'oscars-actor-bardem'},
@@ -51,35 +51,21 @@ function MostMentionedNominees( server )
 	
 	function load()
 	{
-		if(!rendered)
-		{
-			model.addEventListener("onDataChange", dataChanged);
-			model.load(  null , 'jsonp' );
-			rendered = true;
-			decorateFlipBtns();
-		}
+		model.addEventListener("onDataChange", dataChanged);
+		decorateFlipBtns();
+		model.load(  null , 'jsonp' );	
 	};
 	
 	
 	function poll()
-	{
-		
-		if(!rendered)
-		{
-			model.addEventListener("onDataChange", dataChanged);
-			model.load(  null , 'jsonp' );
-			rendered = true;
-		}
+	{		
+		model.load(  null , 'jsonp' );
 	};
 	
 	
 	function dataChanged( e )
-	{
-		var streams;
-		
-		// dispatchEvent('onMostMentionedLoaded', self);
-		
-		streams = getStreams(e.target.getData().streams);
+	{		
+		var streams = getStreams(e.target.getData().streams);
 		renderStreams(streams);
 	}
 	
@@ -137,7 +123,8 @@ function MostMentionedNominees( server )
 			$(this).find('span').text(Utils.addCommas(stream.count.approved));
 		});
 		
-		dispatchEvent('onMostMentionedLoaded', self);
+		if(!rendered) dispatchEvent('onMostMentionedLoaded', self);
+		rendered = true;
 	}
 	
 	
@@ -206,7 +193,11 @@ function MostMentionedNominees( server )
 		flipper.find('.count').text(total);
 		flipper.find('.flip-fx img').css({display:'none'});
 		
-		if(id == 5) renderLists( streams );
+		if(id == 5) 
+		{
+			renderLists( streams );
+			setTimeout(poll, INTERVAL);
+		}
 	}
 	
 	

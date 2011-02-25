@@ -21,8 +21,8 @@ function Application()
 	//tweetBox.fadeOut(50);
 	
 	filterNav.addEventListener('onFilterChange', onFilterChange);	
-	tweetStats.addEventListener('onStatsLoaded', onStatsLoaded);	
-	mainTweetLists.addEventListener('tweetListRendered', onTweetListRendered);	
+	tweetStats.addEventListener('onStatsLoaded', onStatsLoaded);
+	mainTweetLists.addEventListener('onExpertListRendered', onExpertListRendered);
 	mostMentioned.addEventListener('onMostMentionedLoaded', onMostMentionedRendered);	
 	spotlightNav.addEventListener('onNextSpotlightTweet', onNextSpotlightTweet);
 	spotlightNav.addEventListener('onPreviousSpotlightTweet', onPreviousSpotlightTweet);	
@@ -33,12 +33,22 @@ function Application()
 	spotlightTweets.load();
 
 
+
 	
 	function onFilterChange( e )
 	{
 		var filter = e.target.filter.split('filter-')[1];
 		mainTweetLists.select(filter);
 	};
+	
+	
+	/* 
+		LOADING SEQUENCE 
+		1. onSpotlightTweetsLoaded
+		2. onStatsLoaded
+		3. onMostMentionedRendered
+		4. onExpertListRendered -> MAKES LAST CALL TO LOAD MAIN TWEET LIST
+	*/
 	
 	
 	function onPhotosLoaded( e )
@@ -53,13 +63,13 @@ function Application()
 	
 	function onStatsLoaded( e )
 	{
-		mainTweetLists.load();
+		mostMentioned.load();
 	}
 	
-	function onTweetListRendered( e )
+	function onExpertListRendered( e )
 	{
 		filterNav.show();
-		mostMentioned.load();
+		mainTweetLists.load();
 	}
 	
 	function onMostMentionedRendered( e )

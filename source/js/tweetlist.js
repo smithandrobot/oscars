@@ -86,6 +86,11 @@ function TweetList(URL)
 		
 		if(self.id != "expertList") $('.css-scrollbar').scrollbar();
 		if(self.id == "expertList") $('.css-scrollbar-2').scrollbar();
+		
+		if(self.id == "expertList" && rendered == false)
+		{
+			dispatchEvent('expertListRendered', self)
+		}
 	};
 	
 	

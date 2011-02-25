@@ -3,6 +3,7 @@ TweetStats.constructor 	= TweetStats;
 
 function TweetStats() 
 {
+	var INTERVAL			= 1000*5;
 	var self				= this;
 	var totalCount 	 		= $('#total-tweets');
 	var tweetsPerSec 		= $('#total-tweets-second');
@@ -24,13 +25,18 @@ function TweetStats()
 	}
 	
 	
+	function poll()
+	{
+		model.load(null, 'jsonp');
+	}
+	
+	
 	function onDataChange( e )
 	{
 		var data = e.target.getData();
 		this.totalTweets = data.count.approved;
 		var perMin = data.tweets.minute.total;
 		this.totalTweetsPerMin = getAverage(perMin)
-		Log('per miin avg: '+this.totalTweetsPerMin);
 		setTotalTweets(this.totalTweets);
 		setTimeout(setTweetsPerSec, 1000, [this.totalTweetsPerMin]);
 	}
@@ -76,6 +82,7 @@ function TweetStats()
 		if(rendered) return;
 		dispatchEvent( 'onStatsLoaded' , self);
 		rendered = true;
+		setTimeout(poll, INTERVAL);
 	}
 	
 	
