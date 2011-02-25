@@ -19,6 +19,7 @@ function styleTweetBox()
 {
 	label = $("#tbox iframe").contents().find("label");
 	counter = $("#tbox iframe").contents().find("#counter");
+	thebox = $("#tbox iframe").contents().find("#tweet-box");
 	var fontSize = label.css('fontSize');
 	//alert('styling tweet box: '+label.html());
 	label.css('font-size', 16);
@@ -30,6 +31,10 @@ function styleTweetBox()
 	counter.css('text-align', 'right');
 	counter.css('width', 80);
 	counter.css('font-size', 16);
+	thebox.css('-moz-box-shadow', '0px 0px 5px #000');
+	thebox.css('-webkit-box-shadow', '0px 0px 5px #000');
+	thebox.css('box-shadow', '0px 0px 5px #000');
+	thebox.css('border', 'none');
 }
 
 $(function(){
