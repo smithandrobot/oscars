@@ -199,6 +199,8 @@ function TweetUtilsWindows()
 	
 	function followUser()
 	{
+		if( !canFollow( tweet.screenName ) ) return;
+		
 		twttr.anywhere
 			(
 				function (T) 
@@ -211,10 +213,18 @@ function TweetUtilsWindows()
 		modal.qtip( "hide" );
 	}
 	
+	
 	function reTweet()
 	{
 		
+		if( !canRetweet( tweet.tweetID ) ) 
+		{
+			Log('user did not validate, authori');
+			return;
+		}
+		
 
+		
 		twttr.anywhere
 		(		
 			function (T) 
@@ -287,14 +297,65 @@ function TweetUtilsWindows()
 		counter.css('font-size', 16);
 		
 		textarea.css('font-size', 11);
+	};
+	
+	
+	function canRetweet( tweetID )
+	{
+		
+		var validUser = false;
+
+		twttr.anywhere(function (T) 
+		{  
+ 			if (!T.isConnected()) {
+	
+				T.bind("authComplete", function (e, user) {
+					Log('sending retweet id: '+tweetID);
+					var status = T.Status.retweet(tweetID);
+  		 		});
+
+				T.signIn();
+				Log('user is not logged in');
+			}else{
+				validUser = true;
+			}
+		})
+		
+		return validUser;
+		
+
 	}
+	
+	
+	function canFollow( userID )
+	{
+		var validUser = false;
+		
+		twttr.anywhere(function (T) 
+		{  
+ 			if (!T.isConnected()) {
+				T.bind("authComplete", function (e, user) {
+					Log('following user: '+userID);
+					var user = T.User.find( userID );
+					user.follow();
+  		 		});
+
+				T.signIn();
+				Log('user is not logged in and cannot follow, opened connect dialog');
+			}else{
+				validUser = true;
+			}
+		})
+		
+		return validUser;
+	};
 	
 	
 	function onClose()
 	{
 		modal.qtip( "hide" );
 		return false;
-	}
+	};
 	
 	return this;
 };

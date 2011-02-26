@@ -104,18 +104,17 @@ function TweetList(URL)
 				//$(".qtip").remove();
 				self.element.detach();
 				var l = $('#loadmore').detach();
-				clearScrollBar();
+				clearMainScrollBar();
 				$("#timeline").prepend(l);
 				dispatchEvent("onHidden", self);
 			});
 	};
 	
 	
-	function clearScrollBar()
+	function clearMainScrollBar()
 	{
 		if(self.id != "expertList") 
 		{
-			Log("hiding "+self.id);
 			$("#timeline .scrollbar-pane").remove();
 			$("#timeline .scrollbar-handle-container").remove();
 			$("#timeline .scrollbar-handle-up").remove();
@@ -206,7 +205,6 @@ function TweetList(URL)
 		lastID = newTweets[0].tweet.orderID;
 		newTweets.reverse();
 		
-		Log('updating '+self.id+' list');
 		for(i;i<=total;i++)	
 		{
 			tweet 	 = newTweets[i].tweet;
@@ -217,12 +215,21 @@ function TweetList(URL)
 		};
 
 		
+		// reset scrollbar for main time line
+		if(self.id != "expertList") 
+		{
+			//clearMainScrollBar();
+			//$('.css-scrollbar').scrollbar();
+		}else{
+			
+		}
+		
 		clearTimeout(timeout);
 		active = true;
 		setTimeout(poll, INTERVAL);
 	}
 	
-	
+
 	function toString()
 	{
 		return "Tweetlist";
