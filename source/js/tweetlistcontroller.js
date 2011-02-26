@@ -3,7 +3,8 @@ TweetListController.constructor = TweetListController;
 
 function TweetListController(server)
 {
-	var allList 	    = new TweetList(server + 'oscars-celebs-and-viewers.json');
+	// var allList 	    = new TweetList(server + 'oscars-celebs-and-viewers.json');
+	var allList 		= new TweetList('http://tr-cache-2.appspot.com/smithandrobot/promoted.json');
 	allList.id		= "all";
 	
 	var celebList 	    = new TweetList(server + 'oscars-celebs.json');

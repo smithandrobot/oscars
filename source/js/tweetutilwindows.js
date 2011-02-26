@@ -219,7 +219,7 @@ function TweetUtilsWindows()
 		
 		if( !canRetweet( tweet.tweetID ) ) 
 		{
-			Log('user did not validate, authori');
+			Log('user did not validate, authorizing...');
 			return;
 		}
 		

@@ -640,6 +640,13 @@ h3 {
 	cursor: pointer;
 }
 
+applies padding
+.single-digit-list
+{
+	padding-right:10px;
+}
+
+
 #nominees b, .flipper {
 	display: inline-block;
 	font-weight: normal;

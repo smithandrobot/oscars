@@ -202,13 +202,13 @@
 						<div class="clear"></div>
 					</div>
 					<ol class="nominee-sub">
-						<li>6  <a href="#null"></a> <span></span>
+						<li>6&nbsp;&nbsp;&nbsp;<a href="#null"></a> <span></span>
 						</li>                                     
-						<li>7  <a href="#null"></a> <span></span>
-						</li>                                     
-						<li>8  <a href="#null"></a> <span></span>
-						</li>                                     
-						<li>9  <a href="#null"></a> <span></span>
+						<li>7&nbsp;&nbsp;&nbsp;<a href="#null"></a> <span></span>
+						</li>                                 
+						<li>8&nbsp;&nbsp;&nbsp;<a href="#null"></a> <span></span>
+						</li>                                
+						<li>9&nbsp;&nbsp;&nbsp;<a href="#null"></a> <span></span>
 						</li>                                     
 						<li>10 <a href="#null"></a> <span></span>
 						</li>                                     
@@ -272,9 +272,10 @@
 					    T("#tbox").tweetBox({
 					      height: 90,
 					      width: 330,
+						  onTweet: populateTweetBox,
 					      defaultContent: "#oscars  http://eonli.ne/rcoscars",
 						  label: "What is your favorite #oscars moment?",
-						  complete:styleTweetBox
+						  complete: styleTweetBox
 					    });
 
 					  });

@@ -36,6 +36,7 @@ function TweetList(URL)
 	
 	function poll()
 	{	
+		// if(self.id != 'expertList') Log('lastid: '+URL+'=?since_id='+lastID)
 		model.poll(lastID);
 	}
 	
@@ -67,7 +68,6 @@ function TweetList(URL)
 			tweet 	 = tweets[i].tweet;
 			tweetObj = tweet.getHTML();
 			tweetObj.stop().delay(delay*i).animate( {opacity:1, top:0}, { duration:500, complete: function(){ $(this).css('filter', '');} } );
-			//tweetObj.delay(i*delay).fadeIn(250);
 			self.element.append(tweetObj);
 		};
 
@@ -103,9 +103,7 @@ function TweetList(URL)
 			{ 
 				//$(".qtip").remove();
 				self.element.detach();
-				var l = $('#loadmore').detach();
 				clearMainScrollBar();
-				$("#timeline").prepend(l);
 				dispatchEvent("onHidden", self);
 			});
 	};
@@ -115,10 +113,12 @@ function TweetList(URL)
 	{
 		if(self.id != "expertList") 
 		{
+			var l = $('#loadmore').detach();
 			$("#timeline .scrollbar-pane").remove();
 			$("#timeline .scrollbar-handle-container").remove();
 			$("#timeline .scrollbar-handle-up").remove();
 			$("#timeline .scrollbar-handle-down").remove();
+			$("#timeline").prepend(l);
 		}
 	}
 
@@ -205,6 +205,10 @@ function TweetList(URL)
 		lastID = newTweets[0].tweet.orderID;
 		newTweets.reverse();
 		
+		if(self.id != "expertList") clearMainScrollBar();
+		
+		if(self.id != "expertList") self.element.insertAfter('#loadmore');
+		
 		for(i;i<=total;i++)	
 		{
 			tweet 	 = newTweets[i].tweet;
@@ -216,13 +220,7 @@ function TweetList(URL)
 
 		
 		// reset scrollbar for main time line
-		if(self.id != "expertList") 
-		{
-			//clearMainScrollBar();
-			//$('.css-scrollbar').scrollbar();
-		}else{
-			
-		}
+		if(self.id != "expertList") $('.css-scrollbar').scrollbar();
 		
 		clearTimeout(timeout);
 		active = true;
