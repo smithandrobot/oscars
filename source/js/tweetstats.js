@@ -8,7 +8,8 @@ function TweetStats()
 	var totalCount 	 		= $('#total-tweets');
 	var tweetsPerSec 		= $('#total-tweets-second');
 	var rendered			= false;
-	var model				= new TRModel('http://tr-cache-2.appspot.com/massrelevance/oscars-all/meta.json');
+	// var model				= new TRModel('http://tr-cache-2.appspot.com/massrelevance/oscars-all/meta.json');
+	var model				= new TRModel('http://tweetriver.com/massrelevance/oscars-all/meta.json');
 	var tweetsPerMinInterval;
 	var tweetsTotalInterval;
 	

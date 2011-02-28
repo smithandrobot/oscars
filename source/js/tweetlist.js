@@ -205,9 +205,14 @@ function TweetList(URL)
 		lastID = newTweets[0].tweet.orderID;
 		newTweets.reverse();
 		
-		if(self.id != "expertList") clearMainScrollBar();
+		if(self.id != "expertList") 
 		
-		if(self.id != "expertList") self.element.insertAfter('#loadmore');
+		if(self.id != "expertList") 
+		{
+			self.element.detach();
+			clearMainScrollBar();
+			self.element.insertAfter('#loadmore');
+		}
 		
 		for(i;i<=total;i++)	
 		{

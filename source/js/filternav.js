@@ -7,9 +7,10 @@ function FilterNav()
 	var all 	= $('#filter-all');
 	var celebs 	= $('#filter-celebs');
 	var viewers = $('#filter-viewers');
+	var currFilter = null;
 	
 	this.show 	= show;
-	this.filter = null;
+	this.filter = 'filter-all';
 	
 	$('#timeline-head h2').hide();
 	$('#timeline-head h4').hide();
@@ -42,8 +43,9 @@ function FilterNav()
 	
 	function select( id )
 	{
+		if(self.filter == id ) return;
+		
 		self.filter = id;
-		Log('id: '+id)
 		if(id != 'filter-all')  $('#filter-all').parent().toggleClass('down', false);
 		if(id != 'filter-celebs')  $('#filter-celebs').parent().toggleClass('down', false);
 		if(id != 'filter-viewers')  $('#filter-viewers').parent().toggleClass('down', false);

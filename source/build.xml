@@ -49,6 +49,7 @@
 	</concat>
 	
 	<copy todir="${deploy}/css/" file="css/styles.css" />
+	<copy todir="${deploy}/js/" file="js/fx.js" />
 
 	<echo message="Init..." />
 	<tstamp/>

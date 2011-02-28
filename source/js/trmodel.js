@@ -28,7 +28,7 @@ function TRModel( URL )
 	
 	var onStreamError = function(xmlhttp, txtstatus, errorThrown)
 	{
-		//alert('stream error xmlhttp: '+xmlhttp+", txtstatus: "+txtstatus+' errorThrown: '+errorThrown);
+		dispatchEvent("onModelError", self);
 	};
 
 	function onStreamLoaded(d)

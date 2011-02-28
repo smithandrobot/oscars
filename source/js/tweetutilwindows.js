@@ -7,6 +7,7 @@ function TweetUtilsWindows()
 	var replyID;
 	var loadingStatus;
 	var isIE = $.browser.msie;
+	var isFF = $.browser.mozilla;
 	var time;
 	
 	this.bioModal 	  = setBioModal;
@@ -263,7 +264,7 @@ function TweetUtilsWindows()
 
 		}
 		
-		if(isIE)
+		if(isIE || isFF)
 		{
 			var api = modal.qtip("api");
 			setTimeout(writeBox, 1500);
